@@ -4,7 +4,7 @@ Which contracts are Ethereum accounts delegating to with EIP-7702, and what can 
 
 This is a small public ledger that answers that from chain data, with the evidence attached to every row.
 
-**Live page:** https://surfer-frozen-check.fly.dev/delegates.html · JSON: https://surfer-frozen-check.fly.dev/delegates
+**Site (lookup + today's ledger):** https://surfer-life.github.io/eip7702-delegate-ledger/ · JSON: [data/latest.json](data/latest.json)
 
 ## Who made this
 
