@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # 최근 N블록의 type 4 거래에서 위임(authorization) 대상을 센다. 2026-11-15
-import json,subprocess,sys,time,collections
+import json,subprocess,sys,time,collections,os
+sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
+from authority import authority
 N=int(sys.argv[1]); RPC='https://ethereum-rpc.publicnode.com'
 def rpc(m,p):
     for k in range(5):
@@ -12,7 +14,7 @@ def rpc(m,p):
         time.sleep(2)
     raise SystemExit('rpc fail')
 head=int(rpc('eth_blockNumber',[]),16)
-samples=collections.defaultdict(list); auth=collections.Counter(); txs=collections.Counter(); senders=collections.defaultdict(set); nonce0=collections.Counter(); ntx=0; n4=0
+samples=collections.defaultdict(dict); accts=collections.defaultdict(set); where=collections.defaultdict(set); per_acct=collections.Counter(); bad_sig=0; auth=collections.Counter(); txs=collections.Counter(); senders=collections.defaultdict(set); nonce0=collections.Counter(); ntx=0; n4=0
 t0=None
 for b in range(head-N+1,head+1):
     blk=rpc('eth_getBlockByNumber',[hex(b),True])
@@ -25,10 +27,17 @@ for b in range(head-N+1,head+1):
         for a in t.get('authorizationList') or []:
             d=a['address'].lower(); auth[d]+=1; seen.add(d)
             if int(a['nonce'],16)==0: nonce0[d]+=1
-            if len(samples[d])<8: samples[d].append({k:a[k] for k in ('chainId','address','nonce','yParity','r','s') if k in a})
+            try: w=authority(a)
+            except Exception: w=None
+            if w is None: bad_sig+=1; continue
+            accts[d].add(w); where[w].add(d); per_acct[w]+=1
+            sm=samples[d]; sm.pop(w,None); sm[w]={k:a[k] for k in ('chainId','address','nonce','yParity','r','s') if k in a}
+            if len(sm)>8: sm.pop(next(iter(sm)))
         for d in seen: txs[d]+=1; senders[d].add(t['from'])
     if (b-head+N)%100==0: print(b-head+N,'/',N,'type4',n4,flush=True)
-res={'head':head,'N':N,'from_ts':t0,'to_ts':t1,'total_txs':ntx,'type4_txs':n4,'delegates':[{'delegate':d,'authorizations':c,'txs':txs[d],'distinct_senders':len(senders[d]),'nonce0':nonce0[d],'samples':samples[d]} for d,c in auth.most_common()]}
+contested={w for w,ds in where.items() if len(ds)>1}
+res={'distinct_accounts':len(where),'contested_accounts':len(contested),'authorizations_from_contested':sum(per_acct[w] for w in contested),'unrecoverable_signatures':bad_sig,'head':head,'N':N,'from_ts':t0,'to_ts':t1,'total_txs':ntx,'type4_txs':n4,'delegates':[{'delegate':d,'authorizations':c,'txs':txs[d],'distinct_senders':len(senders[d]),'nonce0':nonce0[d],'distinct_accounts':len(accts[d]),'contested_accounts':len(accts[d]&contested),'samples':list(samples[d].values())} for d,c in auth.most_common()]}
 json.dump(res,open(sys.argv[2] if len(sys.argv)>2 else 'auths-%d.json'%head,'w'),indent=1)
+print('accounts',len(where),'contested',len(contested),'auths from contested',res['authorizations_from_contested'])
 print('DONE head',head,'txs',ntx,'type4',n4,'delegates',len(auth),'authorizations',sum(auth.values()))
 for x in res['delegates'][:15]: print(x)

@@ -57,7 +57,9 @@ function renderLedger() {
   const w = ledger.window, rows = ledger.delegates;
   $("window").textContent = `Ethereum blocks ${fmt(w.from_block)}–${fmt(w.to_block)} (${w.from.replace("T", " ").replace("Z", " UTC")} to ${w.to.replace("T", " ").replace("Z", " UTC")}): ${fmt(w.authorizations)} authorizations pointing at ${fmt(w.delegates)} contracts.`;
   const bad = (ledger.share_of_authorizations_by_grade["known-malicious"] || 0) + (ledger.share_of_authorizations_by_grade["resembles-known-malicious"] || 0) + (ledger.share_of_authorizations_by_grade["flagged-by-research"] || 0) + (ledger.share_of_authorizations_by_grade["verified-forwarder"] || 0);
-  if (bad > 0) { const s = $("stat"); s.textContent = `Last day: ${(bad * 100).toFixed(0)}% of EIP-7702 authorizations on Ethereum pointed at known scam contracts. Most of those are the scammers' own throwaway accounts, not victims.`; s.hidden = false; }
+  const st = $("stat");
+  if (w.distinct_accounts) { st.textContent = `Last day: ${fmt(w.distinct_accounts)} accounts signed EIP-7702 delegations on Ethereum. ${fmt(w.contested_accounts)} of them were re-delegated back and forth between different contracts and produced ${(100 * w.authorizations_from_contested / w.authorizations).toFixed(0)}% of all authorizations.`; st.hidden = false; }
+  else if (bad > 0) { st.textContent = `Last day: ${(bad * 100).toFixed(0)}% of EIP-7702 authorizations on Ethereum pointed at known scam contracts. Most of those are the scammers' own throwaway accounts, not victims.`; st.hidden = false; }
   const order = ["verified-source", "unverified-source", "known-malicious", "flagged-by-research", "forwards-incoming-eth", "verified-forwarder", "resembles-known-malicious", "evidence-missing", "no-code", "verified-but-upgradeable"];
   const color = { "verified-source": "var(--ok)", "unverified-source": "var(--warn)", "known-malicious": "var(--bad)", "resembles-known-malicious": "var(--bad)", "flagged-by-research": "var(--bad)", "verified-forwarder": "var(--bad)", "forwards-incoming-eth": "var(--bad)" };
   const bars = $("bars"); bars.replaceChildren();
@@ -73,7 +75,7 @@ function renderLedger() {
     const tr = el("tr"); if (i >= 15) tr.hidden = true;
     const a = el("a", { href: EXPLORER.ethereum + r.delegate, rel: "noopener", class: "addr", text: r.delegate });
     tr.append(el("td", {}, pill(r.grade)), el("td", {}, el("span", { class: "name", text: r.name || "(no name)" }), a),
-      el("td", { class: "num", text: fmt(r.authorizations) }), el("td", { class: "num", text: fmt(r.distinct_senders) }), el("td", { text: (r.notes || []).join(" ") }));
+      el("td", { class: "num", text: fmt(r.authorizations) }), el("td", { class: "num", text: r.distinct_accounts == null ? "–" : fmt(r.distinct_accounts) }), el("td", { text: (r.notes || []).join(" ") }));
     tb.append(tr);
   });
   if (rows.length > 15) { const b = $("more"); b.hidden = false; b.textContent = `Show all ${rows.length} targets`; b.onclick = () => { for (const tr of tb.rows) tr.hidden = false; b.hidden = true; }; }
