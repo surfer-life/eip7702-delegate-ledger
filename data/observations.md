@@ -36,3 +36,15 @@ What reading by hand showed, for 14 targets whose delegating accounts have no tr
 What I take from it: "unverified" covers very different things: trading tools, token mechanics, collection schemes and scams. It is not a synonym for malicious, and a ledger that hinted otherwise would be misleading people. Telling the collection schemes apart (deposit sweeping vs theft) is the open question, and three accounts per target is too few to answer it.
 
 Not checked: ETH flows for most accounts, who controls any of the collecting wallets, and whether these 25 targets are representative.
+
+## 2026-11-15 — The shape of the authorizations does not tell you intent
+
+I hoped two cheap numbers from the ledger would separate good from bad: how many senders submit the authorizations for a target, and how many of the delegating accounts are brand new (authorization nonce 0). They do not. In the day ending 2026-11-15 02:44 UTC, among targets with one sender and at least 100 authorizations:
+
+| | mostly existing accounts (nonce-0 share near 0) | mostly fresh accounts (nonce-0 share near 1) |
+|---|---|---|
+| **known bad** | `CrimeEnjoyor` (1,729 authorizations, 0% nonce 0): a sweeper put on wallets that already had a history | a Blockscout-flagged target (1,055, 100%); `Poisoner` is mixed (6,188, 54%) |
+| **known fine** | `Tangem7702GaslessExecutorL1` (1,409, 12%): a hardware-wallet vendor's verified gasless executor, one relayer | none confirmed. Candidates are the collection schemes above, if they turn out to be deposit sweeping |
+| **unknown** | six unverified targets (172 to 1,855 authorizations, 0–11%) | six unverified targets (129 to 1,276, 96–100%) |
+
+So "one relayer, existing accounts" is what both a wallet vendor sponsoring gas for its users and a drainer look like, and "one relayer, fresh accounts" is what both a poisoning farm and (possibly) a deposit-address scheme look like. The ledger keeps reporting these numbers because they are facts, but the note on a row describes a shape, not a verdict.
