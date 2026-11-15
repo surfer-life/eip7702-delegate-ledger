@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # 최근 N블록의 type 4 거래에서 위임(authorization) 대상을 센다. 2026-11-15
-import json,subprocess,sys,time,collections,os
+import json,subprocess,sys,time,collections,os,concurrent.futures as cf
 sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
 from authority import authority
 N=int(sys.argv[1]); RPC='https://ethereum-rpc.publicnode.com'
@@ -13,11 +13,18 @@ def rpc(m,p):
         except Exception: pass
         time.sleep(2)
     raise SystemExit('rpc fail')
+def get_block(b): return rpc('eth_getBlockByNumber',[hex(b),True])
 head=int(rpc('eth_blockNumber',[]),16)
 samples=collections.defaultdict(dict); accts=collections.defaultdict(set); where=collections.defaultdict(set); per_acct=collections.Counter(); bad_sig=0; auth=collections.Counter(); txs=collections.Counter(); senders=collections.defaultdict(set); nonce0=collections.Counter(); ntx=0; n4=0
 t0=None
-for b in range(head-N+1,head+1):
-    blk=rpc('eth_getBlockByNumber',[hex(b),True])
+# fetch blocks concurrently in chunks (bounded memory), process each chunk in block order
+CHUNK=200; POOL=8
+for lo in range(head-N+1,head+1,CHUNK):
+  nums=list(range(lo,min(lo+CHUNK,head+1)))
+  with cf.ThreadPoolExecutor(max_workers=POOL) as ex:
+    blocks=dict(zip(nums,ex.map(get_block,nums)))
+  for b in nums:
+    blk=blocks[b]
     if t0 is None: t0=int(blk['timestamp'],16)
     t1=int(blk['timestamp'],16)
     for t in blk['transactions']:
