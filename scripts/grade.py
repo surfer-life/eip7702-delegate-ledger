@@ -31,6 +31,19 @@ def resembles(code):
             sim=difflib.SequenceMatcher(None,r,c,autojunk=False).ratio()
             if sim>=0.9: return {'address':a,'name':n,'bytecode_similarity':round(sim,3),'selectors':selectors(c)}
     return None
+def forwards_on_receive(src):
+    # Text filter over verified source: does a receive()/fallback() body send the incoming ETH (or the whole balance) somewhere?
+    # Returns the matching body, or None. A filter, not a proof: read the source before trusting either answer.
+    import re
+    src=re.sub(r'/\*.*?\*/',' ',src,flags=re.S); src=re.sub(r'//[^\n]*',' ',src)   # comments mention receive()/fallback() too
+    for m in re.finditer(r'(receive\s*\(\s*\)|fallback\s*\([^)]*\))\s+external[^{;]*\{',src):
+        body=src[m.end():m.end()+800]; depth=1; i=0
+        while i<len(body) and depth>0:
+            depth+= body[i]=='{'; depth-= body[i]=='}'; i+=1
+        if depth!=0: continue
+        b=body[:i]
+        if re.search(r'msg\.value|address\(this\)\.balance|selfbalance',b) and re.search(r'\.transfer\(|\.send\(|\.call\{',b): return re.sub(r'\s+',' ',b)[:200]
+    return None
 def sourcify(d):
     j=curl('https://sourcify.dev/server/v2/contract/1/%s?fields=compilation.name,deployment.deployer'%d)
     if 'address' not in j: return {'match':None,'name':None,'deployer':None,'error':True}
@@ -39,7 +52,7 @@ def grade(d):
     code=curl(RPC,{'jsonrpc':'2.0','id':1,'method':'eth_getCode','params':[d,'latest']}).get('result','0x')
     info=curl('https://eth.blockscout.com/api/v2/addresses/'+d)
     sc=curl('https://eth.blockscout.com/api/v2/smart-contracts/'+d) if info.get('is_verified') else {}
-    src=(sc.get('source_code') or '')
+    src=(sc.get('source_code') or '')+'\n'.join((x.get('source_code') or '') for x in (sc.get('additional_sources') or []))
     sf=sourcify(d)
     explorer_ok='hash' in info      # False = the explorer did not answer; do not read that as 'unverified'
     e={'delegate':d,'code_bytes':(len(code)-2)//2,'name':info.get('name') or sf.get('name'),'source_verified':bool(info.get('is_verified')),
@@ -56,6 +69,10 @@ def grade(d):
     else: g='verified-source'
     if info.get('is_verified') and 'source_code' not in sc and g!='known-malicious': g='evidence-missing'   # verified, but the source text could not be read this run
     e['grade']=g
+    fw=forwards_on_receive(src) if src else None
+    if fw:
+        e['forwards_on_receive']=fw
+        if g in('verified-source','verified-but-upgradeable'): e['grade']='verified-forwarder'
     if g=='unverified-source':
         rs=resembles(code)
         if rs: e['resembles']=rs; e['grade']='resembles-known-malicious'

@@ -29,6 +29,7 @@ The first two-hour sample (2026-11-15, 600 blocks) gave 48.0% / 32.2% / 19.4%; i
 |---|---|
 | `known-malicious` | the explorer flags it as a scam, or the verified source text itself says it is an exposed scam contract |
 | `flagged-by-research` | marked as an EOA-targeted malicious delegate on Ethereum in the Huang et al. (USENIX Security 2026) artifact, [Zenodo 17895541](https://zenodo.org/records/17895541), CC-BY-4.0. The extracted list is in `data/reference/` |
+| `verified-forwarder` | source is published, and a `receive()`/`fallback()` in it sends incoming ETH to another address (found by a text filter over the source, then read by hand for the rows listed in `data/observations.md`) |
 | `resembles-known-malicious` | no verified source, but the runtime bytecode is at least 90% similar to a known-malicious contract and exposes the same function selectors |
 | `unverified-source` | no verified source: nobody can read what it does without decompiling. Not proof of harm. |
 | `verified-source` | source is published and matches the bytecode. **Not a safety verdict**: published code can still be harmful or buggy. |

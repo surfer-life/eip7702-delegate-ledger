@@ -22,16 +22,18 @@
   "resembles-known-malicious": "no verified source, but the runtime bytecode is at least 90% similar to a known-malicious contract and has the same function selectors",
   "no-code": "target has no code (zero address = revocation)",
   "evidence-missing": "an evidence source did not answer during this run, so no grade is given",
-  "flagged-by-research": "marked as an EOA-targeted malicious delegate on Ethereum in a peer-reviewed dataset (Huang et al., USENIX Security 2026); source may or may not be published"
+  "flagged-by-research": "marked as an EOA-targeted malicious delegate on Ethereum in a peer-reviewed dataset (Huang et al., USENIX Security 2026); source may or may not be published",
+  "verified-forwarder": "source is published, and a receive()/fallback() in it sends incoming ETH to another address (found by a text filter; read the source)"
  },
  "share_of_authorizations_by_grade": {
-  "verified-source": 0.387,
-  "unverified-source": 0.306,
-  "known-malicious": 0.29,
-  "resembles-known-malicious": 0.01,
-  "no-code": 0.007,
-  "flagged-by-research": 0.0,
-  "verified-but-upgradeable": 0.0
+  "verified-source": 0.3863,
+  "unverified-source": 0.3062,
+  "known-malicious": 0.2898,
+  "resembles-known-malicious": 0.0098,
+  "no-code": 0.0071,
+  "flagged-by-research": 0.0004,
+  "verified-forwarder": 0.0002,
+  "verified-but-upgradeable": 0.0002
  },
  "limits": [
   "A window, not a census.",
@@ -1834,6 +1836,7 @@
    "distinct_senders": 1,
    "nonce0_share": 0.0,
    "notes": [
+    "Its published source forwards incoming ETH in receive()/fallback(): ETH sent to an account delegated to it does not stay there.",
     "Verified on Blockscout but not found on Sourcify.",
     "Marked as an EOA-targeted malicious delegate on Ethereum in the Huang et al. (USENIX Security 2026) artifact."
    ],
@@ -1842,7 +1845,8 @@
     "chains": [
      "ethereum"
     ]
-   }
+   },
+   "forwards_on_receive": "require(destination != address(0), \"Not initialized\"); destination.transfer(msg.value); }"
   },
   {
    "delegate": "0x00000000383e8cbe298514674ea60ee1d1de50ac",
@@ -2394,12 +2398,15 @@
    "verified_at": "2026-11-05T17:49:45.561070Z",
    "source_chars": 6828,
    "source_mentions": [],
-   "grade": "verified-source",
+   "grade": "verified-forwarder",
    "authorizations": 6,
    "txs": 6,
    "distinct_senders": 1,
    "nonce0_share": 0.33,
-   "notes": []
+   "notes": [
+    "Its published source forwards incoming ETH in receive()/fallback(): ETH sent to an account delegated to it does not stay there."
+   ],
+   "forwards_on_receive": "(bool success,) = payable(FORWARD_TO).call{value: msg.value}(\"\"); require(success, \"Forward failed\"); }"
   },
   {
    "delegate": "0x4f577087064ea4b5cf294d44cfd56275d9d1ed18",

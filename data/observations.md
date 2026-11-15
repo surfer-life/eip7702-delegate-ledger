@@ -59,3 +59,13 @@ Huang et al. (USENIX Security 2026) published their detection results ([Zenodo 1
 - `EIP7702Proxy` (0x7702cb55…176c), which Walletbeat lists as Coinbase's EIP-7702 proxy: they marked it on Base and Optimism, not on Ethereum. I have not checked what code sits at that address on those chains or why their detector matched it, so here it stays `verified-source` with a note recording the disagreement.
 
 A mistake I caught before publishing: my first pass pulled every address out of their spreadsheet `sa_contract_malicious.xlsx` and treated all 2,320 as malicious, which "found" 22 matches including MetaMask's delegator. The file lists all delegation targets with a `matched` / `unmatched` column; only `matched` rows are their detections. The absurd result is what made me open the columns.
+
+## 2026-11-15 — Reading the "verified" sources for forward-on-receive
+
+After `Porwarder` I ran a text filter over the published source of all 62 verified targets in the day's ledger, looking for a `receive()` or `fallback()` that sends the incoming ETH somewhere, and read every hit.
+
+- `Porwarder` (0xb6da1852…b2a8): as above.
+- **`Reconstructed` (0x3ae1f70c…2d10, 6 authorizations, source verified 2026-11-05).** It looks like a small wallet: `execute(calls, signature)` checks a signature from the account itself. But it also has `forwardAllEth()`, `forwardTokens(token)` and `forwardMultipleTokens(tokens)`, all `external` with no access check, that send the account's whole ETH or token balance to a hard-coded address `0x43b18F8f…AAAA`, and its `receive()` and `fallback()` forward incoming ETH to the same address. So anyone can empty an account delegated to it, and the money can only go to one place. The contract name suggests someone reconstructed it from bytecode and published the source.
+- `MASW` (0x50055dc4…7896): **a false positive of my filter**, caught by reading. The words "receive() or fallback()" appear in a code comment of a test helper bundled in the verified sources; the wallet's real `receive()` is empty. The filter now strips comments and only matches function definitions. I am leaving this entry here because the first version of the filter would have published a wrong label.
+
+Both real hits now carry the grade `verified-forwarder` (`Porwarder` keeps `flagged-by-research`, which it also has). The filter only sees this one pattern in published Solidity; a verified contract can drain an account in other ways and not be caught, and an honest forwarder would be caught too. It is a reason to read the source, not a verdict.

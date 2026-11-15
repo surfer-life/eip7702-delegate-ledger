@@ -14,6 +14,7 @@ const BLACKLISTS = [
 const GRADE = {
   "known-malicious": { cls: "bad", text: "known malicious" },
   "flagged-by-research": { cls: "bad", text: "flagged by research" },
+  "verified-forwarder": { cls: "bad", text: "published source forwards funds" },
   "resembles-known-malicious": { cls: "bad", text: "resembles known malicious" },
   "unverified-source": { cls: "warn", text: "source not published" },
   "verified-source": { cls: "ok", text: "source published" },
@@ -54,10 +55,10 @@ function pill(grade) { const g = GRADE[grade] || { cls: "", text: grade }; retur
 function renderLedger() {
   const w = ledger.window, rows = ledger.delegates;
   $("window").textContent = `Ethereum blocks ${fmt(w.from_block)}–${fmt(w.to_block)} (${w.from.replace("T", " ").replace("Z", " UTC")} to ${w.to.replace("T", " ").replace("Z", " UTC")}): ${fmt(w.authorizations)} authorizations pointing at ${fmt(w.delegates)} contracts.`;
-  const bad = (ledger.share_of_authorizations_by_grade["known-malicious"] || 0) + (ledger.share_of_authorizations_by_grade["resembles-known-malicious"] || 0) + (ledger.share_of_authorizations_by_grade["flagged-by-research"] || 0);
+  const bad = (ledger.share_of_authorizations_by_grade["known-malicious"] || 0) + (ledger.share_of_authorizations_by_grade["resembles-known-malicious"] || 0) + (ledger.share_of_authorizations_by_grade["flagged-by-research"] || 0) + (ledger.share_of_authorizations_by_grade["verified-forwarder"] || 0);
   if (bad > 0) { const s = $("stat"); s.textContent = `Last day: ${(bad * 100).toFixed(0)}% of EIP-7702 authorizations on Ethereum pointed at known scam contracts. Most of those are the scammers' own throwaway accounts, not victims.`; s.hidden = false; }
-  const order = ["verified-source", "unverified-source", "known-malicious", "flagged-by-research", "resembles-known-malicious", "evidence-missing", "no-code", "verified-but-upgradeable"];
-  const color = { "verified-source": "var(--ok)", "unverified-source": "var(--warn)", "known-malicious": "var(--bad)", "resembles-known-malicious": "var(--bad)", "flagged-by-research": "var(--bad)" };
+  const order = ["verified-source", "unverified-source", "known-malicious", "flagged-by-research", "verified-forwarder", "resembles-known-malicious", "evidence-missing", "no-code", "verified-but-upgradeable"];
+  const color = { "verified-source": "var(--ok)", "unverified-source": "var(--warn)", "known-malicious": "var(--bad)", "resembles-known-malicious": "var(--bad)", "flagged-by-research": "var(--bad)", "verified-forwarder": "var(--bad)" };
   const bars = $("bars"); bars.replaceChildren();
   const legend = el("div", { class: "legend" });
   for (const k of order) {
@@ -101,12 +102,12 @@ async function lookupChain(chain, addr) {
       el("p", { class: "muted small", text: at + " While an account is delegated, the contract's code runs as the account. If you did not set this delegation yourself, treat the account's key as compromised." }));
   }
   const g = GRADE[row.grade] || { cls: "warn", text: row.grade };
-  const title = row.grade === "known-malicious" ? "Delegated to a known malicious contract" : row.grade === "resembles-known-malicious" ? "Delegated to a contract that resembles a known malicious one" : row.grade === "flagged-by-research" ? "Delegated to a contract a published study marked as malicious" : row.grade === "verified-source" ? "Delegated to a contract with published source" : "Delegated to a contract whose source is not published";
+  const title = row.grade === "known-malicious" ? "Delegated to a known malicious contract" : row.grade === "resembles-known-malicious" ? "Delegated to a contract that resembles a known malicious one" : row.grade === "flagged-by-research" ? "Delegated to a contract a published study marked as malicious" : row.grade === "verified-forwarder" ? "Delegated to a contract whose published source forwards incoming funds" : row.grade === "verified-source" ? "Delegated to a contract with published source" : "Delegated to a contract whose source is not published";
   return card(g.cls || "warn", chain, title,
     kv([["Points at", link], ["Name", row.name || "(none reported)"], ["Evidence", pill(row.grade)],
         ["Last day", `${fmt(row.authorizations)} authorizations from ${fmt(row.distinct_senders)} sender${row.distinct_senders === 1 ? "" : "s"}`]]),
     (row.notes || []).join(" "),
-    row.grade === "known-malicious" || row.grade === "resembles-known-malicious" || row.grade === "flagged-by-research" ? el("p", {}, el("strong", { text: "Do not send funds to this address." })) : null,
+    row.grade === "known-malicious" || row.grade === "resembles-known-malicious" || row.grade === "flagged-by-research" || row.grade === "verified-forwarder" ? el("p", {}, el("strong", { text: "Do not send funds to this address." })) : null,
     el("p", { class: "muted small", text: at + " While an account is delegated, the contract's code runs as the account. If you did not set this delegation yourself, treat the account's key as compromised. \"Source published\" means the code is readable, not that it is safe." }));
 }
 
