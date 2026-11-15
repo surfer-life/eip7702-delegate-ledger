@@ -26,6 +26,8 @@ Following the money on Etherscan:
 
 Suspected, not proven: that the collector/operator are one actor (same poison-dust pattern, look-alike destinations) and that the real cash-out leaves Ethereum via the bridge / FixedFloat rather than a labelled exchange deposit.
 
+Check the forward yourself, live, no wallet: [the browser tool runs the same 1-wei dry run on `0x8a67…`](https://surfer-life.github.io/eip7702-delegate-ledger/?address=0x8a67b5020ee254ef48e3b6a04927f39baf7e408a) and shows the ETH leaving to `0xcc04…` in the same transaction.
+
 ## 4. Some contested accounts have publicly derivable keys
 
 Three of the contested accounts are addresses of keys **anyone can compute**: indexes 31 and 88 of the textbook `abandon … about` mnemonic, and the key `sha256("ethereum")`. They are empty honeypots — fund one and it is swept in the same block. (Checked by deriving the keys and comparing addresses; I did nothing with the keys.)
