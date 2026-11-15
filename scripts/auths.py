@@ -3,17 +3,19 @@
 import json,subprocess,sys,time,collections,os,concurrent.futures as cf
 sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
 from authority import authority
-N=int(sys.argv[1]); RPC='https://ethereum-rpc.publicnode.com'
-def rpc(m,p):
-    for k in range(5):
-        out=subprocess.run(['curl','-s','-m','60','--compressed','-A','Mozilla/5.0',RPC,'-H','content-type: application/json','-d',json.dumps({'jsonrpc':'2.0','id':1,'method':m,'params':p})],capture_output=True,text=True).stdout
+N=int(sys.argv[1]); RPCS=['https://ethereum-rpc.publicnode.com','https://eth.drpc.org']
+def rpc(m,p,seed=0):
+    # Rotate across endpoints so throttling on one (common on shared CI IPs) falls back to another.
+    for k in range(6):
+        url=RPCS[(k+seed)%len(RPCS)]
+        out=subprocess.run(['curl','-s','-m','60','--compressed','-A','Mozilla/5.0',url,'-H','content-type: application/json','-d',json.dumps({'jsonrpc':'2.0','id':1,'method':m,'params':p})],capture_output=True,text=True).stdout
         try:
             d=json.loads(out)
             if d.get('result') is not None: return d['result']
         except Exception: pass
-        time.sleep(2)
-    raise SystemExit('rpc fail')
-def get_block(b): return rpc('eth_getBlockByNumber',[hex(b),True])
+        time.sleep(1+k)
+    raise SystemExit('rpc fail: '+m)
+def get_block(b): return rpc('eth_getBlockByNumber',[hex(b),True],seed=b)
 head=int(rpc('eth_blockNumber',[]),16)
 samples=collections.defaultdict(dict); accts=collections.defaultdict(set); where=collections.defaultdict(set); per_acct=collections.Counter(); bad_sig=0; auth=collections.Counter(); txs=collections.Counter(); senders=collections.defaultdict(set); nonce0=collections.Counter(); ntx=0; n4=0
 t0=None
