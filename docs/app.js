@@ -15,6 +15,7 @@ const GRADE = {
   "known-malicious": { cls: "bad", text: "known malicious" },
   "flagged-by-research": { cls: "bad", text: "flagged by research" },
   "verified-forwarder": { cls: "bad", text: "published source forwards funds" },
+  "forwards-incoming-eth": { cls: "bad", text: "passes incoming ETH on" },
   "resembles-known-malicious": { cls: "bad", text: "resembles known malicious" },
   "unverified-source": { cls: "warn", text: "source not published" },
   "verified-source": { cls: "ok", text: "source published" },
@@ -57,8 +58,8 @@ function renderLedger() {
   $("window").textContent = `Ethereum blocks ${fmt(w.from_block)}–${fmt(w.to_block)} (${w.from.replace("T", " ").replace("Z", " UTC")} to ${w.to.replace("T", " ").replace("Z", " UTC")}): ${fmt(w.authorizations)} authorizations pointing at ${fmt(w.delegates)} contracts.`;
   const bad = (ledger.share_of_authorizations_by_grade["known-malicious"] || 0) + (ledger.share_of_authorizations_by_grade["resembles-known-malicious"] || 0) + (ledger.share_of_authorizations_by_grade["flagged-by-research"] || 0) + (ledger.share_of_authorizations_by_grade["verified-forwarder"] || 0);
   if (bad > 0) { const s = $("stat"); s.textContent = `Last day: ${(bad * 100).toFixed(0)}% of EIP-7702 authorizations on Ethereum pointed at known scam contracts. Most of those are the scammers' own throwaway accounts, not victims.`; s.hidden = false; }
-  const order = ["verified-source", "unverified-source", "known-malicious", "flagged-by-research", "verified-forwarder", "resembles-known-malicious", "evidence-missing", "no-code", "verified-but-upgradeable"];
-  const color = { "verified-source": "var(--ok)", "unverified-source": "var(--warn)", "known-malicious": "var(--bad)", "resembles-known-malicious": "var(--bad)", "flagged-by-research": "var(--bad)", "verified-forwarder": "var(--bad)" };
+  const order = ["verified-source", "unverified-source", "known-malicious", "flagged-by-research", "forwards-incoming-eth", "verified-forwarder", "resembles-known-malicious", "evidence-missing", "no-code", "verified-but-upgradeable"];
+  const color = { "verified-source": "var(--ok)", "unverified-source": "var(--warn)", "known-malicious": "var(--bad)", "resembles-known-malicious": "var(--bad)", "flagged-by-research": "var(--bad)", "verified-forwarder": "var(--bad)", "forwards-incoming-eth": "var(--bad)" };
   const bars = $("bars"); bars.replaceChildren();
   const legend = el("div", { class: "legend" });
   for (const k of order) {
@@ -102,13 +103,42 @@ async function lookupChain(chain, addr) {
       el("p", { class: "muted small", text: at + " While an account is delegated, the contract's code runs as the account. If you did not set this delegation yourself, treat the account's key as compromised." }));
   }
   const g = GRADE[row.grade] || { cls: "warn", text: row.grade };
-  const title = row.grade === "known-malicious" ? "Delegated to a known malicious contract" : row.grade === "resembles-known-malicious" ? "Delegated to a contract that resembles a known malicious one" : row.grade === "flagged-by-research" ? "Delegated to a contract a published study marked as malicious" : row.grade === "verified-forwarder" ? "Delegated to a contract whose published source forwards incoming funds" : row.grade === "verified-source" ? "Delegated to a contract with published source" : "Delegated to a contract whose source is not published";
+  const title = row.grade === "known-malicious" ? "Delegated to a known malicious contract" : row.grade === "resembles-known-malicious" ? "Delegated to a contract that resembles a known malicious one" : row.grade === "flagged-by-research" ? "Delegated to a contract a published study marked as malicious" : row.grade === "verified-forwarder" ? "Delegated to a contract whose published source forwards incoming funds" : row.grade === "forwards-incoming-eth" ? "Delegated to a contract that passes incoming ETH on" : row.grade === "verified-source" ? "Delegated to a contract with published source" : "Delegated to a contract whose source is not published";
   return card(g.cls || "warn", chain, title,
     kv([["Points at", link], ["Name", row.name || "(none reported)"], ["Evidence", pill(row.grade)],
         ["Last day", `${fmt(row.authorizations)} authorizations from ${fmt(row.distinct_senders)} sender${row.distinct_senders === 1 ? "" : "s"}`]]),
     (row.notes || []).join(" "),
     row.grade === "known-malicious" || row.grade === "resembles-known-malicious" || row.grade === "flagged-by-research" || row.grade === "verified-forwarder" ? el("p", {}, el("strong", { text: "Do not send funds to this address." })) : null,
     el("p", { class: "muted small", text: at + " While an account is delegated, the contract's code runs as the account. If you did not set this delegation yourself, treat the account's key as compromised. \"Source published\" means the code is readable, not that it is safe." }));
+}
+
+// Dry run: what would happen to 1 wei sent to this address right now? Nothing is sent; the node only simulates it.
+async function dryRun(addr) {
+  const from = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2";
+  try {
+    const r = await rpc("ethereum", "eth_simulateV1", [{ blockStateCalls: [{ calls: [{ from, to: addr, value: "0x1" }] }], traceTransfers: true, validation: false }, "latest"]);
+    const c = r[0].calls[0], me = addr.toLowerCase(), out = [];
+    for (const l of c.logs || []) {
+      if (l.address.toLowerCase() !== "0x" + "e".repeat(40) || l.topics.length < 3) continue;
+      const f = "0x" + l.topics[1].slice(-40), t = "0x" + l.topics[2].slice(-40);
+      if (f === me && t !== me) out.push(t);
+    }
+    return { ok: c.status === "0x1", sentOnTo: [...new Set(out)] };
+  } catch (e) { return null; }
+}
+async function dryRunCard(addr, delegated) {
+  if (!delegated) return null;
+  const d = await dryRun(addr);
+  if (!d) return card("", "dry run", "Could not simulate a transfer", "The node did not run the simulation, so I can't say where ETH sent here would end up.");
+  if (d.sentOnTo.length) {
+    const c = card("bad", "dry run · ethereum", "ETH sent here would be passed straight on", "I asked a node to simulate sending 1 wei to this address (nothing was sent). In the simulation the ETH left again in the same transaction, to:");
+    for (const t of d.sentOnTo) c.append(el("p", {}, el("a", { href: EXPLORER.ethereum + t, rel: "noopener", class: "addr", text: t })));
+    c.append(el("p", {}, el("strong", { text: "Unless this is a forwarding setup you created yourself, do not send ETH to this address." })));
+    return c;
+  }
+  return card(d.ok ? "" : "warn", "dry run · ethereum", d.ok ? "ETH sent here would stay here" : "A plain ETH transfer here would fail",
+    d.ok ? "In a simulated transfer of 1 wei (nothing was sent) the ETH was not passed on. This only covers ETH arriving by a plain transfer; whoever controls the delegated code may still be able to move funds later."
+         : "The simulated transfer reverted. That is unusual for an account and worth understanding before sending anything.");
 }
 
 async function blacklists(addr) {
@@ -131,6 +161,9 @@ $("f").addEventListener("submit", async ev => {
   try {
     await Promise.race([ledgerReady, new Promise(r => setTimeout(r, 4000))]);
     const parts = await Promise.all([lookupChain("ethereum", addr), lookupChain("base", addr), blacklists(addr)]);
+    const isDelegated = parts[0].querySelector("h3").textContent.startsWith("Delegated");
+    const dry = await dryRunCard(addr, isDelegated);
+    if (dry) parts.splice(1, 0, dry);
     out.replaceChildren(el("p", { class: "muted small" }, "Result for ", el("code", { text: addr })), ...parts);
     history.replaceState(null, "", "?address=" + addr);
   } finally { btn.disabled = false; btn.textContent = "Check"; }

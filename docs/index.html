@@ -54,7 +54,8 @@
       <ol>
         <li>Every day a public <a href="https://github.com/surfer-life/eip7702-delegate-ledger/actions">GitHub Action</a> reads about 7,200 Ethereum blocks from a public node and counts every EIP-7702 authorization by the contract it points at.</li>
         <li>For each contract it collects what anyone can check: is the source published (Blockscout and Sourcify), does the explorer flag it, who submitted the authorizations.</li>
-        <li>The lookup above runs in your browser. It asks public nodes for the address's code and the USDC/USDT issuer blacklists, then matches the result against the ledger.</li>
+        <li>It then asks a node to <em>simulate</em> sending 1 wei to a few accounts delegated to each contract (<code>eth_simulateV1</code>; nothing is sent) and records whether the ETH is passed on, and to whom.</li>
+        <li>The lookup above runs in your browser. It asks public nodes for the address's code and the USDC/USDT issuer blacklists, runs the same dry run for a delegated address, and matches the result against the ledger.</li>
       </ol>
     </div>
     <div>
@@ -62,6 +63,7 @@
       <dl class="grades">
         <dt><span class="pill bad">known malicious</span></dt><dd>The explorer flags it, or its own published source says it is an exposed scam contract.</dd>
         <dt><span class="pill bad">flagged by research</span></dt><dd>Marked as a malicious delegate on Ethereum in a peer-reviewed dataset (Huang et al., USENIX Security 2026).</dd>
+        <dt><span class="pill bad">passes incoming ETH on</span></dt><dd>In a dry run, ETH sent to sampled accounts delegated to it left again in the same transaction. Behaviour, not intent: some collection setups do this on purpose.</dd>
         <dt><span class="pill bad">published source forwards funds</span></dt><dd>The source is public, and it says incoming ETH is sent on to another address.</dd>
         <dt><span class="pill bad">resembles known malicious</span></dt><dd>No published source, but its bytecode is at least 90% the same as a known malicious contract, with the same functions.</dd>
         <dt><span class="pill warn">source not published</span></dt><dd>Nobody can read what it does without decompiling. Not proof of harm: in a <a href="https://github.com/surfer-life/eip7702-delegate-ledger/blob/main/data/observations.md">hand sample</a> these ranged from trading tools to collection schemes to scams.</dd>

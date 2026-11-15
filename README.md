@@ -29,6 +29,7 @@ The first two-hour sample (2026-11-15, 600 blocks) gave 48.0% / 32.2% / 19.4%; i
 |---|---|
 | `known-malicious` | the explorer flags it as a scam, or the verified source text itself says it is an exposed scam contract |
 | `flagged-by-research` | marked as an EOA-targeted malicious delegate on Ethereum in the Huang et al. (USENIX Security 2026) artifact, [Zenodo 17895541](https://zenodo.org/records/17895541), CC-BY-4.0. The extracted list is in `data/reference/` |
+| `forwards-incoming-eth` | in a dry run (`eth_simulateV1` with `traceTransfers`, nothing sent), 1 wei sent to sampled accounts delegated to this target was passed on to another address in the same transaction. This is behaviour, not intent: a collection setup someone built on purpose looks the same |
 | `verified-forwarder` | source is published, and a `receive()`/`fallback()` in it sends incoming ETH to another address (found by a text filter over the source, then read by hand for the rows listed in `data/observations.md`) |
 | `resembles-known-malicious` | no verified source, but the runtime bytecode is at least 90% similar to a known-malicious contract and exposes the same function selectors |
 | `unverified-source` | no verified source: nobody can read what it does without decompiling. Not proof of harm. |
@@ -41,7 +42,8 @@ The first two-hour sample (2026-11-15, 600 blocks) gave 48.0% / 32.2% / 19.4%; i
 
 1. `scripts/auths.py N` — fetches the last N blocks with `eth_getBlockByNumber` from a public RPC and counts every `authorizationList` entry per target address. These are *submitted* authorizations, valid or not; the signing authority is not recovered.
 2. `scripts/grade.py` — for each target: `eth_getCode`, then name / source-verified / scam flag / verified source text from Blockscout.
-3. Cross-check with Sourcify (`data/evidence-*.json`, field `sourcify`). For the 67 targets, Blockscout and Sourcify agreed on 63; 4 were verified on Blockscout only.
+3. `scripts/probe.py` — recovers the signing account of a few authorizations per target (`scripts/authority.py`, pure-Python keccak and secp256k1 recovery, checked against known transactions), keeps the ones still delegated to that target, and asks a node to simulate sending each of them 1 wei. If the ETH leaves again in the same transaction, the destination is recorded.
+4. Cross-check with Sourcify (`data/evidence-*.json`, field `sourcify`). For the 67 targets, Blockscout and Sourcify agreed on 63; 4 were verified on Blockscout only.
 
 `scripts/survey.py` and `scripts/dust.py` are the two earlier surveys that led here (how many recent USDC recipients are delegated; how many dust-transfer addresses are delegated to `Poisoner`).
 

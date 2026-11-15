@@ -10,7 +10,7 @@ for r in cur['delegates']:
     p=P.get(r['delegate'])
     if r['grade']=='evidence-missing' and p and p['grade']!='evidence-missing':
         r['grade']=p['grade']; r['grade_carried_from']=p.get('grade_carried_from',when)
-        for k in ('name','resembles','flagged_by_research','forwards_on_receive'):
+        for k in ('name','resembles','flagged_by_research','forwards_on_receive','probe'):
             if not r.get(k) and p.get(k): r[k]=p[k]
         keep=[x for x in (p.get('notes') or []) if not x.startswith('Farm pattern') and not x.startswith('An evidence source')]
         r['notes']=keep+[x for x in r.get('notes',[]) if x not in keep]+['An evidence source did not answer in this run; the grade is carried from the run ending %s.'%r['grade_carried_from']]

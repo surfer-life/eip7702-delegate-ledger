@@ -21,12 +21,14 @@ jobs:
         run: |
           python3 -c "import json;json.dump([x['delegate'] for x in json.load(open('/tmp/auths.json'))['delegates']],open('/tmp/targets.json','w'))"
           python3 scripts/grade.py /tmp/targets.json /tmp/evidence.json
+      - name: dry-run probe
+        run: python3 scripts/probe.py /tmp/auths.json /tmp/probe.json
       - name: build ledger
         run: |
           D=$(date -u +%F)
           mkdir -p data/daily
           cp data/latest.json /tmp/previous.json
-          python3 scripts/build.py /tmp/auths.json /tmp/evidence.json data/daily/$D.json LATEST.md
+          python3 scripts/build.py /tmp/auths.json /tmp/evidence.json data/daily/$D.json LATEST.md /tmp/probe.json
           python3 scripts/carry.py /tmp/previous.json data/daily/$D.json
           cp data/daily/$D.json data/latest.json
       - name: commit
