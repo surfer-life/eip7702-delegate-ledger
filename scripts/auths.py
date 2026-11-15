@@ -28,6 +28,6 @@ for b in range(head-N+1,head+1):
         for d in seen: txs[d]+=1; senders[d].add(t['from'])
     if (b-head+N)%100==0: print(b-head+N,'/',N,'type4',n4,flush=True)
 res={'head':head,'N':N,'from_ts':t0,'to_ts':t1,'total_txs':ntx,'type4_txs':n4,'delegates':[{'delegate':d,'authorizations':c,'txs':txs[d],'distinct_senders':len(senders[d]),'nonce0':nonce0[d]} for d,c in auth.most_common()]}
-json.dump(res,open('auths-%d.json'%head,'w'),indent=1)
+json.dump(res,open(sys.argv[2] if len(sys.argv)>2 else 'auths-%d.json'%head,'w'),indent=1)
 print('DONE head',head,'txs',ntx,'type4',n4,'delegates',len(auth),'authorizations',sum(auth.values()))
 for x in res['delegates'][:15]: print(x)

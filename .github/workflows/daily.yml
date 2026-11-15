@@ -1,0 +1,36 @@
+name: daily ledger
+on:
+  schedule:
+    - cron: "17 1 * * *"
+  workflow_dispatch:
+    inputs:
+      blocks:
+        description: "number of blocks to scan"
+        default: "7200"
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: count authorizations
+        run: python3 scripts/auths.py "${{ github.event.inputs.blocks || '7200' }}" /tmp/auths.json
+      - name: gather evidence
+        run: |
+          python3 -c "import json;json.dump([x['delegate'] for x in json.load(open('/tmp/auths.json'))['delegates']],open('/tmp/targets.json','w'))"
+          python3 scripts/grade.py /tmp/targets.json /tmp/evidence.json
+      - name: build ledger
+        run: |
+          D=$(date -u +%F)
+          mkdir -p data/daily
+          python3 scripts/build.py /tmp/auths.json /tmp/evidence.json data/daily/$D.json LATEST.md
+          cp data/daily/$D.json data/latest.json
+      - name: commit
+        run: |
+          git config user.name "surfer-life"
+          git config user.email "surfer-life@users.noreply.github.com"
+          git add data LATEST.md
+          git commit -m "daily ledger $(date -u +%F)" || echo "nothing to commit"
+          git push
