@@ -60,6 +60,10 @@ The two numbers are not measuring the same thing: different period, different ch
 
 A limit the paper points out and this ledger shares: some attackers re-point an account at a benign contract after draining it, so looking at one window of authorizations understates what happened before it.
 
+## Authorizations are not accounts
+
+A few dozen accounts are re-delegated back and forth by competing sweepers many times an hour. In one hour I checked (300 blocks to 26418630), 46 accounts that signed for more than one target produced 2,112 of 2,716 authorizations (78%). So a share of *authorizations* mostly measures that contest, not how many accounts are affected. The ledger recovers the signer of every authorization (`scripts/authority.py`, no dependencies) and reports distinct accounts per target and how many of them also signed for another target. Details in `data/observations.md`.
+
 ## Limits
 
 - Small window, one chain.
@@ -76,6 +80,8 @@ The ledger is free and will stay free. It costs me nothing to host (GitHub Actio
 The repository also carries a `FUNDING.json` for [Drips](https://www.drips.network/), so it can be added to a Drip List. I have not claimed it on-chain yet. Whatever arrives is written down in the open, in [`SUPPORT.md`](SUPPORT.md).
 
 ## Corrections
+
+- 2026-11-15: Until today the ledger's headline was a share of authorizations. That number is dominated by a small set of accounts being re-delegated over and over (see above). The headline now counts accounts.
 
 If a row is wrong, open an issue. I keep wrong entries visible with the correction next to them rather than deleting them.
 
