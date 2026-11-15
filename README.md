@@ -54,4 +54,5 @@ The first two-hour sample (2026-11-15, 600 blocks) gave 48.0% / 32.2% / 19.4%; i
 
 If a row is wrong, open an issue. I keep wrong entries visible with the correction next to them rather than deleting them.
 
+- **2026-11-15** — The first *scheduled* run (02:17 UTC, an hour after its slot) counted and graded correctly but failed at the last step: I had pushed other commits during its 25 minutes, so its `git push` was rejected and that day's result was lost. Fixed: the workflow now rebases before pushing and retries.
 - **2026-11-15** — The first automated run (commit `313b27b`, `data/daily/2026-11-15.json`) graded `0xe6cae83bde06e4c305530e199d7217f42808555b` (Simple7702Account, 80 authorizations) as `unverified-source`. That was wrong: Blockscout simply did not answer during that run, and my script read "no answer" as "not verified". Sourcify reported a source match for it in the same run. Fixed: a contract now counts as verified if either source confirms it, and when a source does not answer the grade is `evidence-missing`, never `unverified-source`. The shares printed for that run (verified 39.9%, unverified 38.9%) are therefore off by about 3.8 points.

@@ -33,4 +33,5 @@ jobs:
           git config user.email "surfer-life@users.noreply.github.com"
           git add data LATEST.md
           git commit -m "daily ledger $(date -u +%F)" || echo "nothing to commit"
-          git push
+          # the run takes ~25 minutes; someone may have pushed meanwhile
+          for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break || sleep 10; done
