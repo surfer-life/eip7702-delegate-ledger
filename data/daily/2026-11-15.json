@@ -4,14 +4,14 @@
  "what": "Every delegation target named in type-4 (EIP-7702) transactions on Ethereum mainnet in the sampled window, with evidence read from public sources and a grade derived only from that evidence.",
  "window": {
   "chain": "ethereum",
-  "from_block": 26416358,
-  "to_block": 26416957,
-  "from": "2026-11-14T22:57:47Z",
-  "to": "2026-11-15T00:57:59Z",
+  "from_block": 26416388,
+  "to_block": 26416987,
+  "from": "2026-11-14T23:03:47Z",
+  "to": "2026-11-15T01:03:59Z",
   "blocks": 600,
-  "type4_txs": 1465,
-  "authorizations": 2125,
-  "delegates": 69
+  "type4_txs": 1477,
+  "authorizations": 2149,
+  "delegates": 68
  },
  "method": "eth_getBlockByNumber (public RPC) for each block; counted authorizationList entries per target address (submitted authorizations, valid or not; authority not recovered). Per target: eth_getCode; name / source-verified / scam flag / verified source text from eth.blockscout.com; cross-check on Sourcify.",
  "grades": {
@@ -19,13 +19,14 @@
   "unverified-source": "no verified source on Blockscout: nobody can read what it does without decompiling. Not proof of harm.",
   "verified-source": "source is published and matches. NOT a safety verdict: published code can still be harmful or buggy.",
   "verified-but-upgradeable": "verified, but explorer reports a proxy",
-  "no-code": "target has no code (zero address = revocation)"
+  "no-code": "target has no code (zero address = revocation)",
+  "evidence-missing": "an evidence source did not answer during this run, so no grade is given"
  },
  "share_of_authorizations_by_grade": {
-  "verified-source": 0.399,
-  "unverified-source": 0.389,
-  "known-malicious": 0.207,
-  "no-code": 0.004,
+  "verified-source": 0.425,
+  "unverified-source": 0.359,
+  "known-malicious": 0.211,
+  "no-code": 0.005,
   "verified-but-upgradeable": 0.0
  },
  "limits": [
@@ -40,6 +41,12 @@
    "code_bytes": 772,
    "name": "Poisoner",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "Poisoner",
+    "deployer": "0x59aAB1bd0d26290274398c07b55955c15425e16B"
+   },
    "explorer_scam_flag": true,
    "proxy_type": null,
    "verified_at": "2026-03-19T23:50:33.232888Z",
@@ -51,15 +58,10 @@
     "Wintermute"
    ],
    "grade": "known-malicious",
-   "sourcify": {
-    "match": "match",
-    "name": "Poisoner",
-    "deployer": "0x59aAB1bd0d26290274398c07b55955c15425e16B"
-   },
-   "authorizations": 392,
-   "txs": 164,
+   "authorizations": 399,
+   "txs": 165,
    "distinct_senders": 1,
-   "nonce0_share": 0.68,
+   "nonce0_share": 0.66,
    "notes": [
     "Verified source on Blockscout carries a comment saying this is a scam contract recreated and exposed by Wintermute.",
     "Farm pattern: every authorization in the window was submitted by one sender, mostly for fresh (nonce 0) accounts."
@@ -70,19 +72,20 @@
    "code_bytes": 1035,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
-   "authorizations": 313,
-   "txs": 18,
+   "authorizations": 316,
+   "txs": 19,
    "distinct_senders": 1,
    "nonce0_share": 0.97,
    "notes": [
@@ -94,21 +97,22 @@
    "code_bytes": 6905,
    "name": "Biz",
    "source_verified": true,
-   "explorer_scam_flag": false,
-   "proxy_type": null,
-   "verified_at": null,
-   "source_chars": 0,
-   "source_mentions": [],
-   "grade": "verified-source",
+   "explorer_answered": true,
    "sourcify": {
     "match": "exact_match",
     "name": "Biz",
     "deployer": "0xd87dF9Fd27B9a30fe27E7b294CaAa4673F34B6b1"
    },
-   "authorizations": 157,
-   "txs": 156,
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2025-06-10T16:51:03.952634Z",
+   "source_chars": 13426,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 151,
+   "txs": 150,
    "distinct_senders": 12,
-   "nonce0_share": 0.71,
+   "nonce0_share": 0.7,
    "notes": []
   },
   {
@@ -116,21 +120,22 @@
    "code_bytes": 7314,
    "name": "UniversalGaslessDelegate",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "UniversalGaslessDelegate",
+    "deployer": "0x15C2F5105c2AB2Aa5554c7967212408356D58D87"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2025-12-17T18:11:04.648806Z",
    "source_chars": 34922,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "match",
-    "name": "UniversalGaslessDelegate",
-    "deployer": "0x15C2F5105c2AB2Aa5554c7967212408356D58D87"
-   },
-   "authorizations": 136,
-   "txs": 136,
-   "distinct_senders": 27,
-   "nonce0_share": 0.79,
+   "authorizations": 134,
+   "txs": 134,
+   "distinct_senders": 26,
+   "nonce0_share": 0.78,
    "notes": []
   },
   {
@@ -138,21 +143,22 @@
    "code_bytes": 8974,
    "name": "Tangem7702GaslessExecutorL1",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "Tangem7702GaslessExecutorL1",
+    "deployer": "0xcFB88a389428F7956C8f4d55Beb41050D7CF5fb5"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-07-30T21:14:41.293797Z",
    "source_chars": 888,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "exact_match",
-    "name": "Tangem7702GaslessExecutorL1",
-    "deployer": "0xcFB88a389428F7956C8f4d55Beb41050D7CF5fb5"
-   },
-   "authorizations": 131,
-   "txs": 131,
+   "authorizations": 123,
+   "txs": 123,
    "distinct_senders": 1,
-   "nonce0_share": 0.13,
+   "nonce0_share": 0.15,
    "notes": []
   },
   {
@@ -160,41 +166,43 @@
    "code_bytes": 11185,
    "name": "EIP7702StatelessDeleGator",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "EIP7702StatelessDeleGator",
+    "deployer": "0xB0403B32f54d0Bd752113f4009e8B534C6669f44"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2025-05-07T09:31:29.034573Z",
    "source_chars": 2466,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "exact_match",
-    "name": "EIP7702StatelessDeleGator",
-    "deployer": "0xB0403B32f54d0Bd752113f4009e8B534C6669f44"
-   },
-   "authorizations": 95,
-   "txs": 95,
-   "distinct_senders": 59,
-   "nonce0_share": 0.15,
+   "authorizations": 98,
+   "txs": 98,
+   "distinct_senders": 61,
+   "nonce0_share": 0.13,
    "notes": []
   },
   {
    "delegate": "0xe6cae83bde06e4c305530e199d7217f42808555b",
    "code_bytes": 3639,
-   "name": null,
-   "source_verified": false,
-   "explorer_scam_flag": false,
-   "proxy_type": null,
-   "verified_at": null,
-   "source_chars": 0,
-   "source_mentions": [],
-   "grade": "unverified-source",
+   "name": "Simple7702Account",
+   "source_verified": true,
+   "explorer_answered": true,
    "sourcify": {
     "match": "match",
     "name": "Simple7702Account",
     "deployer": "0x81ead4918134AE386dbd04346216E20AB8F822C4"
    },
-   "authorizations": 80,
-   "txs": 79,
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2025-05-07T10:18:53.271288Z",
+   "source_chars": 2466,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 76,
+   "txs": 75,
    "distinct_senders": 16,
    "nonce0_share": 0.99,
    "notes": []
@@ -204,19 +212,20 @@
    "code_bytes": 2719,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
-   "authorizations": 66,
-   "txs": 66,
+   "authorizations": 74,
+   "txs": 74,
    "distinct_senders": 9,
    "nonce0_share": 1.0,
    "notes": []
@@ -226,21 +235,22 @@
    "code_bytes": 24504,
    "name": "CaliburEntry",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "CaliburEntry",
+    "deployer": "0xE49ACc3B16c097ec88Dc9352CE4Cd57aB7e35B95"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2025-07-16T18:10:38.006285Z",
    "source_chars": 2523,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "match",
-    "name": "CaliburEntry",
-    "deployer": "0xE49ACc3B16c097ec88Dc9352CE4Cd57aB7e35B95"
-   },
-   "authorizations": 65,
-   "txs": 65,
-   "distinct_senders": 11,
-   "nonce0_share": 0.82,
+   "authorizations": 68,
+   "txs": 67,
+   "distinct_senders": 12,
+   "nonce0_share": 0.76,
    "notes": []
   },
   {
@@ -248,20 +258,21 @@
    "code_bytes": 3318,
    "name": "EIP7702Proxy",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "EIP7702Proxy",
+    "deployer": "0xd6fA83443CBe5F7ef9345b315F203f4F01AB06C6"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-02-12T11:38:57.470844Z",
    "source_chars": 6812,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "exact_match",
-    "name": "EIP7702Proxy",
-    "deployer": "0xd6fA83443CBe5F7ef9345b315F203f4F01AB06C6"
-   },
-   "authorizations": 64,
-   "txs": 64,
-   "distinct_senders": 36,
+   "authorizations": 65,
+   "txs": 65,
+   "distinct_senders": 35,
    "nonce0_share": 0.31,
    "notes": []
   },
@@ -270,17 +281,18 @@
    "code_bytes": 1669,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 64,
    "txs": 18,
    "distinct_senders": 1,
@@ -290,47 +302,49 @@
    ]
   },
   {
-   "delegate": "0x34fff33dc9c0ead473a1878923b3858d8ed04dfb",
-   "code_bytes": 3266,
-   "name": null,
-   "source_verified": false,
-   "explorer_scam_flag": false,
-   "proxy_type": null,
-   "verified_at": null,
-   "source_chars": 0,
-   "source_mentions": [],
-   "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
-   "authorizations": 59,
-   "txs": 8,
-   "distinct_senders": 1,
-   "nonce0_share": 0.17,
-   "notes": []
-  },
-  {
    "delegate": "0x69007702764179f14f51cdce752f4f775d74e139",
    "code_bytes": 23741,
    "name": "SemiModularAccount7702",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "SemiModularAccount7702",
+    "deployer": "0xDdF32240B4ca3184De7EC8f0D5Aba27dEc8B7A5C"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-01-28T02:19:37.724067Z",
    "source_chars": 2576,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "match",
-    "name": "SemiModularAccount7702",
-    "deployer": "0xDdF32240B4ca3184De7EC8f0D5Aba27dEc8B7A5C"
-   },
-   "authorizations": 54,
-   "txs": 54,
+   "authorizations": 56,
+   "txs": 56,
    "distinct_senders": 7,
-   "nonce0_share": 0.44,
+   "nonce0_share": 0.43,
+   "notes": []
+  },
+  {
+   "delegate": "0x34fff33dc9c0ead473a1878923b3858d8ed04dfb",
+   "code_bytes": 3266,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 56,
+   "txs": 8,
+   "distinct_senders": 1,
+   "nonce0_share": 0.2,
    "notes": []
   },
   {
@@ -338,6 +352,12 @@
    "code_bytes": 1042,
    "name": "CrimeEnjoyor",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-02-24T21:47:19.597100Z",
@@ -348,13 +368,8 @@
     "sweep"
    ],
    "grade": "known-malicious",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
-   "authorizations": 48,
-   "txs": 48,
+   "authorizations": 55,
+   "txs": 55,
    "distinct_senders": 1,
    "nonce0_share": 0.0,
    "notes": [
@@ -367,19 +382,20 @@
    "code_bytes": 717,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
-   "authorizations": 47,
-   "txs": 46,
+   "authorizations": 54,
+   "txs": 53,
    "distinct_senders": 3,
    "nonce0_share": 0.0,
    "notes": []
@@ -389,21 +405,22 @@
    "code_bytes": 2725,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
-   "authorizations": 45,
-   "txs": 45,
-   "distinct_senders": 16,
-   "nonce0_share": 0.8,
+   "authorizations": 49,
+   "txs": 49,
+   "distinct_senders": 15,
+   "nonce0_share": 0.84,
    "notes": []
   },
   {
@@ -411,21 +428,22 @@
    "code_bytes": 9768,
    "name": "WalletCore",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "WalletCore",
+    "deployer": "0x38A3Cb1C068de0D04BFa0D07a1604D519f63b04a"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-06-20T00:21:25.396012Z",
    "source_chars": 8823,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "match",
-    "name": "WalletCore",
-    "deployer": "0x38A3Cb1C068de0D04BFa0D07a1604D519f63b04a"
-   },
-   "authorizations": 32,
-   "txs": 32,
-   "distinct_senders": 14,
-   "nonce0_share": 0.84,
+   "authorizations": 30,
+   "txs": 30,
+   "distinct_senders": 13,
+   "nonce0_share": 0.83,
    "notes": []
   },
   {
@@ -433,21 +451,45 @@
    "code_bytes": 783,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
+   "authorizations": 27,
+   "txs": 27,
+   "distinct_senders": 1,
+   "nonce0_share": 1.0,
+   "notes": []
+  },
+  {
+   "delegate": "0x9a6bc2f56b9bbcb5a354d336dbda10ef8febd0ec",
+   "code_bytes": 7703,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
    "sourcify": {
     "match": null,
     "name": null,
     "deployer": null
    },
-   "authorizations": 29,
-   "txs": 29,
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 23,
+   "txs": 2,
    "distinct_senders": 1,
-   "nonce0_share": 1.0,
+   "nonce0_share": 0.0,
    "notes": []
   },
   {
@@ -455,21 +497,45 @@
    "code_bytes": 24358,
    "name": "SemiModularAccount7702",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "SemiModularAccount7702",
+    "deployer": "0xDdF32240B4ca3184De7EC8f0D5Aba27dEc8B7A5C"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-08-06T22:39:22.013168Z",
    "source_chars": 4979,
    "source_mentions": [],
    "grade": "verified-source",
+   "authorizations": 18,
+   "txs": 18,
+   "distinct_senders": 5,
+   "nonce0_share": 0.72,
+   "notes": []
+  },
+  {
+   "delegate": "0x7785a22facd31db653ba4928f1d5b81d093f0b2f",
+   "code_bytes": 1801,
+   "name": "BasicSmartAccount",
+   "source_verified": true,
+   "explorer_answered": true,
    "sourcify": {
     "match": "match",
-    "name": "SemiModularAccount7702",
-    "deployer": "0xDdF32240B4ca3184De7EC8f0D5Aba27dEc8B7A5C"
+    "name": "BasicSmartAccount",
+    "deployer": "0x0033fd20d6766Cf0d94080dB6fbdDaA7A0EaB1f4"
    },
-   "authorizations": 20,
-   "txs": 20,
-   "distinct_senders": 5,
-   "nonce0_share": 0.7,
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2025-08-06T09:14:19.493860Z",
+   "source_chars": 4284,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 18,
+   "txs": 18,
+   "distinct_senders": 3,
+   "nonce0_share": 0.11,
    "notes": []
   },
   {
@@ -477,17 +543,18 @@
    "code_bytes": 1082,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 17,
    "txs": 17,
    "distinct_senders": 1,
@@ -499,17 +566,18 @@
    "code_bytes": 22020,
    "name": "CaliburEntry",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "CaliburEntry",
+    "deployer": "0x32f4B2e69EbD7746596AF8699DAC1908F43107aD"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-07-07T18:49:56.672020Z",
    "source_chars": 2523,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "match",
-    "name": "CaliburEntry",
-    "deployer": "0x32f4B2e69EbD7746596AF8699DAC1908F43107aD"
-   },
    "authorizations": 16,
    "txs": 16,
    "distinct_senders": 13,
@@ -517,43 +585,22 @@
    "notes": []
   },
   {
-   "delegate": "0x7785a22facd31db653ba4928f1d5b81d093f0b2f",
-   "code_bytes": 1801,
-   "name": "BasicSmartAccount",
-   "source_verified": true,
-   "explorer_scam_flag": false,
-   "proxy_type": null,
-   "verified_at": "2025-08-06T09:14:19.493860Z",
-   "source_chars": 4284,
-   "source_mentions": [],
-   "grade": "verified-source",
-   "sourcify": {
-    "match": "match",
-    "name": "BasicSmartAccount",
-    "deployer": "0x0033fd20d6766Cf0d94080dB6fbdDaA7A0EaB1f4"
-   },
-   "authorizations": 16,
-   "txs": 16,
-   "distinct_senders": 3,
-   "nonce0_share": 0.06,
-   "notes": []
-  },
-  {
    "delegate": "0xcda3577ca7ef65f6b7201e9bd80375f5628d15f7",
    "code_bytes": 1707,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 13,
    "txs": 1,
    "distinct_senders": 1,
@@ -565,17 +612,18 @@
    "code_bytes": 11349,
    "name": "RelayAdapt7702",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "RelayAdapt7702",
+    "deployer": "0x43b89E9f43b2ded5392D4eB9B21543bAFCE38e1B"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-10-14T17:35:43.289895Z",
    "source_chars": 12435,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "exact_match",
-    "name": "RelayAdapt7702",
-    "deployer": "0x43b89E9f43b2ded5392D4eB9B21543bAFCE38e1B"
-   },
    "authorizations": 13,
    "txs": 13,
    "distinct_senders": 5,
@@ -587,65 +635,22 @@
    "code_bytes": 24469,
    "name": "Kernel",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "Kernel",
+    "deployer": "0x9775137314fE595c943712B0b336327dfa80aE8A"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-02-28T11:39:45.104249Z",
    "source_chars": 21942,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "match",
-    "name": "Kernel",
-    "deployer": "0x9775137314fE595c943712B0b336327dfa80aE8A"
-   },
-   "authorizations": 12,
-   "txs": 12,
-   "distinct_senders": 6,
-   "nonce0_share": 1.0,
-   "notes": []
-  },
-  {
-   "delegate": "0x9a6bc2f56b9bbcb5a354d336dbda10ef8febd0ec",
-   "code_bytes": 7703,
-   "name": null,
-   "source_verified": false,
-   "explorer_scam_flag": false,
-   "proxy_type": null,
-   "verified_at": null,
-   "source_chars": 0,
-   "source_mentions": [],
-   "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
-   "authorizations": 12,
-   "txs": 1,
-   "distinct_senders": 1,
-   "nonce0_share": 0.0,
-   "notes": []
-  },
-  {
-   "delegate": "0x027f5eed8c0f8b9d8e68f60dc437175af7b52ff9",
-   "code_bytes": 3686,
-   "name": null,
-   "source_verified": false,
-   "explorer_scam_flag": false,
-   "proxy_type": null,
-   "verified_at": null,
-   "source_chars": 0,
-   "source_mentions": [],
-   "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 10,
    "txs": 10,
-   "distinct_senders": 2,
-   "nonce0_share": 0.9,
+   "distinct_senders": 5,
+   "nonce0_share": 1.0,
    "notes": []
   },
   {
@@ -653,19 +658,20 @@
    "code_bytes": 0,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "no-code",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
-   "authorizations": 9,
-   "txs": 9,
+   "authorizations": 10,
+   "txs": 10,
    "distinct_senders": 9,
    "nonce0_share": 0.0,
    "notes": [
@@ -677,21 +683,45 @@
    "code_bytes": 4643,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
+   "authorizations": 10,
+   "txs": 10,
+   "distinct_senders": 1,
+   "nonce0_share": 1.0,
+   "notes": []
+  },
+  {
+   "delegate": "0x027f5eed8c0f8b9d8e68f60dc437175af7b52ff9",
+   "code_bytes": 3686,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
    "sourcify": {
     "match": null,
     "name": null,
     "deployer": null
    },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
    "authorizations": 9,
    "txs": 9,
-   "distinct_senders": 1,
-   "nonce0_share": 1.0,
+   "distinct_senders": 2,
+   "nonce0_share": 0.89,
    "notes": []
   },
   {
@@ -699,20 +729,44 @@
    "code_bytes": 2672,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
+   "authorizations": 8,
+   "txs": 2,
+   "distinct_senders": 1,
+   "nonce0_share": 0.0,
+   "notes": []
+  },
+  {
+   "delegate": "0x2e13de8763a53a6af340930fadcad966ee79c845",
+   "code_bytes": 19276,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
    "sourcify": {
     "match": null,
     "name": null,
     "deployer": null
    },
-   "authorizations": 8,
-   "txs": 2,
-   "distinct_senders": 1,
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 7,
+   "txs": 7,
+   "distinct_senders": 6,
    "nonce0_share": 0.0,
    "notes": []
   },
@@ -721,17 +775,18 @@
    "code_bytes": 24497,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 7,
    "txs": 7,
    "distinct_senders": 7,
@@ -743,17 +798,18 @@
    "code_bytes": 6289,
    "name": "TokenPocketStatelessDelegator",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "TokenPocketStatelessDelegator",
+    "deployer": "0x35163144fE41aa27AD7CfCA26758e135E625754a"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-09-08T13:40:34.172708Z",
    "source_chars": 932,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "match",
-    "name": "TokenPocketStatelessDelegator",
-    "deployer": "0x35163144fE41aa27AD7CfCA26758e135E625754a"
-   },
    "authorizations": 6,
    "txs": 6,
    "distinct_senders": 4,
@@ -761,43 +817,22 @@
    "notes": []
   },
   {
-   "delegate": "0x2e13de8763a53a6af340930fadcad966ee79c845",
-   "code_bytes": 19276,
-   "name": null,
-   "source_verified": false,
-   "explorer_scam_flag": false,
-   "proxy_type": null,
-   "verified_at": null,
-   "source_chars": 0,
-   "source_mentions": [],
-   "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
-   "authorizations": 6,
-   "txs": 6,
-   "distinct_senders": 6,
-   "nonce0_share": 0.0,
-   "notes": []
-  },
-  {
    "delegate": "0x03a8a3ae0b496f6988f467798beb60bd3c81f4ac",
    "code_bytes": 1071,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 6,
    "txs": 6,
    "distinct_senders": 1,
@@ -809,17 +844,18 @@
    "code_bytes": 7017,
    "name": "BatchCallAndSponsor",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "BatchCallAndSponsor",
+    "deployer": "0x1C1F8ED96592e2b66694b3E283375dcC36C1D8A9"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-10-23T13:09:59.987398Z",
    "source_chars": 7964,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "exact_match",
-    "name": "BatchCallAndSponsor",
-    "deployer": "0x1C1F8ED96592e2b66694b3E283375dcC36C1D8A9"
-   },
    "authorizations": 5,
    "txs": 5,
    "distinct_senders": 1,
@@ -831,17 +867,18 @@
    "code_bytes": 1302,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 5,
    "txs": 5,
    "distinct_senders": 1,
@@ -853,17 +890,18 @@
    "code_bytes": 1331,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 5,
    "txs": 1,
    "distinct_senders": 1,
@@ -871,43 +909,22 @@
    "notes": []
   },
   {
-   "delegate": "0x80d95b9131883cbf4ec56ab7f2d96e23ae9a8b5c",
-   "code_bytes": 1579,
-   "name": null,
-   "source_verified": false,
-   "explorer_scam_flag": false,
-   "proxy_type": null,
-   "verified_at": null,
-   "source_chars": 0,
-   "source_mentions": [],
-   "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
-   "authorizations": 4,
-   "txs": 1,
-   "distinct_senders": 1,
-   "nonce0_share": 1.0,
-   "notes": []
-  },
-  {
    "delegate": "0x31c934f4db134d3110e963044836d7a89609b783",
    "code_bytes": 966,
    "name": "CTOCDelegate",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "CTOCDelegate",
+    "deployer": "0xccBeEb191718ffdEEC48Aa9278C2979Ff64449e9"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-10-28T06:09:43.427027Z",
    "source_chars": 5969,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "match",
-    "name": "CTOCDelegate",
-    "deployer": "0xccBeEb191718ffdEEC48Aa9278C2979Ff64449e9"
-   },
    "authorizations": 4,
    "txs": 4,
    "distinct_senders": 1,
@@ -919,17 +936,18 @@
    "code_bytes": 3834,
    "name": "TokenPocketSimple7702Account",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "TokenPocketSimple7702Account",
+    "deployer": "0x35163144fE41aa27AD7CfCA26758e135E625754a"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2025-06-11T06:37:00.561012Z",
    "source_chars": 688,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "match",
-    "name": "TokenPocketSimple7702Account",
-    "deployer": "0x35163144fE41aa27AD7CfCA26758e135E625754a"
-   },
    "authorizations": 3,
    "txs": 3,
    "distinct_senders": 3,
@@ -937,43 +955,22 @@
    "notes": []
   },
   {
-   "delegate": "0x843469f223bad7ca390a8b6137c4f87955b97568",
-   "code_bytes": 1579,
-   "name": null,
-   "source_verified": false,
-   "explorer_scam_flag": false,
-   "proxy_type": null,
-   "verified_at": null,
-   "source_chars": 0,
-   "source_mentions": [],
-   "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
-   "authorizations": 2,
-   "txs": 1,
-   "distinct_senders": 1,
-   "nonce0_share": 1.0,
-   "notes": []
-  },
-  {
    "delegate": "0xa46cc63ebf4bd77888aa327837d20b23a63a56b5",
    "code_bytes": 3747,
    "name": "Simple7702Account",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "Simple7702Account",
+    "deployer": "0x81ead4918134AE386dbd04346216E20AB8F822C4"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-01-05T15:19:13.212453Z",
    "source_chars": 2629,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "match",
-    "name": "Simple7702Account",
-    "deployer": "0x81ead4918134AE386dbd04346216E20AB8F822C4"
-   },
    "authorizations": 2,
    "txs": 2,
    "distinct_senders": 1,
@@ -985,17 +982,18 @@
    "code_bytes": 23971,
    "name": "SmartWalletEntry",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "SmartWalletEntry",
+    "deployer": "0x3bCEEbFCEE7d45eb78FF2E24a4007FF065D96C98"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-08-25T13:02:08.269896Z",
    "source_chars": 475,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "match",
-    "name": "SmartWalletEntry",
-    "deployer": "0x3bCEEbFCEE7d45eb78FF2E24a4007FF065D96C98"
-   },
    "authorizations": 2,
    "txs": 2,
    "distinct_senders": 2,
@@ -1007,17 +1005,18 @@
    "code_bytes": 2265,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 2,
    "txs": 2,
    "distinct_senders": 1,
@@ -1029,6 +1028,12 @@
    "code_bytes": 8619,
    "name": "Contract",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-08-13T21:39:11.848842Z",
@@ -1037,11 +1042,6 @@
     "sweep"
    ],
    "grade": "verified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 2,
    "txs": 2,
    "distinct_senders": 1,
@@ -1055,17 +1055,18 @@
    "code_bytes": 9920,
    "name": "HermesDelegateV1",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "HermesDelegateV1",
+    "deployer": "0x1544a551b49e7f5c109260430A3e80Bf3E3876aa"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-09-15T06:58:05.568367Z",
    "source_chars": 38821,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "exact_match",
-    "name": "HermesDelegateV1",
-    "deployer": "0x1544a551b49e7f5c109260430A3e80Bf3E3876aa"
-   },
    "authorizations": 2,
    "txs": 2,
    "distinct_senders": 1,
@@ -1077,17 +1078,18 @@
    "code_bytes": 1006,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 2,
    "txs": 2,
    "distinct_senders": 1,
@@ -1099,17 +1101,18 @@
    "code_bytes": 24504,
    "name": "CaliburEntry",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "CaliburEntry",
+    "deployer": "0xA0BEDC61ff0312181B2A4E1aA233Dd1355105C6B"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-02-13T03:21:24.642056Z",
    "source_chars": 2523,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "match",
-    "name": "CaliburEntry",
-    "deployer": "0xA0BEDC61ff0312181B2A4E1aA233Dd1355105C6B"
-   },
    "authorizations": 2,
    "txs": 2,
    "distinct_senders": 2,
@@ -1121,17 +1124,18 @@
    "code_bytes": 6707,
    "name": "TKGasDelegate",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "TKGasDelegate",
+    "deployer": "0xf2bF171629B7C1dC8e0c012f8db4aBA3D7e06741"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-07-18T21:47:00.843461Z",
    "source_chars": 25842,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "exact_match",
-    "name": "TKGasDelegate",
-    "deployer": "0xf2bF171629B7C1dC8e0c012f8db4aBA3D7e06741"
-   },
    "authorizations": 2,
    "txs": 2,
    "distinct_senders": 2,
@@ -1143,17 +1147,18 @@
    "code_bytes": 1317,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 2,
    "txs": 2,
    "distinct_senders": 1,
@@ -1165,17 +1170,18 @@
    "code_bytes": 17451,
    "name": "RelayAdapt7702",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "RelayAdapt7702",
+    "deployer": "0x43b89E9f43b2ded5392D4eB9B21543bAFCE38e1B"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-08-16T15:41:03.157537Z",
    "source_chars": 12435,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "match",
-    "name": "RelayAdapt7702",
-    "deployer": "0x43b89E9f43b2ded5392D4eB9B21543bAFCE38e1B"
-   },
    "authorizations": 2,
    "txs": 2,
    "distinct_senders": 2,
@@ -1187,17 +1193,18 @@
    "code_bytes": 11393,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 2,
    "txs": 2,
    "distinct_senders": 1,
@@ -1209,17 +1216,18 @@
    "code_bytes": 2308,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 2,
    "txs": 2,
    "distinct_senders": 1,
@@ -1231,17 +1239,18 @@
    "code_bytes": 7292,
    "name": "Tangem7702GaslessExecutorL1",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "Tangem7702GaslessExecutorL1",
+    "deployer": "0xcFB88a389428F7956C8f4d55Beb41050D7CF5fb5"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-02-02T11:35:08.041375Z",
    "source_chars": 888,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "exact_match",
-    "name": "Tangem7702GaslessExecutorL1",
-    "deployer": "0xcFB88a389428F7956C8f4d55Beb41050D7CF5fb5"
-   },
    "authorizations": 1,
    "txs": 1,
    "distinct_senders": 1,
@@ -1253,17 +1262,18 @@
    "code_bytes": 630,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 1,
    "txs": 1,
    "distinct_senders": 1,
@@ -1275,17 +1285,18 @@
    "code_bytes": 2413,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 1,
    "txs": 1,
    "distinct_senders": 1,
@@ -1297,17 +1308,18 @@
    "code_bytes": 3589,
    "name": "HinkalWallet",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-08-26T09:06:05.753556Z",
    "source_chars": 2249,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 1,
    "txs": 1,
    "distinct_senders": 1,
@@ -1321,17 +1333,18 @@
    "code_bytes": 1319,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 1,
    "txs": 1,
    "distinct_senders": 1,
@@ -1343,17 +1356,18 @@
    "code_bytes": 2140,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 1,
    "txs": 1,
    "distinct_senders": 1,
@@ -1365,17 +1379,18 @@
    "code_bytes": 2129,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 1,
    "txs": 1,
    "distinct_senders": 1,
@@ -1387,17 +1402,18 @@
    "code_bytes": 4831,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 1,
    "txs": 1,
    "distinct_senders": 1,
@@ -1409,17 +1425,18 @@
    "code_bytes": 4426,
    "name": "UDABatchExecutor",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "UDABatchExecutor",
+    "deployer": "0xeeb0A44405F317310a8fE249387BE1DaeAEC9562"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-05-21T11:00:59.032787Z",
    "source_chars": 4622,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "match",
-    "name": "UDABatchExecutor",
-    "deployer": "0xeeb0A44405F317310a8fE249387BE1DaeAEC9562"
-   },
    "authorizations": 1,
    "txs": 1,
    "distinct_senders": 1,
@@ -1431,17 +1448,18 @@
    "code_bytes": 2875,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 1,
    "txs": 1,
    "distinct_senders": 1,
@@ -1453,17 +1471,18 @@
    "code_bytes": 423,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 1,
    "txs": 1,
    "distinct_senders": 1,
@@ -1475,17 +1494,18 @@
    "code_bytes": 5153,
    "name": "BatchCallAndSponsor",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-05-05T06:42:08.146950Z",
    "source_chars": 4847,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 1,
    "txs": 1,
    "distinct_senders": 1,
@@ -1499,17 +1519,18 @@
    "code_bytes": 1703,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 1,
    "txs": 1,
    "distinct_senders": 1,
@@ -1521,17 +1542,18 @@
    "code_bytes": 14095,
    "name": "RewardyDualEntryAccountV3",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "RewardyDualEntryAccountV3",
+    "deployer": "0xBf5cAE1278164Ef3758524d9f9441D2E28FaCc2b"
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": "2026-06-02T01:17:23.577345Z",
    "source_chars": 17456,
    "source_mentions": [],
    "grade": "verified-source",
-   "sourcify": {
-    "match": "exact_match",
-    "name": "RewardyDualEntryAccountV3",
-    "deployer": "0xBf5cAE1278164Ef3758524d9f9441D2E28FaCc2b"
-   },
    "authorizations": 1,
    "txs": 1,
    "distinct_senders": 1,
@@ -1543,17 +1565,18 @@
    "code_bytes": 212,
    "name": null,
    "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
    "explorer_scam_flag": false,
    "proxy_type": null,
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
    "grade": "unverified-source",
-   "sourcify": {
-    "match": null,
-    "name": null,
-    "deployer": null
-   },
    "authorizations": 1,
    "txs": 1,
    "distinct_senders": 1,
@@ -1565,21 +1588,45 @@
    "code_bytes": 496,
    "name": "EIP7702Proxy",
    "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "EIP7702Proxy",
+    "deployer": "0x3E365fe4e0c85F998692458d4191Cc39627610C1"
+   },
    "explorer_scam_flag": false,
    "proxy_type": "eip1967",
    "verified_at": "2026-05-28T22:22:19.593913Z",
    "source_chars": 9560,
    "source_mentions": [],
    "grade": "verified-but-upgradeable",
-   "sourcify": {
-    "match": "match",
-    "name": "EIP7702Proxy",
-    "deployer": "0x3E365fe4e0c85F998692458d4191Cc39627610C1"
-   },
    "authorizations": 1,
    "txs": 1,
    "distinct_senders": 1,
    "nonce0_share": 1.0,
+   "notes": []
+  },
+  {
+   "delegate": "0x42505b8dac31d70bd9d9006c7ffface81544dee6",
+   "code_bytes": 649,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0_share": 0.0,
    "notes": []
   }
  ]
