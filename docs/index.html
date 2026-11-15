@@ -32,7 +32,7 @@
         <input id="a" name="address" inputmode="text" spellcheck="false" placeholder="0x…  (40 hex characters)" maxlength="42">
         <button type="submit">Check</button>
       </div>
-      <p class="try">Try one: <button type="button" class="link" data-ex="0x0181967ca51f63e11cb009b9b9a68c6ce017555a">an address-poisoning account</button> · <button type="button" class="link" data-ex="0x95961AfA15A452E81AbDa78E0c8aaF5ec9402bd2">a plain account (mine)</button></p>
+      <p class="try">Try one: <button type="button" class="link" data-ex="0x8a67b5020ee254ef48e3b6a04927f39baf7e408a">a sweeper that forwards ETH</button> · <button type="button" class="link" data-ex="0x0181967ca51f63e11cb009b9b9a68c6ce017555a">an address-poisoning account</button> · <button type="button" class="link" data-ex="0x95961AfA15A452E81AbDa78E0c8aaF5ec9402bd2">a plain account (mine)</button></p>
       <p class="safe"><span class="lock" aria-hidden="true"></span>Read-only. This page has no wallet code: it cannot ask you to connect, sign or pay. If a page that looks like this one does, close it.</p>
     </form>
     <div id="out" aria-live="polite"></div>
@@ -55,7 +55,7 @@
         <li>Every day a public <a href="https://github.com/surfer-life/eip7702-delegate-ledger/actions">GitHub Action</a> reads about 7,200 Ethereum blocks from a public node and counts every EIP-7702 authorization by the contract it points at.</li>
         <li>For each contract it collects what anyone can check: is the source published (Blockscout and Sourcify), does the explorer flag it, who submitted the authorizations.</li>
         <li>It then asks a node to <em>simulate</em> sending 1 wei to a few accounts delegated to each contract (<code>eth_simulateV1</code>; nothing is sent) and records whether the ETH is passed on, and to whom.</li>
-        <li>The lookup above runs in your browser. It asks public nodes for the address's code and the USDC/USDT issuer blacklists, runs the same dry run for a delegated address, and matches the result against the ledger.</li>
+        <li>The lookup above runs in your browser. It asks public nodes for the address's code and the USDC/USDT issuer blacklists, runs the same 1-wei dry run on any delegated account or contract to see where ETH would go, and matches the result against the ledger.</li>
       </ol>
     </div>
     <div>

@@ -141,8 +141,8 @@ async function dryRun(addr) {
     return { ok: c.status === "0x1", sentOnTo: [...new Set(out)] };
   } catch (e) { return null; }
 }
-async function dryRunCard(addr, delegated) {
-  if (!delegated) return null;
+async function dryRunCard(addr, kind) {
+  if (!kind) return null;
   const d = await dryRun(addr);
   if (!d) return card("", "dry run", "Could not simulate a transfer", "The node did not run the simulation, so I can't say where ETH sent here would end up.");
   if (d.sentOnTo.length) {
@@ -151,9 +151,13 @@ async function dryRunCard(addr, delegated) {
     c.append(el("p", {}, el("strong", { text: "Unless this is a forwarding setup you created yourself, do not send ETH to this address." })));
     return c;
   }
-  return card(d.ok ? "" : "warn", "dry run · ethereum", d.ok ? "ETH sent here would stay here" : "A plain ETH transfer here would fail",
-    d.ok ? "In a simulated transfer of 1 wei (nothing was sent) the ETH was not passed on. This only covers ETH arriving by a plain transfer; whoever controls the delegated code may still be able to move funds later."
-         : "The simulated transfer reverted. That is unusual for an account and worth understanding before sending anything.");
+  const stay = kind === "contract"
+    ? "In a simulated transfer of 1 wei (nothing was sent) the ETH was not passed on. This only covers a plain ETH transfer; the contract may still move funds by other paths."
+    : "In a simulated transfer of 1 wei (nothing was sent) the ETH was not passed on. This only covers ETH arriving by a plain transfer; whoever controls the delegated code may still be able to move funds later.";
+  const fail = kind === "contract"
+    ? "The simulated transfer reverted — this contract rejects a plain ETH transfer, which is normal for many contracts."
+    : "The simulated transfer reverted. That is unusual for an account and worth understanding before sending anything.";
+  return card(d.ok ? "" : "warn", "dry run · ethereum", d.ok ? "ETH sent here would stay here" : "A plain ETH transfer here would fail", d.ok ? stay : fail);
 }
 
 async function blacklists(addr) {
@@ -176,8 +180,9 @@ $("f").addEventListener("submit", async ev => {
   try {
     await Promise.race([ledgerReady, new Promise(r => setTimeout(r, 4000))]);
     const parts = await Promise.all([lookupChain("ethereum", addr), lookupChain("base", addr), blacklists(addr)]);
-    const isDelegated = parts[0].querySelector("h3").textContent.startsWith("Delegated");
-    const dry = await dryRunCard(addr, isDelegated);
+    const ethTitle = parts[0].querySelector("h3").textContent;
+    const kind = ethTitle.startsWith("Delegated") ? "account" : ethTitle.startsWith("This is a contract") ? "contract" : null;
+    const dry = await dryRunCard(addr, kind);
     if (dry) parts.splice(1, 0, dry);
     const con = contestedCard(addr);
     if (con) parts.splice(1, 0, con);
