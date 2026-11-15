@@ -35,7 +35,7 @@ jobs:
         run: |
           git config user.name "surfer-life"
           git config user.email "surfer-life@users.noreply.github.com"
-          git add data LATEST.md
+          git add -A
           git commit -m "daily ledger $(date -u +%F)" || echo "nothing to commit"
-          # the run takes ~25 minutes; someone may have pushed meanwhile
-          for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break || sleep 10; done
+          # the run takes ~25 minutes; someone may have pushed meanwhile. tree is clean after commit, so rebase can proceed.
+          for i in 1 2 3; do git fetch -q origin && git rebase -X theirs origin/main && git push && break || { git rebase --abort 2>/dev/null; sleep 10; }; done
