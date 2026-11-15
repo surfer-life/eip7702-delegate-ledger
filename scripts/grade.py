@@ -13,6 +13,24 @@ def curl(u,data=None):
         except Exception: pass
         time.sleep(4)
     return {}
+# Contracts whose own verified source says they are exposed scam contracts. Unverified contracts are compared to these by bytecode.
+KNOWN_BAD={'0xe6b97aa1490c93c28a14d86c13c9dc9c950643ed':'Poisoner','0x84d05511614272694d3a9cebe896514dbde51f40':'CrimeEnjoyor'}
+_ref={}
+def selectors(code): 
+    import re
+    return sorted(set(re.findall(r'63([0-9a-f]{8})14',code)))
+def resembles(code):
+    # same set of function selectors AND >= 90% similar runtime bytecode to a known-bad contract
+    import difflib
+    c=code[2:].lower()
+    if not c or len(c)>8000: return None
+    for a,n in KNOWN_BAD.items():
+        if a not in _ref: _ref[a]=curl(RPC,{'jsonrpc':'2.0','id':1,'method':'eth_getCode','params':[a,'latest']}).get('result','0x')[2:].lower()
+        r=_ref[a]
+        if r and selectors(c) and selectors(c)==selectors(r):
+            sim=difflib.SequenceMatcher(None,r,c,autojunk=False).ratio()
+            if sim>=0.9: return {'address':a,'name':n,'bytecode_similarity':round(sim,3),'selectors':selectors(c)}
+    return None
 def sourcify(d):
     j=curl('https://sourcify.dev/server/v2/contract/1/%s?fields=compilation.name,deployment.deployer'%d)
     if 'address' not in j: return {'match':None,'name':None,'deployer':None,'error':True}
@@ -38,6 +56,9 @@ def grade(d):
     else: g='verified-source'
     if info.get('is_verified') and 'source_code' not in sc and g!='known-malicious': g='evidence-missing'   # verified, but the source text could not be read this run
     e['grade']=g
+    if g=='unverified-source':
+        rs=resembles(code)
+        if rs: e['resembles']=rs; e['grade']='resembles-known-malicious'
     return e
 if __name__=='__main__':
     L=json.load(open(sys.argv[1])); out=[]

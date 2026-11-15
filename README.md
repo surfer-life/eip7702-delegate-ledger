@@ -28,6 +28,7 @@ The first two-hour sample (2026-11-15, 600 blocks) gave 48.0% / 32.2% / 19.4%; i
 | grade | meaning |
 |---|---|
 | `known-malicious` | the explorer flags it as a scam, or the verified source text itself says it is an exposed scam contract |
+| `resembles-known-malicious` | no verified source, but the runtime bytecode is at least 90% similar to a known-malicious contract and exposes the same function selectors |
 | `unverified-source` | no verified source: nobody can read what it does without decompiling. Not proof of harm. |
 | `verified-source` | source is published and matches the bytecode. **Not a safety verdict**: published code can still be harmful or buggy. |
 | `verified-but-upgradeable` | verified, but the explorer reports a proxy |
