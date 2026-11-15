@@ -36,7 +36,7 @@ for b in range(head-N+1,head+1):
         for d in seen: txs[d]+=1; senders[d].add(t['from'])
     if (b-head+N)%100==0: print(b-head+N,'/',N,'type4',n4,flush=True)
 contested={w for w,ds in where.items() if len(ds)>1}
-res={'distinct_accounts':len(where),'contested_accounts':len(contested),'authorizations_from_contested':sum(per_acct[w] for w in contested),'unrecoverable_signatures':bad_sig,'head':head,'N':N,'from_ts':t0,'to_ts':t1,'total_txs':ntx,'type4_txs':n4,'delegates':[{'delegate':d,'authorizations':c,'txs':txs[d],'distinct_senders':len(senders[d]),'nonce0':nonce0[d],'distinct_accounts':len(accts[d]),'contested_accounts':len(accts[d]&contested),'samples':list(samples[d].values())} for d,c in auth.most_common()]}
+res={'contested':{w:{'targets':sorted(where[w]),'authorizations':per_acct[w]} for w in sorted(contested)},'distinct_accounts':len(where),'contested_accounts':len(contested),'authorizations_from_contested':sum(per_acct[w] for w in contested),'unrecoverable_signatures':bad_sig,'head':head,'N':N,'from_ts':t0,'to_ts':t1,'total_txs':ntx,'type4_txs':n4,'delegates':[{'delegate':d,'authorizations':c,'txs':txs[d],'distinct_senders':len(senders[d]),'nonce0':nonce0[d],'distinct_accounts':len(accts[d]),'contested_accounts':len(accts[d]&contested),'samples':list(samples[d].values())} for d,c in auth.most_common()]}
 json.dump(res,open(sys.argv[2] if len(sys.argv)>2 else 'auths-%d.json'%head,'w'),indent=1)
 print('accounts',len(where),'contested',len(contested),'auths from contested',res['authorizations_from_contested'])
 print('DONE head',head,'txs',ntx,'type4',n4,'delegates',len(auth),'authorizations',sum(auth.values()))

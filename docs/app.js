@@ -5,6 +5,7 @@ const RPC = {
   base: ["https://mainnet.base.org", "https://base-rpc.publicnode.com"],
 };
 const LEDGER = "https://raw.githubusercontent.com/surfer-life/eip7702-delegate-ledger/main/data/latest.json";
+const CONTESTED = "https://raw.githubusercontent.com/surfer-life/eip7702-delegate-ledger/main/data/contested.json";
 const EXPLORER = { ethereum: "https://eth.blockscout.com/address/", base: "https://base.blockscout.com/address/" };
 const BLACKLISTS = [
   { chain: "ethereum", token: "USDC", contract: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48", sel: "0xfe575a87" },
@@ -46,10 +47,22 @@ async function rpc(chain, method, params) {
   throw last || new Error("no node answered");
 }
 
-let ledger = null;
+let ledger = null, contested = null;
 const ledgerReady = fetch(LEDGER).then(r => r.json()).then(d => { ledger = d; renderLedger(); }).catch(() => {
   $("window").textContent = "Could not load today's ledger. The lookup above still works.";
 });
+fetch(CONTESTED).then(r => r.json()).then(d => { contested = d; }).catch(() => {});
+
+function contestedCard(addr) {
+  if (!contested || !contested.accounts) return null;
+  const c = contested.accounts[addr.toLowerCase()];
+  if (!c) return null;
+  const card0 = card("bad", "re-delegated account", "This account is being fought over by sweepers",
+    kv([["Authorizations in the window", fmt(c.authorizations)], ["Delegated to", (c.targets || []).length + " different sweeper contracts in the same window"]]),
+    "This account was re-delegated back and forth between different sweeper contracts many times. That pattern means its private key is compromised: anyone who funds it will have the balance swept away in the same block.");
+  card0.append(el("p", {}, el("strong", { text: "Do not send anything to this address." })));
+  return card0;
+}
 
 function pill(grade) { const g = GRADE[grade] || { cls: "", text: grade }; return el("span", { class: "pill " + g.cls, text: g.text }); }
 
@@ -166,6 +179,8 @@ $("f").addEventListener("submit", async ev => {
     const isDelegated = parts[0].querySelector("h3").textContent.startsWith("Delegated");
     const dry = await dryRunCard(addr, isDelegated);
     if (dry) parts.splice(1, 0, dry);
+    const con = contestedCard(addr);
+    if (con) parts.splice(1, 0, con);
     out.replaceChildren(el("p", { class: "muted small" }, "Result for ", el("code", { text: addr })), ...parts);
     history.replaceState(null, "", "?address=" + addr);
   } finally { btn.disabled = false; btn.textContent = "Check"; }
