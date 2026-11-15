@@ -43,7 +43,7 @@ The first two-hour sample (2026-11-15, 600 blocks) gave 48.0% / 32.2% / 19.4%; i
 
 ## Method
 
-1. `scripts/auths.py N` — fetches the last N blocks with `eth_getBlockByNumber` from a public RPC and counts every `authorizationList` entry per target address. These are *submitted* authorizations, valid or not; the signing authority is not recovered.
+1. `scripts/auths.py N` — fetches the last N blocks with `eth_getBlockByNumber` (across two public RPCs, so a throttle on one falls back to the other) and counts every `authorizationList` entry per target address. These are *submitted* authorizations, valid or not. It also recovers the signing account of each authorization (`scripts/authority.py`) to report distinct accounts per target and the accounts that signed for more than one target.
 2. `scripts/grade.py` — for each target: `eth_getCode`, then name / source-verified / scam flag / verified source text from Blockscout.
 3. `scripts/probe.py` — recovers the signing account of a few authorizations per target (`scripts/authority.py`, pure-Python keccak and secp256k1 recovery, checked against known transactions), keeps the ones still delegated to that target, and asks a node to simulate sending each of them 1 wei. If the ETH leaves again in the same transaction, the destination is recorded.
 4. Cross-check with Sourcify (`data/evidence-*.json`, field `sourcify`). For the 67 targets, Blockscout and Sourcify agreed on 63; 4 were verified on Blockscout only.
