@@ -14,3 +14,25 @@ What each of the four showed:
 That is the address-poisoning pattern. Its bytecode is not a copy of the exposed `Poisoner` contract (33% similar, different function selectors, one of which is `a9059cbb` = `transfer`), so it looks like a separate implementation used the same way.
 
 Not checked: who controls it, whether anyone lost money to these four addresses, and whether every account delegated to it behaves like this. Four accounts is a small sample.
+
+## 2026-11-15 — What do accounts delegated to unverified targets actually do? (a first, rough pass)
+
+Why: a third of authorizations go to targets with no published source. The grade says only that nobody can read the code. I wanted to see behaviour instead.
+
+Sample: 300 recent blocks; 25 targets that were unverified or not yet in the ledger; up to 3 delegating accounts each (58 accounts); ERC-20 transfer history from Blockscout.
+
+Before looking I wrote down a guess: about 30% of these targets would be address-poisoning farms. That was wrong.
+
+What a rule-based sort gave (majority behaviour per target): poisoning 1, no trace at all 2, long-lived active accounts 6, **everything else 16**. Two thirds landing in "everything else" meant my rules were too coarse, so I read accounts by hand.
+
+What reading by hand showed, for 14 targets whose delegating accounts have no transactions of their own but tokens going in and out:
+
+- **Swapping through a DEX** (tokens to and from Uniswap v4 `PoolManager`, a Uniswap v3 pool, the 1inch router): 3 or 4 targets. These look like gasless-swap wallets or trading bots.
+- **Mint and burn** (in from and out to the zero address): 1 target.
+- **Collection into one wallet** (several delegating accounts each receive a token and send it on to the same single address): at least 2 targets (e.g. three accounts → `0x48f9bE7A…0333`). From the outside this is what both an exchange sweeping deposit addresses and a thief sweeping compromised wallets look like. I could not tell which.
+- **Loops with a contract the explorer flags as scam**: 1 target (`0x490aac77…ca1d`, both in and out via `0x08eC0883…31a7`).
+- **Scattered**: the rest send to different unnamed wallets with no obvious pattern in 3 accounts.
+
+What I take from it: "unverified" covers very different things: trading tools, token mechanics, collection schemes and scams. It is not a synonym for malicious, and a ledger that hinted otherwise would be misleading people. Telling the collection schemes apart (deposit sweeping vs theft) is the open question, and three accounts per target is too few to answer it.
+
+Not checked: ETH flows for most accounts, who controls any of the collecting wallets, and whether these 25 targets are representative.
