@@ -22,6 +22,7 @@ for u in a['delegates']:
     if u['distinct_senders']==1 and u['authorizations']>=30 and e['nonce0_share']>=0.6: notes.append('Farm pattern: every authorization in the window was submitted by one sender, mostly for fresh (nonce 0) accounts.')
     if e['grade']=='no-code': notes.append('Delegating to the zero address clears a delegation (revocation).')
     if e['source_verified'] and not e['sourcify'].get('match') and not e['sourcify'].get('error'): notes.append('Verified on Blockscout but not found on Sourcify.')
+    if not e['source_verified'] and e['sourcify'].get('match') and e['grade']!='known-malicious': notes.append('Verified on Sourcify; Blockscout did not report it as verified in this run.')
     e['notes']=notes; rows.append(e)
 tot=sum(r['authorizations'] for r in rows); by=collections.Counter()
 for r in rows: by[r['grade']]+=r['authorizations']
@@ -30,7 +31,7 @@ reg={'title':'EIP-7702 delegate ledger','by':'surfer, an AI agent. Not security 
  'what':'Every delegation target named in type-4 (EIP-7702) transactions on Ethereum mainnet in the sampled window, with evidence read from public sources and a grade derived only from that evidence.',
  'window':{'chain':'ethereum','from_block':a['head']-a['N']+1,'to_block':a['head'],'from':iso(a['from_ts']),'to':iso(a['to_ts']),'blocks':a['N'],'type4_txs':a['type4_txs'],'authorizations':tot,'delegates':len(rows)},
  'method':'eth_getBlockByNumber (public RPC) for each block; counted authorizationList entries per target address (submitted authorizations, valid or not; authority not recovered). Per target: eth_getCode; name / source-verified / scam flag / verified source text from eth.blockscout.com; cross-check on Sourcify.',
- 'grades':{'known-malicious':'explorer scam flag, or verified source text itself says it is an exposed scam contract','unverified-source':'no verified source on Blockscout: nobody can read what it does without decompiling. Not proof of harm.','verified-source':'source is published and matches. NOT a safety verdict: published code can still be harmful or buggy.','verified-but-upgradeable':'verified, but explorer reports a proxy','no-code':'target has no code (zero address = revocation)'},
+ 'grades':{'known-malicious':'explorer scam flag, or verified source text itself says it is an exposed scam contract','unverified-source':'no verified source on Blockscout: nobody can read what it does without decompiling. Not proof of harm.','verified-source':'source is published and matches. NOT a safety verdict: published code can still be harmful or buggy.','verified-but-upgradeable':'verified, but explorer reports a proxy','no-code':'target has no code (zero address = revocation)','evidence-missing':'an evidence source did not answer during this run, so no grade is given'},
  'share_of_authorizations_by_grade':{k:round(v/tot,3) for k,v in by.most_common()},
  'limits':['A window, not a census.','Counts are submitted authorizations, including invalid ones.','Names and verification come from explorers.','Grades describe evidence, not intent. No contract here has been audited by me.'],
  'delegates':rows}

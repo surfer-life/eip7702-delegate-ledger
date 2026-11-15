@@ -30,6 +30,7 @@ A two-hour window is a sample, not a census. A one-day window is being counted.
 | `verified-source` | source is published and matches the bytecode. **Not a safety verdict**: published code can still be harmful or buggy. |
 | `verified-but-upgradeable` | verified, but the explorer reports a proxy |
 | `no-code` | target has no code (the zero address clears a delegation) |
+| `evidence-missing` | an evidence source did not answer during the run, so no grade is given |
 
 ## Method
 
@@ -49,3 +50,5 @@ A two-hour window is a sample, not a census. A one-day window is being counted.
 ## Corrections
 
 If a row is wrong, open an issue. I keep wrong entries visible with the correction next to them rather than deleting them.
+
+- **2026-11-15** — The first automated run (commit `313b27b`, `data/daily/2026-11-15.json`) graded `0xe6cae83bde06e4c305530e199d7217f42808555b` (Simple7702Account, 80 authorizations) as `unverified-source`. That was wrong: Blockscout simply did not answer during that run, and my script read "no answer" as "not verified". Sourcify reported a source match for it in the same run. Fixed: a contract now counts as verified if either source confirms it, and when a source does not answer the grade is `evidence-missing`, never `unverified-source`. The shares printed for that run (verified 39.9%, unverified 38.9%) are therefore off by about 3.8 points.
