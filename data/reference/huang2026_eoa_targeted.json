@@ -1,0 +1,2269 @@
+{
+ "source": "Huang, Liu, Yang, Wu, Wang. Artifact for \"Revealing the Dark Side of Smart Accounts: An Empirical Study of EIP-7702 Incurred Risks in Blockchain Ecosystem\" (USENIX Security 2026). Zenodo record 17895541, CC-BY-4.0. https://zenodo.org/records/17895541",
+ "what": "Delegation targets marked \"matched\" in analysis_information/sa_contract_malicious.xlsx (the EOA-targeted detection results; data up to 2025-07-15), with the chains each was matched on. Extracted by surfer on 2026-11-15; any extraction error is mine.",
+ "count": 718,
+ "flagged": {
+  "0x00000000007047538007de9dd86921f8992ba638": [
+   "bnb",
+   "ethereum"
+  ],
+  "0x0000013e81b16d6f369a3376cb38381c06606ed8": [
+   "base",
+   "bnb",
+   "ethereum",
+   "gnosis",
+   "optimism"
+  ],
+  "0x000005d2c018e5146489b81e850cf3c31260bd97": [
+   "arbitrum",
+   "base",
+   "bnb",
+   "ethereum",
+   "optimism",
+   "polygon"
+  ],
+  "0x00000b1fd44d7ac41423956f5d2fb7405e026d05": [
+   "arbitrum",
+   "base",
+   "bnb",
+   "ethereum",
+   "optimism",
+   "polygon"
+  ],
+  "0x00000c272170dc4b34d1e2a581f9f7fe48f42bc1": [
+   "arbitrum",
+   "base",
+   "bnb",
+   "ethereum",
+   "gnosis",
+   "optimism",
+   "polygon"
+  ],
+  "0x000054507a812fd32582e7a997c83e6d446fd60e": [
+   "base",
+   "optimism"
+  ],
+  "0x0000ce484ce6afbf650eb6b009dae2655aa39fc4": [
+   "base",
+   "ethereum"
+  ],
+  "0x0000ee48d8540fe16c7e421fd6e61bdecb2748d7": [
+   "base",
+   "bnb",
+   "ethereum"
+  ],
+  "0x00037763c2c4e6efa6bf9a03775f6a0b5112b578": [
+   "base",
+   "ethereum",
+   "optimism"
+  ],
+  "0x00512d0000e0c24900008f3fd3e12600b5bd00b0": [
+   "ethereum"
+  ],
+  "0x0057f443f4a9720c6df957bf4f2885bc68e0ece8": [
+   "bnb"
+  ],
+  "0x0061a9da09d7deac392c4b17f3718fecba7c5259": [
+   "arbitrum"
+  ],
+  "0x015e97a68f426152ec1d46c8350a59c83acadf73": [
+   "polygon"
+  ],
+  "0x01808003e43a662a25718e31dc3b7ac5c99d9f84": [
+   "bnb"
+  ],
+  "0x019ec4777db677f05485d5e575cd0fe961e3e0b3": [
+   "arbitrum"
+  ],
+  "0x01e491a7c662f871d1540a926ab5c795280e21ef": [
+   "bnb"
+  ],
+  "0x02460b655f84e7627da0793e0bfbb352685a7177": [
+   "bnb"
+  ],
+  "0x02481dc7b012fa24de427cc9f365037781af72ac": [
+   "bnb"
+  ],
+  "0x036be4f87fc09257284d44ff095a19e192903cb2": [
+   "optimism"
+  ],
+  "0x03a8d2383c83660b426adac7c078df2ce341812c": [
+   "bnb"
+  ],
+  "0x03d3a03315b9a80fd3bb00b1da747f88987f6d8f": [
+   "bnb"
+  ],
+  "0x03f399f513ecc7e4a19e68be44997a6864506d4a": [
+   "bnb"
+  ],
+  "0x043661a263719880069c2adb5bf625eb4b7b5db7": [
+   "optimism"
+  ],
+  "0x047440829317d30e994964ff6fa1f82884910dde": [
+   "ethereum"
+  ],
+  "0x04a062033b7c8ea5e3cfef316a2d5937cade2e1d": [
+   "optimism"
+  ],
+  "0x04d1014a442e4e57195dbe3552211657271181b5": [
+   "base"
+  ],
+  "0x04e04545763e803842607adb6c83560cc9fec4dd": [
+   "bnb"
+  ],
+  "0x05099f3d8b4078c2c91425163762c7c6d4164f11": [
+   "base"
+  ],
+  "0x05193469cf5fd50716a6b1c4a9b7da70b1077c63": [
+   "bnb"
+  ],
+  "0x055e040ee80039ce86f65dfe004310fe61f7fe46": [
+   "arbitrum"
+  ],
+  "0x058c9df053828f5817ef67bac3cd90672ae4489a": [
+   "ethereum"
+  ],
+  "0x05da85647d868754929744623538c075e1061311": [
+   "polygon"
+  ],
+  "0x05e920e04d1ce943a82712737974dc7d114e6275": [
+   "base"
+  ],
+  "0x06100887d8c541524c6697c3506885372f970f19": [
+   "bnb"
+  ],
+  "0x062aa27842a3bbc6949b5d18e6dd5332a49a4555": [
+   "base"
+  ],
+  "0x066ae77a4bd9ff6bbbfc1c4330d71c9957224b08": [
+   "ethereum"
+  ],
+  "0x06700e925d9c06b906fba94cb0c6b4c6fbafd5e8": [
+   "bnb"
+  ],
+  "0x068315334224a8433971b72504434e741a034e35": [
+   "optimism"
+  ],
+  "0x06837b7cdc7ad0f219ce46215411b1c7d89021cb": [
+   "ethereum"
+  ],
+  "0x06839a2e8541f56ac5e9e42656ff6c534ad2558c": [
+   "optimism"
+  ],
+  "0x06fc3a599f2b2b535d3e9b32092a64a00324633b": [
+   "bnb",
+   "ethereum"
+  ],
+  "0x073addd815abe9e72e8da16d4ec1b970f303cd86": [
+   "optimism"
+  ],
+  "0x0776e2d86f654028e2c3c51b4835277dbbf62c21": [
+   "ethereum"
+  ],
+  "0x0895abd2c387677f8e39953f24dc014176b5472d": [
+   "bnb"
+  ],
+  "0x08b46679cbab7cfbd4093038419f1461fe479e37": [
+   "optimism"
+  ],
+  "0x08f5e230d412f0cd475b03b9acb51d1562f730f9": [
+   "ethereum"
+  ],
+  "0x09551d2ab499d73affed001b54d483942e11e0ff": [
+   "base",
+   "ethereum"
+  ],
+  "0x095bc36d7d1cf990fc7ccb5f62c45163c37d03a5": [
+   "optimism"
+  ],
+  "0x09ad818185b9b9b2f378ce3c22ae30ffe3a93e20": [
+   "bnb"
+  ],
+  "0x09b917c2ed6efa27a4b6395d72c584b9ce355a40": [
+   "bnb"
+  ],
+  "0x0a7d91f11f5ca455c742ed32691ce2726e15883c": [
+   "ethereum"
+  ],
+  "0x0b84d348c702c991bc60279d56392565dee15cf2": [
+   "base"
+  ],
+  "0x0b9bbce087a6908f5f5e0a79f45055c3e8a84b33": [
+   "bnb"
+  ],
+  "0x0be6d14d85bc36898034d6298332eb88206b91bf": [
+   "bnb"
+  ],
+  "0x0c1a92976039eabe9c22b933a8ee2ea495b5b0c6": [
+   "optimism"
+  ],
+  "0x0c9900ae00ca9071dae00084006400003900cba7": [
+   "ethereum"
+  ],
+  "0x0d4aec93951384e02f3fea19f886959d59bed848": [
+   "bnb"
+  ],
+  "0x0d69833bdd2ee5d545b950a85fcb1db9ed2b7572": [
+   "optimism"
+  ],
+  "0x0d8aff1934cae5b04d2534b530607a4eac4e10c3": [
+   "optimism"
+  ],
+  "0x0dd61275ecd8666b3bfe77ff1ce17a98b542caad": [
+   "arbitrum",
+   "base",
+   "bnb",
+   "ethereum",
+   "optimism",
+   "polygon"
+  ],
+  "0x0e6513a4bd58c073aab8dea150fa09f65592476e": [
+   "arbitrum",
+   "base"
+  ],
+  "0x0f588d9e155d281742e292e551f3fa740f178760": [
+   "optimism"
+  ],
+  "0x0fae7943e5035b65c842b47373627b7d222ac95e": [
+   "ethereum"
+  ],
+  "0x0fe0a7d4deca2a6e732d6f54f8ac55c7f62b9962": [
+   "ethereum"
+  ],
+  "0x100bfe501da42fec877ba424b95265ca66eb9b07": [
+   "optimism"
+  ],
+  "0x1107396baebd1da108fdb2691d08a3b3f831b4d6": [
+   "bnb"
+  ],
+  "0x128f99fc9bfda7c53a2707c16997fdb56b77cd89": [
+   "optimism"
+  ],
+  "0x12be440fd58e6ceedb63cac525cbdc0ce0d80d9b": [
+   "bnb",
+   "ethereum"
+  ],
+  "0x12f73f3da98c4c1d31918c88e11bc2e229c876d2": [
+   "ethereum"
+  ],
+  "0x13fc58118fd8d4ae99f6cd4383ccc3d42b41104d": [
+   "base"
+  ],
+  "0x1440b2cb64db1cc5c69513113e5ebfffbc38a451": [
+   "bnb"
+  ],
+  "0x14b286892fb33ca530c1f95efab7ae1d51660130": [
+   "ethereum"
+  ],
+  "0x14d73d9718e6395261d2971416118ff71186e94f": [
+   "bnb"
+  ],
+  "0x1501af4f344d3ac6bdf4c2ed7063faf9422b8f0c": [
+   "optimism"
+  ],
+  "0x1511cfd463da477220a34ee95561a5253ba036c0": [
+   "base"
+  ],
+  "0x153fdf0e669fd84c75e603bc4eee1641194655f0": [
+   "base"
+  ],
+  "0x15c432e31d073c85f51b31016ff70f0874a5bab3": [
+   "bnb"
+  ],
+  "0x15ccc8239d47786e459cec83605a1d85d62fec63": [
+   "bnb"
+  ],
+  "0x163193c89de836e82bb121bd0dbcaba7e8ba67dc": [
+   "arbitrum",
+   "base",
+   "bnb",
+   "ethereum",
+   "optimism"
+  ],
+  "0x16606ad9fdaa679aa119e93e44ab461f039a797a": [
+   "base"
+  ],
+  "0x17164ef1732d0f02c440035641fa4460d614fa1a": [
+   "base"
+  ],
+  "0x179ebfcc4a92d6c7e354a1362d59643c7a967fc9": [
+   "ethereum"
+  ],
+  "0x19009f4fb887cf6be63a519d02f3b7faf6ef7164": [
+   "ethereum"
+  ],
+  "0x1990ed58c9af6a10e8a61174fec154b39b2460cc": [
+   "optimism"
+  ],
+  "0x19ce015fde363db74eddccb05fcf638ed8e4c8e7": [
+   "ethereum"
+  ],
+  "0x19ea8add9df97069e1d6530d06435eed0053c698": [
+   "polygon"
+  ],
+  "0x1a0cd42ba3be5dba1026c35e6f39c70a401bfeb1": [
+   "bnb"
+  ],
+  "0x1a3279e529a18603d7d9c066f8f42a7a00005e85": [
+   "ethereum"
+  ],
+  "0x1aef6286650aa180051f7a4b81c854244395ad54": [
+   "ethereum"
+  ],
+  "0x1b6b834e67968c8be8e13cc2f6a92f037bac4a73": [
+   "ethereum"
+  ],
+  "0x1c20c0a514635fb66001e189db1f2ea263d6cec0": [
+   "bnb"
+  ],
+  "0x1d383d085d87aa0105930bf141605d8e6983d299": [
+   "base"
+  ],
+  "0x1d6a7461bebf5b56ec7d194291bcb3bc8407b612": [
+   "bnb"
+  ],
+  "0x1dc0c02b418bd68122839ca938cea6d730d88a49": [
+   "bnb"
+  ],
+  "0x1e142b1f5ea1b5b12ddb8db5d96f85aacdafb7cb": [
+   "arbitrum",
+   "ethereum"
+  ],
+  "0x1e60fa69383fcf5b482a3fa141b0835d434c77d6": [
+   "ethereum"
+  ],
+  "0x1e98fdd75814401686a495f072fa350a334c9fa0": [
+   "arbitrum"
+  ],
+  "0x1ee8e3b6ca95606e21be70cff6a0bd24c134b96f": [
+   "base"
+  ],
+  "0x1f07336d35c9a70ed086f6aa3c4c0bd1266e6f63": [
+   "ethereum"
+  ],
+  "0x1f18fb6e06c31539304bc700f8f203b43502d0d6": [
+   "arbitrum"
+  ],
+  "0x1fbb9d39e147908257dbc08cfea288eb860de43c": [
+   "base"
+  ],
+  "0x2035b40ada2a246ddca8e5cc3debf9654004484b": [
+   "ethereum"
+  ],
+  "0x20dd86b35eedce9159808218a57f8f622849c635": [
+   "optimism"
+  ],
+  "0x20f7837aa2078e5455506c9185a5f7200ff32608": [
+   "ethereum"
+  ],
+  "0x214070b6eb44001091e53c22e03fdca43b6524c2": [
+   "base"
+  ],
+  "0x21b65e7473e8afdb6396e9c52535521a4c6235d8": [
+   "optimism"
+  ],
+  "0x2287bebc41fd56b30ea0cfc278b91de503015148": [
+   "ethereum"
+  ],
+  "0x22c620b031cab3c23b135b2c7c6f8fa22fed77f9": [
+   "polygon"
+  ],
+  "0x22da339cb99b917cf861ddfdc5c255a4d7df4036": [
+   "optimism"
+  ],
+  "0x22f0db4f3292807d919497802d951e30aa281f4f": [
+   "optimism"
+  ],
+  "0x2380e6cc8724360ee4e0b6416353b3c30b1d0b41": [
+   "ethereum"
+  ],
+  "0x23c3a46086bfaa35b4514edf65a04bb7f459228d": [
+   "optimism"
+  ],
+  "0x23c667184099f7c7d895cae4c6c4c571901297a8": [
+   "optimism"
+  ],
+  "0x24198745861cdd3d6bdb78e8d7fa55a87cad0122": [
+   "base"
+  ],
+  "0x24592cb8b7ec813a5eaeb73e5503322d2b93a878": [
+   "optimism"
+  ],
+  "0x24be67cbe39483da97efacce750b16dd34585a2f": [
+   "base"
+  ],
+  "0x25684dc148e5c7ad8e8d7cd5078ce431df9b7b4a": [
+   "ethereum"
+  ],
+  "0x2674789cd25a32059322ba79a3991da380081840": [
+   "optimism"
+  ],
+  "0x280c17a6c6819a718cf883c1c822cc68e73a20fc": [
+   "optimism"
+  ],
+  "0x281f3e79775f61cccfc7b7c3eacdc4f15a7f3252": [
+   "optimism"
+  ],
+  "0x285002f5846615453053a5074ae7d743ea38201c": [
+   "ethereum"
+  ],
+  "0x28922679e7c2651f27a4781346012d677185e2e0": [
+   "base"
+  ],
+  "0x289c9c58355e1a7d2b0ad4a5e8f2c3c961b48ae9": [
+   "arbitrum",
+   "base",
+   "bnb",
+   "ethereum",
+   "optimism"
+  ],
+  "0x28b2b2ce79838773008f1cb39184e8da33d6fe8a": [
+   "bnb"
+  ],
+  "0x28d0c57d3f0ae14d6307fea3972d704166e26785": [
+   "ethereum"
+  ],
+  "0x29520f332cf10c6612f47f38881d0568bb6fe971": [
+   "ethereum"
+  ],
+  "0x29ada5cb7589c186494f7eb717c26e10a54d5257": [
+   "bnb"
+  ],
+  "0x29ebaef0b56994fdc2a90eb4a3264de60d9e7eea": [
+   "bnb"
+  ],
+  "0x2a0d9353b4d03f7ab026775b78d27e5f35aa60b3": [
+   "ethereum"
+  ],
+  "0x2a755758fb0d25883e8e3e9573b9d2c18c1777db": [
+   "ethereum"
+  ],
+  "0x2ae985de063d88fbaf60cdc8e81a9a8cf89d226c": [
+   "ethereum"
+  ],
+  "0x2bcb2988af08bdd46165b76abff766f87eb9b9bc": [
+   "polygon"
+  ],
+  "0x2c08fc11a7e4e817dbec359eabc8f2117113b091": [
+   "ethereum"
+  ],
+  "0x2cba7f7d0728c3cfcfb5f6d0ddcf4af49fa37956": [
+   "ethereum"
+  ],
+  "0x2d274da31b0ef851c58333e066304ca763cbc2de": [
+   "optimism"
+  ],
+  "0x2d33b68f3152a43e10b327dbf47bfed0b4a78d10": [
+   "ethereum"
+  ],
+  "0x2d5a97805e8b0e3492a7995bc3015ff0b8940fa6": [
+   "polygon"
+  ],
+  "0x2d6d3cc25b79399d52a45901abf0d53c25d05423": [
+   "ethereum"
+  ],
+  "0x2d9f726fab6f1c685c5ccd4f8d50ef60111bb693": [
+   "optimism"
+  ],
+  "0x2ea03bbf2df570a354e460e6d76f5eb246483e93": [
+   "bnb"
+  ],
+  "0x2f1211e38436327cc90408565ea2f16dfc082600": [
+   "optimism"
+  ],
+  "0x2f440cefb05b2262d168fb72b77b04d0bd1318dd": [
+   "base"
+  ],
+  "0x2f44a3cf6e8af3f3fb483b07e590e20ed6af7a93": [
+   "bnb"
+  ],
+  "0x2ffe7657665bb3ac0ea5535cae90848ab5c96e30": [
+   "polygon"
+  ],
+  "0x300b0ccdc7b0d416593de409b04a5fd930daa9f7": [
+   "ethereum"
+  ],
+  "0x307a7cf5b1e6e55e6060a68939cfc352c6742a43": [
+   "bnb"
+  ],
+  "0x31740aeffb40bde20890282cebecd36c9b006323": [
+   "bnb"
+  ],
+  "0x3220bf967f84160905e4d4326f7dbcd0a2f5a5bf": [
+   "ethereum"
+  ],
+  "0x325b2bdddd7ea1335acee94bfdb1ea3130d08e07": [
+   "base"
+  ],
+  "0x3287832c35d5577b4ca2c558a43743ab33b92fa7": [
+   "ethereum"
+  ],
+  "0x32a855b5fc39885715bb4ebb1909cac89ba74194": [
+   "base"
+  ],
+  "0x32ab10ebca6121659e41d7caa364147d87ebd74e": [
+   "polygon"
+  ],
+  "0x32d10602d23ed95396aa8e6fbaa4ecdffdc05d65": [
+   "ethereum"
+  ],
+  "0x32ee3edc8f1f0ea479fb22600cdbd4530f48698e": [
+   "base",
+   "bnb"
+  ],
+  "0x32f66e05d98fe6a15216f6219f414a4a76d84d7a": [
+   "bnb",
+   "ethereum"
+  ],
+  "0x3360ab1feeabb3ae87241afcf69480313df97c39": [
+   "bnb"
+  ],
+  "0x33f053866f277b7cd831f2527655587dfde9f553": [
+   "optimism"
+  ],
+  "0x3427012d72b11e5a091085266ce96a9e0295913e": [
+   "polygon"
+  ],
+  "0x3447d54e4358e306d58e5bbfc3a19d728d53f78e": [
+   "base",
+   "bnb",
+   "optimism"
+  ],
+  "0x3495fed224aa078d7e754e9f626c613a5cb04528": [
+   "base"
+  ],
+  "0x349c41a8e164a243203605dbd07889d201174d77": [
+   "ethereum"
+  ],
+  "0x34e94eceb0cfc0c248106044468db4258eaba4cb": [
+   "bnb"
+  ],
+  "0x3549c7f6a9d712fd3007efc1b85e0c4acca5c211": [
+   "ethereum"
+  ],
+  "0x35e1cfac4db5ed6c43d264f5ac13420ff62bb7e8": [
+   "bnb"
+  ],
+  "0x35f476f48a576e174757d77cf84881e9037848dc": [
+   "ethereum"
+  ],
+  "0x35fbf40e41574dfa6c0b799ca1018d9cc7d84c60": [
+   "optimism"
+  ],
+  "0x36a460f808a9ea001ef1322d02c5fba87b20cec0": [
+   "base"
+  ],
+  "0x388673180e094231f236a65c185bb756c6ebd5cc": [
+   "base"
+  ],
+  "0x38c401c978f047e689980da3fb884925575e39a5": [
+   "bnb"
+  ],
+  "0x38c57fd1ad45425a2c89eecb1f2c78ec4290c254": [
+   "arbitrum"
+  ],
+  "0x38f34ffe6266c3f3e6a2c1e2a2ff091884a5482e": [
+   "arbitrum",
+   "base",
+   "bnb",
+   "ethereum",
+   "optimism"
+  ],
+  "0x39613fef285d9cee7288acfb2e6256e1ccfae8c1": [
+   "arbitrum"
+  ],
+  "0x397dbb9073025a3d87104aadbd6443b72bfc15b6": [
+   "base"
+  ],
+  "0x39839d99bc4a197b20883b1a81029eb18c3c69a0": [
+   "base"
+  ],
+  "0x399e3a4f3251ba247b223cf41079cfe19d40463f": [
+   "base"
+  ],
+  "0x3a039346452abc1167bcb05a4dea2f467fcdce4d": [
+   "polygon"
+  ],
+  "0x3a1605d52b511aaa3860e56e1dd3bacdaf6868f9": [
+   "optimism"
+  ],
+  "0x3a59958ac688f277389e7a6f270df93801a71259": [
+   "gnosis"
+  ],
+  "0x3a6a547e80f82b17fa6d5a618ff7f42a1ec92550": [
+   "bnb"
+  ],
+  "0x3aa44aa577035dd8de9e4250cf373e2a02a11ac8": [
+   "base"
+  ],
+  "0x3b76b2e000697c168ada827bbdc303dd0acf80d8": [
+   "ethereum"
+  ],
+  "0x3bab9bad9488f9b635bf5b6bcecabf53914eb4d7": [
+   "bnb"
+  ],
+  "0x3bf3846eb3ea815ba1e682c55b78e96de1a8d612": [
+   "ethereum"
+  ],
+  "0x3c07384a2887950532a010b14326ee8a0edfcb3b": [
+   "arbitrum"
+  ],
+  "0x3c37ed637a5bd169eb0f543fdb449d48c1012dd2": [
+   "base"
+  ],
+  "0x3ca269ec828a35b292a8cefa1193d18bb244eea0": [
+   "ethereum"
+  ],
+  "0x3cf292682f0421cd196c131b2a30e00b266b5782": [
+   "optimism"
+  ],
+  "0x3d1c420791442c84a24deaf5a5d9c13e3cee27e4": [
+   "base"
+  ],
+  "0x3d3562c4b60738ceee4d32f6d8234f27c4eb45d1": [
+   "arbitrum"
+  ],
+  "0x3d560dad46fbcb746ca145fd4e065ac0af7991ca": [
+   "ethereum"
+  ],
+  "0x3d9b5453f365fbea1020c847268ccae78547b6cf": [
+   "base"
+  ],
+  "0x3e15869fd36666a71a2c882baccc2285ff4811cc": [
+   "bnb"
+  ],
+  "0x3e45da015a43090bb75f52470c19e1e3909bdc19": [
+   "polygon"
+  ],
+  "0x3f873015528da679bf41a939074851e2c9d65c4f": [
+   "gnosis"
+  ],
+  "0x3fb35d27c96adbe45e8814a2a4110cd002422345": [
+   "ethereum"
+  ],
+  "0x3fbf05c536dfcde58d80febc2028476a32c2f3fd": [
+   "arbitrum",
+   "gnosis",
+   "optimism"
+  ],
+  "0x3ff1b6bf72726dd94435cbd74afab5ee0d3f3e24": [
+   "optimism"
+  ],
+  "0x4097b37251d43616b6aca60ff718386fc68f8f1b": [
+   "bnb"
+  ],
+  "0x41b8fdb74b298f280ddc2e47726b5ed1699aa3a5": [
+   "base"
+  ],
+  "0x42251614135ff529c2b8f9ec54b4cca4e1b172cd": [
+   "optimism"
+  ],
+  "0x4248c289a3bdc032423ab31902e7b37d42e2d27c": [
+   "base",
+   "optimism"
+  ],
+  "0x42d2fbbc453ec84e85d0fe4058e6a1a38ca32adb": [
+   "ethereum"
+  ],
+  "0x4351d1bec873130a0217be62646c9ce73c814720": [
+   "bnb"
+  ],
+  "0x43d9fb2969ba6fb94705bcf3e97b9cde1013c7a3": [
+   "arbitrum"
+  ],
+  "0x44f4663f80af5c5f3ce0be5c405a19a221d47100": [
+   "ethereum"
+  ],
+  "0x458798aaef492a9231be0521f91c12dacc8eeeda": [
+   "base"
+  ],
+  "0x45cf19a84fe2215c706babe386200a9ac7281583": [
+   "bnb"
+  ],
+  "0x46b197052238b4512b23dec042315da374fa7e5c": [
+   "ethereum"
+  ],
+  "0x46b3daa28e41ba2233523acfce0b960331086a7b": [
+   "ethereum"
+  ],
+  "0x470a618326df6e320680642dd31794b0d2d12d0a": [
+   "optimism"
+  ],
+  "0x475d10e5b1253e1c03e7ead90266352b98cfd994": [
+   "arbitrum"
+  ],
+  "0x47a1ef086545283991674ff23a7b5926d09d49ff": [
+   "ethereum",
+   "optimism"
+  ],
+  "0x47c74dfd54b2bf7362e5976d748aad24c4f1f36d": [
+   "arbitrum",
+   "polygon"
+  ],
+  "0x47daf8e221c1807584eea30005fb458fec6afe27": [
+   "ethereum"
+  ],
+  "0x480ac71ed6be1b8d7ae18d323e42a16384918e91": [
+   "optimism"
+  ],
+  "0x488e495c0dc76fac7b224559ec8a5a511973c592": [
+   "polygon"
+  ],
+  "0x48d17cfdc804aacbd54e0110b9421735ad055799": [
+   "arbitrum"
+  ],
+  "0x49ae5ea1b5475d803644d795524a7058ac8eba40": [
+   "bnb"
+  ],
+  "0x49c1d860360068ffa6ed19ed6a2d2a768347df2d": [
+   "base"
+  ],
+  "0x4a3727de5470132a5ddf48ad95e27361ee0f803c": [
+   "ethereum"
+  ],
+  "0x4a5706a54fe453177221f50c036fd09a2894a891": [
+   "base",
+   "bnb"
+  ],
+  "0x4b35bd14dbb9a256184e663284c1db5ad04db403": [
+   "arbitrum"
+  ],
+  "0x4b39b261659df3d39a4f95d0a5cec6ee2b394be8": [
+   "base",
+   "ethereum"
+  ],
+  "0x4be1f53c5597bdc64fbe271f8e44b361aa013d4b": [
+   "ethereum"
+  ],
+  "0x4bf8cf165baea1b9386ad2b1e47a0b92280af6e3": [
+   "optimism"
+  ],
+  "0x4c2ddc99a000ceee676bfdf3ba27cb46740206c6": [
+   "ethereum"
+  ],
+  "0x4c3cbefca37d73459bfd95561382d513c440ae84": [
+   "bnb"
+  ],
+  "0x4cb865cc389eaf43691f895edeb80633fc1ed93f": [
+   "optimism"
+  ],
+  "0x4cc5066716d7047b1b816f24f27fb5e275627a1f": [
+   "bnb"
+  ],
+  "0x4d04ef238941e8b2f0939b2de934b2e037d068fc": [
+   "base"
+  ],
+  "0x4ddcdd0b68a849d7edbf129bccfb35c525ffa306": [
+   "ethereum"
+  ],
+  "0x4de6dab5c679b18f8bedb8467fa1ad8271721a28": [
+   "ethereum"
+  ],
+  "0x4e5575d4e5b559f32a3fb26711de499280b53bc9": [
+   "arbitrum"
+  ],
+  "0x4e9e97da05346eff2e2c8cb0ed6c355a44119b91": [
+   "polygon"
+  ],
+  "0x4f9526d54fff10a39cc45b8cff90e30dfab9d921": [
+   "bnb"
+  ],
+  "0x4fabb145d64652a948d72533023f6e7a623c7c53": [
+   "ethereum"
+  ],
+  "0x4fcff2c42e8eba63c44b92dd6332a9c75c923751": [
+   "ethereum"
+  ],
+  "0x500e069c7f399fb6ef8608bded619b97a0d4fbe9": [
+   "bnb"
+  ],
+  "0x50507dde95eff03d6bd7f95d68702d80a4fcef28": [
+   "bnb"
+  ],
+  "0x506e1132346397bebb589df00f4b8df1d5087362": [
+   "base"
+  ],
+  "0x50959e91658e3fb59512418a3558c933ac769bfe": [
+   "bnb"
+  ],
+  "0x50af934a3bda8cebfd97e3a031091e80a465bb74": [
+   "base"
+  ],
+  "0x5127b7b8bb69efa1f95185df900588b2572dd0d7": [
+   "bnb"
+  ],
+  "0x5144d5655a3cd69efff897330489115c07517bbd": [
+   "ethereum"
+  ],
+  "0x5197837eac237092876f1bcaf5943d9ad4b70d41": [
+   "base"
+  ],
+  "0x52064cea5e296956e3085d45e695888f7f70f5af": [
+   "base"
+  ],
+  "0x531723f8dc24e3da9220ec39769eac12cffb03fa": [
+   "base"
+  ],
+  "0x5340dce24f966ce374b5ab5b66586027fcfc3452": [
+   "base"
+  ],
+  "0x5344e94a2673692959180f5418af73bfe7efae5d": [
+   "bnb"
+  ],
+  "0x53479b5102f2aca800275152e801f2e638f5e8c0": [
+   "bnb"
+  ],
+  "0x540fe9bec2470e93aa911906eb560ad6647612c2": [
+   "ethereum"
+  ],
+  "0x544bb1d8c8e3b7ca17f620f06eb75b93ddb93a15": [
+   "ethereum"
+  ],
+  "0x547ccd8a73ec9079dd72c5091baeb7a5ea14254e": [
+   "bnb"
+  ],
+  "0x54827357b0a948f4079959f5404fca3d14568047": [
+   "optimism"
+  ],
+  "0x553a24c348c88327b39366a6d808c4f30f891744": [
+   "base"
+  ],
+  "0x557f37550196a3022aec6c2b1b4951900ea3e3c2": [
+   "ethereum"
+  ],
+  "0x56687f747b1762c318e80b2de713eb9885a4402e": [
+   "optimism"
+  ],
+  "0x56697798327bdd76b50274717d2936cd398959dc": [
+   "bnb"
+  ],
+  "0x572065f25b2af0081bca42d1b173e507e8005e54": [
+   "base",
+   "bnb",
+   "ethereum"
+  ],
+  "0x577667e200d0ff51df790446de9b3f078c322726": [
+   "ethereum"
+  ],
+  "0x57a413be621201554abca00bdb25dbbea82f13c8": [
+   "ethereum"
+  ],
+  "0x57bb9b8190048d8edacbcce9d7f1aa4dd057f328": [
+   "bnb"
+  ],
+  "0x58656df2dc165bb366e342964555c23c1d38cc48": [
+   "arbitrum"
+  ],
+  "0x58753e0a351623a4cbaa8e7b247d1e813cb7e3cf": [
+   "ethereum"
+  ],
+  "0x589ec783fa13497688ae79eb3e57cc88b4f5f55e": [
+   "base"
+  ],
+  "0x58b273343b70404f6a68249abb6a4c4560bdbe81": [
+   "ethereum"
+  ],
+  "0x5900972eb4e639fc2b9aaab2c73479946c3a1d9c": [
+   "base"
+  ],
+  "0x5988a86fc66edb1cf559dc64fef7c18868e64350": [
+   "optimism"
+  ],
+  "0x5a610ddf877f986dfb47f5371aaf15c5914580f5": [
+   "bnb"
+  ],
+  "0x5aa3249939dfb69589ae5beabbbf89fe7c7d70f0": [
+   "bnb"
+  ],
+  "0x5b5f9ee26421e88a6509f68d0b50a98e1946d96d": [
+   "arbitrum"
+  ],
+  "0x5baacb1a8b069c3ad2908381c2a5b6c053902be9": [
+   "bnb"
+  ],
+  "0x5bb4e04d6732c665ca924e6830b32731229fff6f": [
+   "optimism"
+  ],
+  "0x5be238e2972441043f3386c4858fd609d1637a29": [
+   "ethereum"
+  ],
+  "0x5c0935ac050e939565c3e42a6882074ebb3eabda": [
+   "bnb",
+   "ethereum"
+  ],
+  "0x5c486eb696e9f4389a0e61d79d45e92a86a5221e": [
+   "ethereum"
+  ],
+  "0x5cb401dec691025bf91e24b54257f2561ee3764e": [
+   "ethereum"
+  ],
+  "0x5d0b3af0d47cab82130f371bb16cf82aab832f95": [
+   "base"
+  ],
+  "0x5d4bc0637d7246a5c61032d0e9dbf70ed63cb2ea": [
+   "gnosis"
+  ],
+  "0x5d595731fbdba356ae71b65f6f014749a4eb969a": [
+   "bnb",
+   "ethereum"
+  ],
+  "0x5d64ab153ee5b056335187147c9e54ed545fe249": [
+   "base",
+   "optimism"
+  ],
+  "0x5d7b3b77663888c8f5be6ddbb539a16250d9cd96": [
+   "base"
+  ],
+  "0x5da91aa91d35c38e0455546e072f3d0e860735cf": [
+   "base"
+  ],
+  "0x5daf6257643a872d2f6c0d49434d25f3d4671ad4": [
+   "bnb"
+  ],
+  "0x5dd1bb746a75d3fe4bda877ec0d2122f73fb2a12": [
+   "bnb"
+  ],
+  "0x5e7ed20a830eb1f3bae2ed1bcb7c0ea0ad14afca": [
+   "ethereum"
+  ],
+  "0x5eda019df70bfcbe53e33ea40077c6ee63386301": [
+   "ethereum"
+  ],
+  "0x5f0393396359b58366049e7b11aa786de4c473fd": [
+   "base",
+   "bnb",
+   "ethereum",
+   "optimism"
+  ],
+  "0x5f3075823d0b02d4248d9feb797f592da3d27bc5": [
+   "base"
+  ],
+  "0x5f41de8793e074117d8b9d8f06c40dee00ea3d9f": [
+   "optimism"
+  ],
+  "0x5fd063ebe57c6e32204b92f00bde129f4665cfc6": [
+   "bnb"
+  ],
+  "0x5fe78697ca70156a458ec9e9cd561aa136fad4c8": [
+   "base"
+  ],
+  "0x6058ca7c42ffe46bc07208dc58a2ff7f772f24d9": [
+   "bnb"
+  ],
+  "0x60ed47856445f6f9033c3190bfd4f3abb546353f": [
+   "base"
+  ],
+  "0x611652ff9caa7f1ef6c2b76da2d4d8ed7c565a77": [
+   "bnb"
+  ],
+  "0x6159fd2b871e4c11fabe564e3b2835eff7ed9969": [
+   "ethereum"
+  ],
+  "0x62738fee245cb8a22fc3761598f9f1b816e52445": [
+   "base"
+  ],
+  "0x628ff693426583d9a7fb391e54366292f509d457": [
+   "base"
+  ],
+  "0x630505d8cfafcf56721deb557fdcfdb7dd23810b": [
+   "ethereum"
+  ],
+  "0x633288b20f63d9f6f71037d6cd4a5090436134f2": [
+   "bnb"
+  ],
+  "0x638b4f9ff3ccefc9a55abcc413af362b1a319d92": [
+   "optimism"
+  ],
+  "0x653c2018585b155586026d383044cb6683fc2ae4": [
+   "optimism"
+  ],
+  "0x6585c153881af96f603fce649534a14a73acc04f": [
+   "bnb"
+  ],
+  "0x66c24762397b3a74f567ad07192c74779c0d8261": [
+   "ethereum"
+  ],
+  "0x6700e6332fcd7be4b1c72c2e77abb62556f6453f": [
+   "base"
+  ],
+  "0x672df215f73e5a998dc76bb6625902334fcbc6c4": [
+   "ethereum"
+  ],
+  "0x677237ec1e03135888075a498f2dbc5948bdb85e": [
+   "bnb"
+  ],
+  "0x67bf36772f3da35683ac840bb0af0cd8e72c7a9e": [
+   "ethereum"
+  ],
+  "0x68ae6c736ae31bbab8d8b712cdc1f552e7de7351": [
+   "ethereum"
+  ],
+  "0x68b33b340cce1e563877337865d91f595147e338": [
+   "gnosis"
+  ],
+  "0x68d333198c60c8160848437b2870f3a5be693107": [
+   "base",
+   "optimism"
+  ],
+  "0x68d778f7ba2a4f5191e74efee6ae9c8c2cf6d075": [
+   "base",
+   "ethereum"
+  ],
+  "0x698cd6d2618baa3e35ecb7322919c5fce95886cf": [
+   "ethereum"
+  ],
+  "0x6a37601de01b14f80073471d58b958db5397705c": [
+   "gnosis"
+  ],
+  "0x6a690c2b94fa1f07668fcdc47cfe0cecb197c1b7": [
+   "ethereum"
+  ],
+  "0x6a6d07ad4815fdee627c0e4bdbc475c3e1629ab8": [
+   "optimism"
+  ],
+  "0x6aad959be02e67396457ce29730f5ae7a2ef8db0": [
+   "bnb"
+  ],
+  "0x6b7879a5d747e30a3adb37a9e41c046928fce933": [
+   "ethereum"
+  ],
+  "0x6b8efeb4a4d1c7d7378b64451bd87cf5578a0b26": [
+   "ethereum"
+  ],
+  "0x6c0ce05b0fee958c2f471ca1721964170a1c5a96": [
+   "bnb"
+  ],
+  "0x6c69f2033bcfa81dae0af6d5dbf1b80378a987f2": [
+   "ethereum"
+  ],
+  "0x6ca82f0fbf6f803c3fc3863ecb64b53ac9e180b5": [
+   "bnb"
+  ],
+  "0x6ccf6fc8bd7eb3bee762887196a2f0d8c52ef3c1": [
+   "base"
+  ],
+  "0x6d38ff590e052bcfb9436fa9e369298600c0eb3b": [
+   "base"
+  ],
+  "0x6d7a717bf4932925e1098e92dcc627cc965277db": [
+   "optimism"
+  ],
+  "0x6db52cd2d4c1f6f8cc4f6a84b11b43c4e6b9a303": [
+   "ethereum"
+  ],
+  "0x6db6dc43ad9d9a98d995c343af1e818ed71fa380": [
+   "bnb"
+  ],
+  "0x6e0abca1f2b71787fcbf9b6e8e26397cd980893e": [
+   "arbitrum"
+  ],
+  "0x6e12b2430eb146aba9ce42371d6570fbecf25488": [
+   "base"
+  ],
+  "0x6e86f8ab6ed57f8b667ae7e301e1af9e2cb7ee2b": [
+   "optimism"
+  ],
+  "0x6f14a6393744adf43be8c3c6c0924f840e7892f6": [
+   "ethereum"
+  ],
+  "0x6f46ec250925dbe74d54f7649b876bd6356a4d27": [
+   "ethereum"
+  ],
+  "0x6f6a83ab804a05007d11a831261be3d7fe2b2f09": [
+   "bnb"
+  ],
+  "0x6f94e6658730eacb340171cbc4a57357a5ffb926": [
+   "ethereum"
+  ],
+  "0x6ff2e3697e9900803adfc54990bb4a306f352c42": [
+   "bnb"
+  ],
+  "0x70602eac62eda029d878ca4a52690bc276e53c0c": [
+   "ethereum"
+  ],
+  "0x70706888aaac09093d126978751ea6c456ae99da": [
+   "ethereum"
+  ],
+  "0x709c95a75c89d57f28b4f4ef8a8617a466ed7988": [
+   "arbitrum"
+  ],
+  "0x709d5b91c2549b23ae535edeca913d39e5e19dd5": [
+   "base",
+   "optimism"
+  ],
+  "0x710fad1041f0ee79916bb1a6adef662303bb8b6e": [
+   "ethereum"
+  ],
+  "0x716af990aa5b57cf9f868c9f1e9de545c57db350": [
+   "ethereum"
+  ],
+  "0x716e87bb0a48ceed408c5b629769d0dd3cc0bd63": [
+   "ethereum"
+  ],
+  "0x71763c17539c9fd1a03aea4b663280d0aba2b54e": [
+   "bnb"
+  ],
+  "0x7196f386cd5adfa125895540450c77bdcf0534b3": [
+   "optimism"
+  ],
+  "0x71d3410b017de35ad643f67a4f7bc5d02af4dc71": [
+   "ethereum"
+  ],
+  "0x71f3be23621ae9fc0c883776d9f78187a7640c8b": [
+   "bnb"
+  ],
+  "0x71f968f9f220b9cb53f58af1621cad1522d3f178": [
+   "base"
+  ],
+  "0x72ec679bc22cc91abcc3bcbbe93b977a6b7b6571": [
+   "base"
+  ],
+  "0x734e19c22dd7205500480f5b84a14c326df7d351": [
+   "base"
+  ],
+  "0x73822de9de838b1c85deee3d884bf47c2e33c8a0": [
+   "bnb"
+  ],
+  "0x73c3553cf99de17b9fc6f8ec83d092e3b489b098": [
+   "ethereum"
+  ],
+  "0x7543d5c7417fde1b7e2b1d12f7ec77a8fa0d7e7c": [
+   "bnb"
+  ],
+  "0x760daf78fba61e440816243de08e89486375e2a8": [
+   "base"
+  ],
+  "0x761dc36a52733214423d04f4dcd84083e15d3735": [
+   "optimism"
+  ],
+  "0x768db2a29a1f4cf2fe2f42a01ce6cb2bbf8cd341": [
+   "base"
+  ],
+  "0x76dcbb9c9c3aca33bf5de6e4304dd1995a6e6a5b": [
+   "base"
+  ],
+  "0x76ff9c83c537ec01ff2e4102c1554a314840e765": [
+   "arbitrum"
+  ],
+  "0x7702cb554e6bfb442cb743a7df23154544a7176c": [
+   "base",
+   "optimism"
+  ],
+  "0x777e03001d4b2b5ecca3a10474ba355f95630f56": [
+   "ethereum"
+  ],
+  "0x77896bc724e7a7c5fc6f5a887e324bfdbe39386c": [
+   "bnb"
+  ],
+  "0x79cb9c3e43a673bb29ae1e7c7e8b2f3d0b79b52f": [
+   "optimism"
+  ],
+  "0x7ad2c685cbc9468576598cb8a3b0956e128c74a8": [
+   "base"
+  ],
+  "0x7aef1df01285823845ee9b905f5bd20471c27e6c": [
+   "base",
+   "optimism"
+  ],
+  "0x7b623047ae4c022ff9683b4f81b99756734d4c6e": [
+   "bnb"
+  ],
+  "0x7b6ae45cbfcbcb2e31ec405b0bfe82cb2595fbeb": [
+   "optimism"
+  ],
+  "0x7bbd933c24536c7ae7f85040f658ef0ffe602805": [
+   "bnb"
+  ],
+  "0x7be15e236cdb8c9c5e74c33e2d63e2c184573487": [
+   "ethereum"
+  ],
+  "0x7c871113df5f3bcf5219eaaa727ec34bc323f2dd": [
+   "base"
+  ],
+  "0x7daca39645b25b09d2f72779c823cfcfc0fc8ab8": [
+   "bnb"
+  ],
+  "0x7e35895acbf8734a5c47f5d27020d0fbe9e865d4": [
+   "ethereum"
+  ],
+  "0x7ebce79a41445dffd9b9e6dcee01c205cc020db0": [
+   "base"
+  ],
+  "0x7efcee8c6fe935b1551e1c133185e84a3d7742e9": [
+   "base"
+  ],
+  "0x7f0fc823ff1089dfb2d0e3923c67daa98c70bcc3": [
+   "base"
+  ],
+  "0x7f7f0dcbe8add58145b2785afea40950891b44c8": [
+   "base",
+   "ethereum",
+   "optimism"
+  ],
+  "0x7fbeb059aa52a2618d78bea937fb5497c774c057": [
+   "ethereum"
+  ],
+  "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9": [
+   "ethereum"
+  ],
+  "0x804e70b455f44560a43605fe1e34a02e0c9f79c2": [
+   "ethereum"
+  ],
+  "0x8089728a776934de9b108f1c0c60f4c96fd205a7": [
+   "base"
+  ],
+  "0x81865d4b8db0f1bd3e710e92c6a36463ff7a0e54": [
+   "bnb"
+  ],
+  "0x824aa93717c8d4d9cb1e213a9c02c726b947f774": [
+   "optimism"
+  ],
+  "0x82afce297189b8eabc0786f5d9c21c762bcb8216": [
+   "ethereum"
+  ],
+  "0x82e5a36516775c62b91e9a2aa3446c28418424f7": [
+   "polygon"
+  ],
+  "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913": [
+   "base"
+  ],
+  "0x84340f560c20b1076f1a6ea97207a55d145d4447": [
+   "base"
+  ],
+  "0x8439e23a0cf0e154e18dadd901c3c6df23558597": [
+   "arbitrum"
+  ],
+  "0x84d05511614272694d3a9cebe896514dbde51f40": [
+   "ethereum"
+  ],
+  "0x85a89daa4483e2685cbec4e92b97845ba976e926": [
+   "base"
+  ],
+  "0x86002727eb3ed276b70ed900f0c243ee2a446768": [
+   "bnb"
+  ],
+  "0x8613f7e17d522e80a9410a4375032dff82f7e315": [
+   "ethereum"
+  ],
+  "0x86202a37472ee00ab43e434b197c6806592cd505": [
+   "arbitrum",
+   "ethereum"
+  ],
+  "0x863cf72e70c2e6ae47078ea8b4e135a4d350572f": [
+   "bnb"
+  ],
+  "0x8679ef70e32f9a0e2141e9818654ed2a9db571e9": [
+   "bnb"
+  ],
+  "0x8730af6d97a84a2086411be23902066304550050": [
+   "ethereum"
+  ],
+  "0x8799a9fa7da4fb3745342e15c6b12f6ff63c2b0a": [
+   "ethereum"
+  ],
+  "0x88700edf44cc2b0d7b7a4c6e76e96566b247e42e": [
+   "bnb"
+  ],
+  "0x89046d34e70a65acab2152c26a0c8e493b5ba629": [
+   "arbitrum",
+   "base",
+   "bnb",
+   "ethereum",
+   "optimism"
+  ],
+  "0x89318ee02b4adda57770267afe5cd8f5242320d2": [
+   "ethereum"
+  ],
+  "0x89383882fc2d0cd4d7952a3267a3b6dae967e704": [
+   "ethereum"
+  ],
+  "0x895013bd5e4dec7df9ac9aa3d56e3764c625bdf3": [
+   "bnb",
+   "polygon"
+  ],
+  "0x8972c34d0030b3a0faeb69051b72c12598cf1879": [
+   "bnb"
+  ],
+  "0x89ce3b12173fafb371816128059d7dde83aaeac2": [
+   "arbitrum",
+   "base"
+  ],
+  "0x8b52d1c28282ee323d66faa3365dbdf251bc219c": [
+   "ethereum"
+  ],
+  "0x8b7ff0bacef70b0cfd2b4e54fb548256fa2bf65f": [
+   "bnb"
+  ],
+  "0x8c16769db3c897bf2c61c1af7b4b89e678096a54": [
+   "ethereum"
+  ],
+  "0x8c886bf8a303201532820287d51c733f2c8ea15b": [
+   "bnb",
+   "ethereum"
+  ],
+  "0x8d109b57a2a8be80501c25962f880ff59d6293d6": [
+   "ethereum"
+  ],
+  "0x8d414d524dfbeabee9dfc48a152f8ab85a28eb15": [
+   "ethereum"
+  ],
+  "0x8d95ce736d17e3daa8afb9b8d5b5b68af9518c1c": [
+   "ethereum"
+  ],
+  "0x8e7d36600b034e6b7e0266419ec899c36499f066": [
+   "arbitrum"
+  ],
+  "0x8e7f4b8e98c93d62888bf54bc174de79da134f30": [
+   "bnb"
+  ],
+  "0x8ee33a48e87e164725c3bbd4d186700ee7b74160": [
+   "base"
+  ],
+  "0x8efe81101b585e214feaa98d455ae20396093085": [
+   "base",
+   "bnb"
+  ],
+  "0x8f919e1a4a4d376183cd179d55d17e592ad4dada": [
+   "base"
+  ],
+  "0x8ffee2ba2ee578ba6d2ebdb09e7dc27e8bc2c5d7": [
+   "arbitrum"
+  ],
+  "0x912ac7a8ed81a4a0a707c4342a85f2f582440a3b": [
+   "ethereum"
+  ],
+  "0x912f913496622df4e4efe38e61e1b9554a37e13d": [
+   "ethereum"
+  ],
+  "0x913ef342a833f58ba924e819b25c345e2ae9e5a7": [
+   "arbitrum"
+  ],
+  "0x916a0b8fdc003c43213b7abc50fcb85a17ce6a6b": [
+   "optimism"
+  ],
+  "0x9249d32e20e78c7ad9a3aacc7bbf161e5b02ba07": [
+   "ethereum"
+  ],
+  "0x926ee06fc0474b8158c049b8a32aa13a7e9aafad": [
+   "arbitrum"
+  ],
+  "0x9273e89a0f5e96d8a7554a23b2036dd4362ef035": [
+   "optimism"
+  ],
+  "0x92ece332466b30af32980a59461c8a0f018caf68": [
+   "bnb"
+  ],
+  "0x92fedc9677f7f580e78d5a54bdf7f1d8e60787af": [
+   "bnb"
+  ],
+  "0x9307637c1708c1cec79a5e96f4beea7d363f6ca0": [
+   "optimism"
+  ],
+  "0x93078e0e35daa6cefb532eb57247a6c24a2d0c14": [
+   "ethereum"
+  ],
+  "0x930fcc37d6042c79211ee18a02857cb1fd7f0d0b": [
+   "ethereum"
+  ],
+  "0x93c1bfc95c20d212c85c6bbc74bd339b3c0086da": [
+   "arbitrum",
+   "base",
+   "bnb",
+   "ethereum",
+   "polygon"
+  ],
+  "0x93d473ce2ceb00af7489694511ca778deb83ef88": [
+   "optimism"
+  ],
+  "0x9594dc63e7087611979adf0ee512c37ce8c3ba4c": [
+   "ethereum"
+  ],
+  "0x95ad3b610da3f60e2e169dc778e29b0c0cfd673e": [
+   "arbitrum"
+  ],
+  "0x95bee585ec20700a56734c9c46245960c1e39d20": [
+   "arbitrum"
+  ],
+  "0x95eb89311ffb27112e657b8a6eaaf7391192c83a": [
+   "gnosis"
+  ],
+  "0x9605236172776a72d14c4f8038e053454ad10ad8": [
+   "ethereum"
+  ],
+  "0x9679a231fb530a5cd4d6314328e4aadc068f1b34": [
+   "base"
+  ],
+  "0x96f323b4d9bd628022c643e6b409373ba2950c5a": [
+   "base"
+  ],
+  "0x97f6c7f4110afe7dd51d987ee1fa03f01c933834": [
+   "arbitrum",
+   "ethereum",
+   "polygon"
+  ],
+  "0x9864340f16fabb27612cef471312e6271628c726": [
+   "base"
+  ],
+  "0x98d54ea32246e9aa3b3d531685e1fd34194a3e63": [
+   "ethereum"
+  ],
+  "0x98d90bb858781934b05ec289dd272097366825a0": [
+   "base"
+  ],
+  "0x98e3238b6f82538c4298c92143e3ad1cc7cce559": [
+   "ethereum"
+  ],
+  "0x9a56ac6f7a9c0944f448191a138b9d458fbb3c04": [
+   "ethereum"
+  ],
+  "0x9ab329f4ecf6888d54afb15267a3d4faf0929ad7": [
+   "optimism"
+  ],
+  "0x9ae6a30440360ada91d98366d4fd6bd59501dbb1": [
+   "base",
+   "bnb",
+   "ethereum"
+  ],
+  "0x9afcf76a3cba1779950916fc25e03e91a7ffdbcf": [
+   "bnb"
+  ],
+  "0x9b14cc8956a09e6e8e56b1ca1e4600183ef00c26": [
+   "bnb"
+  ],
+  "0x9b5a419dfa37301323062aefe9e570a1231e8168": [
+   "bnb"
+  ],
+  "0x9b9d06bba2f40ae51b352ae17381249fdfaac49f": [
+   "arbitrum"
+  ],
+  "0x9bcfab73a9e0c3786dc0c71090c425a783ef8ae5": [
+   "base"
+  ],
+  "0x9bf434ecc229f69222bb10fed215a4f5f5a840ae": [
+   "bnb"
+  ],
+  "0x9c30b56d5d41d27e2f6c8b8a43f6ad5f0033b714": [
+   "polygon"
+  ],
+  "0x9ca41e08cfdc9332d7c6319dfb8319cafb15d631": [
+   "base"
+  ],
+  "0x9d1eaf1f10505f722f69184c235a1d0aa7e604ad": [
+   "gnosis"
+  ],
+  "0x9da0b102317bae7d61588510c699f3a4e387e7db": [
+   "polygon"
+  ],
+  "0x9da9f2ce82964766535b39d2793526774f9479f1": [
+   "ethereum"
+  ],
+  "0x9dedce2f26f0276a4ee7d650a76c390d6274b2a5": [
+   "base"
+  ],
+  "0x9e5bf3d3238ad9e69548494739e8c9eb52eac6d9": [
+   "ethereum"
+  ],
+  "0x9e70478412c51f17131a94e38cc2241eea4b92e3": [
+   "optimism"
+  ],
+  "0x9eece72f8313d81d9172ec68e1dcb6c1cfd60961": [
+   "ethereum"
+  ],
+  "0x9fba59fc999c649f3738cfa0d630fcb0a09808c7": [
+   "bnb"
+  ],
+  "0xa03fc3c62d26253b3ec3076cb871afa3b5fa60ab": [
+   "ethereum"
+  ],
+  "0xa1235ff6ef7ab4172c047c754fc0be67931a98ee": [
+   "bnb"
+  ],
+  "0xa13273977acb3068aae7263eb5487ba5be60840a": [
+   "bnb"
+  ],
+  "0xa213798e20fd04a31e468a93ddf2703364803a21": [
+   "optimism"
+  ],
+  "0xa25f6ef06880a2c7e2bda3e647011235c68bcacb": [
+   "ethereum"
+  ],
+  "0xa28023c54e45e9ef833bc60985cabcbb28dff858": [
+   "base"
+  ],
+  "0xa283d9f6be0e452ea7615466f23830be0311ab1e": [
+   "ethereum"
+  ],
+  "0xa2e47f21d0340f24131e1be1c0cc6fe2b9d8b8fd": [
+   "ethereum"
+  ],
+  "0xa37a5abd41f8109b430400f91f1361c7fcedcf18": [
+   "ethereum"
+  ],
+  "0xa3dcc8e16ec4b33ecd6e6f4e8789d34c7e74c145": [
+   "base"
+  ],
+  "0xa455a417f9aebe8b99bd88d48be0c8ec7d2fb3af": [
+   "base"
+  ],
+  "0xa485c48ecbee5eec72d697ab9e985751fab48318": [
+   "ethereum"
+  ],
+  "0xa4d3ba32d2dcdc49af4e1f220707a5023cb93e9e": [
+   "bnb"
+  ],
+  "0xa5482e831dae2ff1acb4006cfeb84361c60bbef9": [
+   "ethereum"
+  ],
+  "0xa5a465f94e26fae4770a29560d46529131c56d02": [
+   "gnosis"
+  ],
+  "0xa669cd8315b80478bdc95acf73defa92a0e8d036": [
+   "ethereum"
+  ],
+  "0xa6824fe8fb56ba33c5e38d471740144af99a541d": [
+   "base"
+  ],
+  "0xa727b99c22db32da326fd2ed00bd98c5533f0784": [
+   "bnb"
+  ],
+  "0xa7cf1af2a74885b28d8f82d1838a000c3e0998b0": [
+   "base"
+  ],
+  "0xa88c68635a153ae504b79ba3d0839ffe94fc7508": [
+   "ethereum"
+  ],
+  "0xa8d943374c909ae9353f363c9c000f15e97c8f76": [
+   "arbitrum"
+  ],
+  "0xa95fe02029d9aa507fe44b4a46e7bb613fcf6dbb": [
+   "arbitrum"
+  ],
+  "0xa9684b3cd76dbb86049dcc1e9ce75a6ac3f74dce": [
+   "ethereum"
+  ],
+  "0xa9b1296efce1404b88acc18d0ff2c88831ecdbf2": [
+   "bnb"
+  ],
+  "0xaa114220c7f4b01ce91c6722da84e6f8021f7358": [
+   "base"
+  ],
+  "0xaa1d67342d4233bd1b600cdd865827265333e4b4": [
+   "base"
+  ],
+  "0xaa6491c5071d91e4fc398d512ba5f78f62e2b100": [
+   "optimism"
+  ],
+  "0xabadf5913a3178c6010a9e01b76c16cbcc1a3f5e": [
+   "ethereum"
+  ],
+  "0xabf688faf8aa042b4b75dddfbd15d1eb423617a2": [
+   "polygon"
+  ],
+  "0xac68d6c8805358385a3beaa567037edacbe830d8": [
+   "ethereum"
+  ],
+  "0xac8919bbbcd06d2540194230a736bdafa9936ebf": [
+   "ethereum"
+  ],
+  "0xac8bd2651a6a366eb036aff84d984586f800cee1": [
+   "base",
+   "bnb",
+   "ethereum"
+  ],
+  "0xad96f83ad7df7dcfd3faf724dec83b27bb4d8ded": [
+   "ethereum"
+  ],
+  "0xae3c3839280afe3310c4cd5de9adb434965917a3": [
+   "optimism"
+  ],
+  "0xae7ab96520de3a18e5e111b5eaab095312d7fe84": [
+   "ethereum"
+  ],
+  "0xae9d88d94695a3b8a63eac5301722e592fd6bdc5": [
+   "base"
+  ],
+  "0xaecc16ab0ed7377db3ce86346a449622f669d0ee": [
+   "ethereum"
+  ],
+  "0xaf08c8f3523b1eb6aa49010820b267facf70998c": [
+   "base"
+  ],
+  "0xaf790557ca8cf63530e88fe2f7ac6c6efd38d3b3": [
+   "bnb"
+  ],
+  "0xaf85108636450fa70913d00f5d3e6ab6c0963173": [
+   "optimism"
+  ],
+  "0xb083055e11094618f5c7e1d801f6518184f4b6cc": [
+   "ethereum"
+  ],
+  "0xb0ae13b8a9a793882c616653d4ab034a92e5f047": [
+   "bnb"
+  ],
+  "0xb0e649954978aad7700e21fee7254b7db6a99360": [
+   "base"
+  ],
+  "0xb1541b5e1a2ce5dacad595fb9317ddb6f00a0f08": [
+   "ethereum"
+  ],
+  "0xb159f6810a4c2ff0a936d593a89545ff75a0aaa2": [
+   "ethereum"
+  ],
+  "0xb221f464c8265381054b3dbfda90fd4e5f01ab0e": [
+   "ethereum"
+  ],
+  "0xb2b28aaf0fa0a9d417d4201a22cfd5dd9ea159ff": [
+   "ethereum"
+  ],
+  "0xb43df2461af71eacad3aeb092b7487758ad4587b": [
+   "bnb"
+  ],
+  "0xb4d2215f6e155566a391edc9b7ab0e816a934af4": [
+   "ethereum"
+  ],
+  "0xb4e6e92e5be540d50d1146d6564d8b1a1d3dd275": [
+   "bnb"
+  ],
+  "0xb5629500e7395c5417f8f228fae1a5263fc93159": [
+   "ethereum"
+  ],
+  "0xb6252af4c3561714c187aa1c0a7b1f0ec2e70053": [
+   "optimism"
+  ],
+  "0xb66f536510e0554e08082710847385031f75749e": [
+   "ethereum"
+  ],
+  "0xb6785b782571980b3ddb5d40659f4861ff15aa02": [
+   "ethereum"
+  ],
+  "0xb6da1852c218d74257593126fdfbd20f0bceb2a8": [
+   "ethereum"
+  ],
+  "0xb73127ab1612af6ef68a6729786ed223cb7ec530": [
+   "bnb"
+  ],
+  "0xb7349b3481ca70c7cb7176c5ed1aa95a35abc397": [
+   "ethereum"
+  ],
+  "0xb7893c1fbbc04267af87bdb013d701ef05920462": [
+   "ethereum"
+  ],
+  "0xb79b81b61d9af68fec9af8dad6bbb947190527e5": [
+   "gnosis"
+  ],
+  "0xb7f7d6714134a313799988b4f160f05d3caf0487": [
+   "bnb"
+  ],
+  "0xb7fef9033507eee348d59102b6856c66051b8040": [
+   "optimism"
+  ],
+  "0xb80568899c6e33e7b31b4fc371ee6b4a78bc153d": [
+   "bnb"
+  ],
+  "0xb8165a3c9361e405aa21311883ad6388cd484215": [
+   "ethereum"
+  ],
+  "0xb8403bd4d3dd7e0a609b802e5b93934ad307d819": [
+   "optimism"
+  ],
+  "0xb845ce81270c9c4ac2ace3fbc479724480a74ecf": [
+   "base"
+  ],
+  "0xb847f107513522af770ee0aad8da0319e6da32b3": [
+   "ethereum"
+  ],
+  "0xb878a41ec78d68d4f108a2f1761f6752087290bd": [
+   "bnb"
+  ],
+  "0xb89f4c98d5906383490c06c745a68a08fed48209": [
+   "ethereum"
+  ],
+  "0xb8d5b587f5a76e1da6e38bdc813e1a0e7fdec6b0": [
+   "bnb"
+  ],
+  "0xbae7cebaa80fb48647a5921c3ff91b8b1d341a11": [
+   "polygon"
+  ],
+  "0xbb1ceb4440c69c9cc01054e2f26c15bb7367b370": [
+   "base"
+  ],
+  "0xbb3783f3e97eea9927900f2cb38afea434cb235a": [
+   "ethereum"
+  ],
+  "0xbb90a78b86f3f756c160886ebe7029205c4ba3f1": [
+   "optimism"
+  ],
+  "0xbb9461a20ff8fd4111cb9d449ad1596cc288b021": [
+   "ethereum"
+  ],
+  "0xbbc9e6412d2b48acd4273faca993bd1a3e0d11da": [
+   "arbitrum"
+  ],
+  "0xbc597fb4fef6d1d31820a592492dcc5cc9255b5e": [
+   "ethereum"
+  ],
+  "0xbc71a34405c357b76c5528bfaa92dc28c5cf0715": [
+   "arbitrum"
+  ],
+  "0xbc9d76a8e2a2da2113936a9cb8f18a22109173c1": [
+   "bnb"
+  ],
+  "0xbd1cf204b8f8510f92c8d4c739573caade890210": [
+   "ethereum"
+  ],
+  "0xbd2bef4b50b16276b9765be7c240b006c91ffc85": [
+   "arbitrum"
+  ],
+  "0xbd8aac1ab758af1bfe61c3ae2f94e792b5134fed": [
+   "optimism"
+  ],
+  "0xbdb6d1f0e52cf92e3037787149dd7b0cea20e035": [
+   "optimism"
+  ],
+  "0xbdf96cd5aafe3448ef66019e78c84b00ac2be083": [
+   "ethereum"
+  ],
+  "0xbe418496bbabae7465a716d1a407bd904d5064fd": [
+   "polygon"
+  ],
+  "0xbe4cb4f3b926953dc550614b71909f149799f1f9": [
+   "base"
+  ],
+  "0xbe7ae1e53867f9f1778c8b728b533c00900a38be": [
+   "optimism"
+  ],
+  "0xbec420215162d2e6a5bd6cb23a2bd86620a9d0fc": [
+   "optimism"
+  ],
+  "0xbef30ef0d9e7d9ca0689d2b6b7ca037e9e9733c4": [
+   "bnb"
+  ],
+  "0xbfc64cd6cec913bcd004faca475581d9eb65a01a": [
+   "ethereum"
+  ],
+  "0xc0403282ba280a6670f469c136aaad86b780e098": [
+   "base",
+   "bnb",
+   "optimism"
+  ],
+  "0xc0606a611592ec163835e96eea5c0c4cb101a7d8": [
+   "bnb"
+  ],
+  "0xc0698378def6c7e05703bf6c803d5f63ba73c2db": [
+   "bnb"
+  ],
+  "0xc10fc591f2e9479c493a3da0e924a2c6cd3fc77a": [
+   "arbitrum"
+  ],
+  "0xc140266a4add6b6aa23bd8e665947ce867f0899f": [
+   "base"
+  ],
+  "0xc20b8ac83a28e4c93e9392304781a19409868e04": [
+   "bnb"
+  ],
+  "0xc22efd7c592938a9ce328b6ed46ff54dc12e4d98": [
+   "optimism"
+  ],
+  "0xc245145fbef4dc75b7dbc28a7b57cdf547dd896f": [
+   "base"
+  ],
+  "0xc271d8cefdd51a02054217a4442cc10960723879": [
+   "ethereum"
+  ],
+  "0xc33a8e3f7bde1d49818d997ec218b14aac14e69d": [
+   "polygon"
+  ],
+  "0xc359b5245feec07a65de5e4b595d9532854e6e66": [
+   "base"
+  ],
+  "0xc39d0c269aec8e45563d1616d82f5c6a20065332": [
+   "ethereum"
+  ],
+  "0xc4599c6dbc70d3986a628acabbc839d08a98a2b2": [
+   "ethereum"
+  ],
+  "0xc4d6d0b69b0a20b43cea9adfa2c3fa8b91e71387": [
+   "bnb"
+  ],
+  "0xc57a8d27297d19322ff8f3b9991039bed5ec70f1": [
+   "arbitrum",
+   "polygon"
+  ],
+  "0xc5b950876867047fdeed1981d249b21d01cbdc68": [
+   "arbitrum"
+  ],
+  "0xc65961498dcb1d9711a27e6e386e6c7ba28592f3": [
+   "bnb"
+  ],
+  "0xc6cb2c4d7c277bbd774fd9a9e485c1da0a460ade": [
+   "ethereum"
+  ],
+  "0xc85230fbb8901f60a43cabaf4a7d15169c32b30b": [
+   "gnosis"
+  ],
+  "0xc8c881d2166d9ed2cd7f4cb257dc6448b4251fe7": [
+   "bnb"
+  ],
+  "0xc99f40a9c952ce7e29e2f8b6c7461cdb60c1b54a": [
+   "bnb"
+  ],
+  "0xca27f2cc3c3f0fd3ec0f283bf7faf0a5fd4b78e1": [
+   "ethereum"
+  ],
+  "0xcb3756460556a02138c34431e7aede00cbb487fe": [
+   "ethereum"
+  ],
+  "0xcb76f210fff34c2176802579a3f4d57b6d8803de": [
+   "ethereum"
+  ],
+  "0xcb961ae6333177f5e417d3b5d4b721ec22357395": [
+   "base"
+  ],
+  "0xcc13036b62790048f20d4bf95b28a028916853f5": [
+   "bnb"
+  ],
+  "0xcc7c302c5482481e9b608e0e78be18c3d0ab62a7": [
+   "base"
+  ],
+  "0xcd7220c1b55f4f9fe3a71f22375c8b7f1cbbe110": [
+   "polygon"
+  ],
+  "0xcd903e88366559dbf83ee1d3257522c6a8c6f206": [
+   "ethereum"
+  ],
+  "0xcda1d9346080f6bafef0225d3c364df544cad1d1": [
+   "bnb"
+  ],
+  "0xceaa59577cd3302b43eee7e02dad912842786966": [
+   "ethereum"
+  ],
+  "0xcedb9f87a3cd62e343c54722ca60053428c32362": [
+   "polygon"
+  ],
+  "0xcefd060da801a3f004d6b307f4cab943d1c9b45b": [
+   "optimism"
+  ],
+  "0xcf4362842477cbeacadf07a300cbcb9cf7a50cc1": [
+   "bnb"
+  ],
+  "0xcf45b71a976bf6b71c509936e3f1033cebd8ea14": [
+   "ethereum"
+  ],
+  "0xd0120967143b20b1142e9da31d6d2280d883f499": [
+   "base"
+  ],
+  "0xd02bff2e76ac896ee89081ec615cb71159564bfb": [
+   "bnb"
+  ],
+  "0xd19128c8c3d9b6a937ef4d3bc0b24db02ee87e3d": [
+   "base"
+  ],
+  "0xd1d4b213d67bf213563629da22769fe335950da2": [
+   "base"
+  ],
+  "0xd24371bbe7c248597705b5b6ac753025dc2d2619": [
+   "optimism"
+  ],
+  "0xd2a4da69c5e4be9a540092bd27e0d2b3fe7d77a0": [
+   "base"
+  ],
+  "0xd2dd1f0f47983007741a3665922218988a4aa323": [
+   "bnb"
+  ],
+  "0xd34426bef7e56fef2a617ea70fff427d658b740b": [
+   "base"
+  ],
+  "0xd38732a071239cbecbdc7eba2b5008e6a3ea4127": [
+   "bnb"
+  ],
+  "0xd3dc65efd16487b43530ca2ce05c3ce8da2af1ee": [
+   "ethereum"
+  ],
+  "0xd4661f44e3738d26eb1b7965f1e8ee4edd3d2a5d": [
+   "optimism"
+  ],
+  "0xd49c36326b80fcdc3f042d78c96820321bfee1d1": [
+   "ethereum"
+  ],
+  "0xd4ab05da29001b7faa97a21fa0eecc21b1f27b37": [
+   "polygon"
+  ],
+  "0xd51134658c71e28238b4d2516b2664f7a98475a4": [
+   "bnb"
+  ],
+  "0xd51d2e6c8f3adf188cb71025226a3a12ef490f41": [
+   "bnb"
+  ],
+  "0xd53f5c32eea3e3a141f777e995ee22a0692cb077": [
+   "bnb"
+  ],
+  "0xd5544306da905a4a811fc8dbf78c4a0ac2ae84bd": [
+   "optimism"
+  ],
+  "0xd5771d92854f5298b33ccd73178c9ff8b88bd14f": [
+   "optimism"
+  ],
+  "0xd5864ea79230263b7ed860ca358d59402311c0b7": [
+   "base"
+  ],
+  "0xd5bad6fa911fb8a7e7da9609d66b5bcb086bece8": [
+   "polygon"
+  ],
+  "0xd6464c671084289ed0c3082a9853491b7115a630": [
+   "arbitrum"
+  ],
+  "0xd668de26719625c03e330d63117f254a5299c5fb": [
+   "bnb"
+  ],
+  "0xd6a407ba93704fd10e60ffad2e38389535259327": [
+   "bnb"
+  ],
+  "0xd8ee44eb8fa9c5ecc0052fc04ffe5d58904aff78": [
+   "base"
+  ],
+  "0xd9998753a9d5018e6bb80ae81f4a61f5b08fe1b8": [
+   "ethereum"
+  ],
+  "0xd9e18d022a3f891c5effa6a091d77ad7e3f3e3ba": [
+   "base"
+  ],
+  "0xda1978401ba2c0fddde5df5b3c10fb24a1bbf44b": [
+   "ethereum"
+  ],
+  "0xda3ec82db03d024e54fff2f0eca2cf1b19cf9b11": [
+   "ethereum"
+  ],
+  "0xda4ccc6dc669ec880a132cb7c25c67e82d490e92": [
+   "ethereum"
+  ],
+  "0xda77f053c1ee9d2901c9cbe69da98c58fed45465": [
+   "bnb"
+  ],
+  "0xda81d9eced2ddc2e87242e1ccb18d8ae5f07193e": [
+   "ethereum"
+  ],
+  "0xdc51ffb83fa7f50eae82269fb282e63feecd6fdd": [
+   "bnb"
+  ],
+  "0xdc534312204495c1e784aa6437593116a608665c": [
+   "bnb"
+  ],
+  "0xdd3b42b0d15d74604f493a59a7876a87c6bffbc0": [
+   "gnosis"
+  ],
+  "0xdd461b55a8b14da4c889fd2b5dab1f8768203ac4": [
+   "arbitrum"
+  ],
+  "0xddb2dbdeb44275246515fcdf960e10bd2781f1b5": [
+   "bnb"
+  ],
+  "0xddf871129cf4a7c377bc255276b7ea71765929c5": [
+   "bnb"
+  ],
+  "0xe03a11a639c5a700ebcbaf849878513c62e8d73c": [
+   "arbitrum"
+  ],
+  "0xe091aa0fc886e16ada66fa7d1a3c6b3c9d7946b2": [
+   "base"
+  ],
+  "0xe21cec99a4cca4a4bbe98624ea2f8f407462507d": [
+   "ethereum"
+  ],
+  "0xe21ed77ad618245abca9e213f5358f50bc63fdbd": [
+   "base"
+  ],
+  "0xe38e81a06ada5c4515a1fc8266ae470da63c00b4": [
+   "ethereum"
+  ],
+  "0xe3efd49fda6027ec440d35aabb63fa719582c5b9": [
+   "bnb"
+  ],
+  "0xe421de693a75ae8a6ef68346fcf4fb59a59667c0": [
+   "base"
+  ],
+  "0xe4ed9d391b7a8d3ef0110699c814de4402665832": [
+   "ethereum"
+  ],
+  "0xe51ed17a26a0e88c5ca7b962a2271dea4548ca13": [
+   "ethereum"
+  ],
+  "0xe5cd14c7c65389b68a9668abb0671719a6901f69": [
+   "base"
+  ],
+  "0xe5de516c9a20352aefd21dc35e7097543f7d0f91": [
+   "bnb"
+  ],
+  "0xe6827c2a2167bffbf84fa02d94a4d25668434313": [
+   "bnb"
+  ],
+  "0xe7485fb4850972ca243988c0e1fce94bde7a3773": [
+   "optimism"
+  ],
+  "0xe7fddab0b8be9a67a12f9a147a6bbce2e9a47cd2": [
+   "bnb"
+  ],
+  "0xe85c20c9408a07383d932332540d322a1becacb5": [
+   "ethereum"
+  ],
+  "0xe9243c7fa354d34b601fd5e5d1c9bff7194be325": [
+   "arbitrum"
+  ],
+  "0xe93bc144cf11af93c705e28a9602550242edea8f": [
+   "arbitrum"
+  ],
+  "0xe98ff50b1545465e864e21db780cc3e63ac440bc": [
+   "arbitrum"
+  ],
+  "0xe9eaef23ac3ce6c232517541c7d361852b06f911": [
+   "ethereum"
+  ],
+  "0xea5215c62627ed32e96c0d8ff33795f327c8d91c": [
+   "bnb"
+  ],
+  "0xeaa6aa358ee796dbc038b9424301eebb8e0570b8": [
+   "optimism"
+  ],
+  "0xeacc7e98583c0e10746d937a3c696248854fb01c": [
+   "optimism"
+  ],
+  "0xeb4ef8f8c42b5dd98a3d2b630a3519e90199208b": [
+   "ethereum"
+  ],
+  "0xeb63ad112c162be423c6e59246995b4aa48fb1bf": [
+   "ethereum"
+  ],
+  "0xeb736cce9493493138a7758831bb4d3ed16acc8c": [
+   "ethereum"
+  ],
+  "0xebad31cfd57a019c87b93cb28427be5ec384d022": [
+   "bnb"
+  ],
+  "0xebc7ad3208228522092eaeaa4124d031ca14fa1b": [
+   "ethereum"
+  ],
+  "0xebd40467f4ff6e7bc6563890cdb50adebbb1c2b0": [
+   "base"
+  ],
+  "0xebf985ad307cba2a214dfc5caffa8e41c17c632f": [
+   "base"
+  ],
+  "0xec41cb5e3a0fc49fd01b2489c892f406a5a46200": [
+   "bnb"
+  ],
+  "0xecdbddd1644a5a53fea4571131c4ed0418f37f61": [
+   "ethereum"
+  ],
+  "0xecdc0b363d278f9955d11fef053b52c2f0e8ead6": [
+   "base"
+  ],
+  "0xed79a74c1d95bbf31a3f39a5f3cf9217735adf52": [
+   "base",
+   "bnb",
+   "ethereum"
+  ],
+  "0xed8b1d49003bf29528e5521e63e9d37af951b905": [
+   "ethereum"
+  ],
+  "0xee4cb9f00505ab2eeddd571b0ad9a0721ecfa241": [
+   "base"
+  ],
+  "0xee8a08362b98290d6f78f6781b756dd347d2df51": [
+   "ethereum"
+  ],
+  "0xeed92ede46257477f6571f35fd458dbb46471a15": [
+   "optimism"
+  ],
+  "0xeef06c47306a6fb4f94b1ad779112214d11ce1a5": [
+   "ethereum"
+  ],
+  "0xef0852258381dfbf20144ed38899d489935fa038": [
+   "optimism"
+  ],
+  "0xef1f6e80c2f405d1a0acd6c36d87457113fb83c9": [
+   "bnb"
+  ],
+  "0xef7b31f45b19ffef6f1ff5ae684b78b1a86c1c0c": [
+   "bnb",
+   "ethereum",
+   "optimism"
+  ],
+  "0xef89adb7fa0cd0b8d877a8cd1022d94b06cacd33": [
+   "optimism"
+  ],
+  "0xef8d4573baa3b18c3997564898a00419e29de5c8": [
+   "arbitrum",
+   "base"
+  ],
+  "0xef99fc5bd1de62fd410cba408d822beeb01fe4d3": [
+   "bnb"
+  ],
+  "0xf01b73819eb14ff5394727bcb6ea656bdddbbea6": [
+   "arbitrum"
+  ],
+  "0xf0360a17c4211e87d592f4e15775860885e82047": [
+   "base"
+  ],
+  "0xf142c83fec04b13eadbbbc6117f6d8fec59f7318": [
+   "ethereum"
+  ],
+  "0xf1a7aad87cc39b27002b92c413d164b02a158934": [
+   "ethereum"
+  ],
+  "0xf1d92ee5c530138378069c7aa7796fe643bc1b03": [
+   "arbitrum"
+  ],
+  "0xf21953cc4950fba0d3b59fcc5e7f413ae164e019": [
+   "ethereum"
+  ],
+  "0xf2534d433a6ad5089e8d907f035bafd5925bdcbc": [
+   "optimism"
+  ],
+  "0xf32f5364158486214c905e65b25119e3ce802047": [
+   "base"
+  ],
+  "0xf34dc139d91320a58f18245d742f694e83cd4d68": [
+   "ethereum"
+  ],
+  "0xf3a6b50ba75a42922120e3f77dbd72e41ac830c6": [
+   "ethereum"
+  ],
+  "0xf3c4517b298c6c4c60240a29dc1c84447fbc5a8a": [
+   "optimism"
+  ],
+  "0xf3e6e6ed97b2df9241007026ad4ee9d094e13695": [
+   "ethereum"
+  ],
+  "0xf3f81352ae13a2bdb39ba037df0f4fb79c613553": [
+   "base"
+  ],
+  "0xf443cf137ca01732500ccfc77c7b17f99a44dc30": [
+   "optimism"
+  ],
+  "0xf51d1ccaaf78eead5adfd907880f4f5df5f9a615": [
+   "ethereum"
+  ],
+  "0xf5258ab8fdbf149896985dde1d8ed43fb86f9479": [
+   "ethereum"
+  ],
+  "0xf52a8ce4154e380d8d96477c6cad9296e404c878": [
+   "ethereum"
+  ],
+  "0xf5362aebfb5a25a56e909f806e7c309448f15a8e": [
+   "base",
+   "bnb",
+   "ethereum"
+  ],
+  "0xf5fb3834b41b9ad538fc30a34dae20ecb584cce3": [
+   "ethereum"
+  ],
+  "0xf632f40b3e0df3c1b104c14639ef42326b224efa": [
+   "ethereum"
+  ],
+  "0xf6797c7ba905340e37233f1224bff64831d54daa": [
+   "gnosis"
+  ],
+  "0xf67ce7d600bfed7ac9ddb85d082a873633c6eb64": [
+   "ethereum"
+  ],
+  "0xf69c361767299cb1de1e215d83c2f8ecdc5220d3": [
+   "polygon"
+  ],
+  "0xf6fcd2ccd2472b71f334c3e4f1a7001f1ee53700": [
+   "ethereum"
+  ],
+  "0xf738308d26d74b697b367cf2ac5ff8c0e08bcd66": [
+   "optimism"
+  ],
+  "0xf74896bfeb20c2167d87bf4217172eec23d11a00": [
+   "base"
+  ],
+  "0xf799ca6393f11228aec787c35d6b2b96864c7608": [
+   "optimism"
+  ],
+  "0xf7fa257f4942416b90984709386df0f3233d0c87": [
+   "base"
+  ],
+  "0xf7fcc1f7cd3353120519cdc6dfe503e77140371d": [
+   "base"
+  ],
+  "0xf80de35450e4261b30de7437645a1581380dfef5": [
+   "bnb"
+  ],
+  "0xf86ca31096dc981d105b125b537179c66954b55e": [
+   "base"
+  ],
+  "0xf8cdf743e29bf94fdb71052d7b67239a2cbb3611": [
+   "ethereum"
+  ],
+  "0xf8f29a89be297b78371bacd7704fa9d29851a5ca": [
+   "ethereum"
+  ],
+  "0xf903dd08547de6601ca1d0a880d0d9912d762d5e": [
+   "ethereum"
+  ],
+  "0xf916aa0e33e4b26b7671b46e4bfce1389a9ae180": [
+   "ethereum"
+  ],
+  "0xf982fb9f675b18eaf4b13bcf07250ce537516a57": [
+   "bnb"
+  ],
+  "0xfa647369d38bd1eba5b24242f8479fd95c4bc229": [
+   "base"
+  ],
+  "0xfb9bec6c9c6128d91055da84294a94ba4f271bc2": [
+   "bnb"
+  ],
+  "0xfc1e017812a16fb3650d6110765d2622fd23c1e4": [
+   "base"
+  ],
+  "0xfc4a4381774e5411b84bff224f8dd9c0d7db52dc": [
+   "base"
+  ],
+  "0xfd621952b4f7a6887220b3488d849cec3168c138": [
+   "bnb",
+   "ethereum"
+  ],
+  "0xfd8517f1123f8e48de9234c516e9ef9c54c706c8": [
+   "bnb"
+  ],
+  "0xfde6b0b682d7c99559fd66fbd4ac425301a03ec5": [
+   "base"
+  ],
+  "0xfdee40030641b66a6af7a53eeedd4740fedb761c": [
+   "ethereum"
+  ],
+  "0xfe027bde22d96f0b1fb01605c32e5e6ac40eb376": [
+   "ethereum"
+  ],
+  "0xfe15e9caf24d0452981436383651d0cd7101b924": [
+   "base"
+  ],
+  "0xfe9581540414b2e45b1f2eb6e17a8e2b28b4ba65": [
+   "arbitrum"
+  ],
+  "0xfefd9d2e36fba47db535ca720365c51ba906d2da": [
+   "optimism"
+  ],
+  "0xff02bb0a44881b8496b932d0a2c1fce0e206c88d": [
+   "polygon"
+  ],
+  "0xff02c0c9644e519256b0e03e19f41793e9c0624f": [
+   "bnb",
+   "ethereum",
+   "polygon"
+  ],
+  "0xff2318cd698c23f37c2fcf03a57df69e43165b48": [
+   "base"
+  ],
+  "0xff883867b9d850d5a3aadfa77102505550ea3caf": [
+   "bnb"
+  ],
+  "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8": [
+   "arbitrum",
+   "ethereum"
+  ],
+  "0xffd463daad2894ca63829ad969de4dbcf9912a01": [
+   "base"
+  ]
+ }
+}

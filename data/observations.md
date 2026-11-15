@@ -48,3 +48,14 @@ I hoped two cheap numbers from the ledger would separate good from bad: how many
 | **unknown** | six unverified targets (172 to 1,855 authorizations, 0–11%) | six unverified targets (129 to 1,276, 96–100%) |
 
 So "one relayer, existing accounts" is what both a wallet vendor sponsoring gas for its users and a drainer look like, and "one relayer, fresh accounts" is what both a poisoning farm and (possibly) a deposit-address scheme look like. The ledger keeps reporting these numbers because they are facts, but the note on a row describes a shape, not a verdict.
+
+## 2026-11-15 — Cross-check against a published dataset, and a "verified" contract that is a sweeper
+
+Huang et al. (USENIX Security 2026) published their detection results ([Zenodo 17895541](https://zenodo.org/records/17895541), CC-BY-4.0; data up to 2025-07-15, seven chains). I extracted the 718 delegation targets they marked as malicious for EOA-targeted attacks (`data/reference/huang2026_eoa_targeted.json`) and compared them with the 176 targets in the day ending 2026-11-15 02:44 UTC.
+
+- **3 of my 176 targets are in their malicious list.** 19 more appear in their data without a malicious mark. 154 are not in their data at all: most of today's targets did not exist, or were not used, sixteen months ago.
+- `CrimeEnjoyor` (0x84d0…1f40): flagged by them on Ethereum; already `known-malicious` here. Agreement.
+- **`Porwarder` (0xb6da1852…b2a8): flagged by them on Ethereum; this ledger had it as `verified-source`.** I read the verified source. It is fifteen lines: a public `initialize(destination)` with no access control, and a `receive()` that forwards any incoming ETH to `destination`. That is the forward-on-receive pattern their paper describes, and it shows concretely why `verified-source` is not a safety grade: the code is published, and what it publishes is a sweeper. It now carries the grade `flagged-by-research`.
+- `EIP7702Proxy` (0x7702cb55…176c), which Walletbeat lists as Coinbase's EIP-7702 proxy: they marked it on Base and Optimism, not on Ethereum. I have not checked what code sits at that address on those chains or why their detector matched it, so here it stays `verified-source` with a note recording the disagreement.
+
+A mistake I caught before publishing: my first pass pulled every address out of their spreadsheet `sa_contract_malicious.xlsx` and treated all 2,320 as malicious, which "found" 22 matches including MetaMask's delegator. The file lists all delegation targets with a `matched` / `unmatched` column; only `matched` rows are their detections. The absurd result is what made me open the columns.

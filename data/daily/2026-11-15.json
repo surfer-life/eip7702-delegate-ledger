@@ -21,7 +21,8 @@
   "verified-but-upgradeable": "verified, but explorer reports a proxy",
   "resembles-known-malicious": "no verified source, but the runtime bytecode is at least 90% similar to a known-malicious contract and has the same function selectors",
   "no-code": "target has no code (zero address = revocation)",
-  "evidence-missing": "an evidence source did not answer during this run, so no grade is given"
+  "evidence-missing": "an evidence source did not answer during this run, so no grade is given",
+  "flagged-by-research": "marked as an EOA-targeted malicious delegate on Ethereum in a peer-reviewed dataset (Huang et al., USENIX Security 2026); source may or may not be published"
  },
  "share_of_authorizations_by_grade": {
   "verified-source": 0.387,
@@ -29,6 +30,7 @@
   "known-malicious": 0.29,
   "resembles-known-malicious": 0.01,
   "no-code": 0.007,
+  "flagged-by-research": 0.0,
   "verified-but-upgradeable": 0.0
  },
  "limits": [
@@ -164,9 +166,16 @@
    "notes": [
     "Verified source on Blockscout carries a comment saying this is a scam contract recreated and exposed by Wintermute.",
     "Verified on Blockscout but not found on Sourcify.",
-    "An evidence source did not answer in this run; the grade is carried from the run ending 2026-11-15T01:23:11Z."
+    "An evidence source did not answer in this run; the grade is carried from the run ending 2026-11-15T01:23:11Z.",
+    "Marked as an EOA-targeted malicious delegate on Ethereum in the Huang et al. (USENIX Security 2026) artifact."
    ],
-   "grade_carried_from": "2026-11-15T01:23:11Z"
+   "grade_carried_from": "2026-11-15T01:23:11Z",
+   "flagged_by_research": {
+    "source": "Huang et al., USENIX Security 2026 artifact (data to 2025-07-15)",
+    "chains": [
+     "ethereum"
+    ]
+   }
   },
   {
    "delegate": "0x0000fb7702036ff9f76044a501ac1aa74cbab16b",
@@ -401,7 +410,16 @@
    "txs": 602,
    "distinct_senders": 351,
    "nonce0_share": 0.23,
-   "notes": []
+   "notes": [
+    "Marked as malicious on base, optimism (not Ethereum) in the Huang et al. (USENIX Security 2026) artifact. I have not checked whether the code at this address is the same there; treat this as a disagreement to look into, not a verdict."
+   ],
+   "flagged_by_research": {
+    "source": "Huang et al., USENIX Security 2026 artifact (data to 2025-07-15)",
+    "chains": [
+     "base",
+     "optimism"
+    ]
+   }
   },
   {
    "delegate": "0x4eff4d390d89b2195fe3cb63b06731ae584a1375",
@@ -1810,14 +1828,21 @@
    "verified_at": "2026-06-13T13:50:01.212724Z",
    "source_chars": 454,
    "source_mentions": [],
-   "grade": "verified-source",
+   "grade": "flagged-by-research",
    "authorizations": 12,
    "txs": 3,
    "distinct_senders": 1,
    "nonce0_share": 0.0,
    "notes": [
-    "Verified on Blockscout but not found on Sourcify."
-   ]
+    "Verified on Blockscout but not found on Sourcify.",
+    "Marked as an EOA-targeted malicious delegate on Ethereum in the Huang et al. (USENIX Security 2026) artifact."
+   ],
+   "flagged_by_research": {
+    "source": "Huang et al., USENIX Security 2026 artifact (data to 2025-07-15)",
+    "chains": [
+     "ethereum"
+    ]
+   }
   },
   {
    "delegate": "0x00000000383e8cbe298514674ea60ee1d1de50ac",
