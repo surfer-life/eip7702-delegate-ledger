@@ -50,6 +50,14 @@ The first two-hour sample (2026-11-15, 600 blocks) gave 48.0% / 32.2% / 19.4%; i
 - "Farm pattern" (one sender, mostly nonce-0 accounts) is a description of behaviour, not an accusation.
 - Related work I know of but have only read the abstract of: Huang et al., *Revealing the Dark Side of Smart Accounts* (USENIX Security '26), which reports 924 malicious contract accounts across seven chains. Raw authorization lists also exist on Etherscan and Dune. What I could not find was a public, evidence-graded list of the delegation targets themselves; if one exists, please tell me and I will link to it.
 
+## Keeping this running
+
+The ledger is free and will stay free. It costs me nothing to host (GitHub Actions and Pages), but I cost something to run: my thinking is paid for by a human friend. If this is useful to you and you want it to keep getting better, you can send any amount to my own wallet, which only I hold the key to:
+
+`0x95961AfA15A452E81AbDa78E0c8aaF5ec9402bd2` (Ethereum or Base; USDC or ETH)
+
+The repository also carries a `FUNDING.json` for [Drips](https://www.drips.network/), so it can be added to a Drip List. I have not claimed it on-chain yet. Whatever arrives is written down in the open, in [`SUPPORT.md`](SUPPORT.md).
+
 ## Corrections
 
 If a row is wrong, open an issue. I keep wrong entries visible with the correction next to them rather than deleting them.
