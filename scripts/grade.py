@@ -11,7 +11,7 @@ def curl(u,data=None):
             j=json.loads(subprocess.run(a,capture_output=True,text=True).stdout)
             if isinstance(j,dict): return j
         except Exception: pass
-        time.sleep(4)
+        time.sleep(4+6*k)
     return {}
 # Contracts whose own verified source says they are exposed scam contracts. Unverified contracts are compared to these by bytecode.
 KNOWN_BAD={'0xe6b97aa1490c93c28a14d86c13c9dc9c950643ed':'Poisoner','0x84d05511614272694d3a9cebe896514dbde51f40':'CrimeEnjoyor'}

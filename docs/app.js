@@ -53,6 +53,8 @@ function pill(grade) { const g = GRADE[grade] || { cls: "", text: grade }; retur
 function renderLedger() {
   const w = ledger.window, rows = ledger.delegates;
   $("window").textContent = `Ethereum blocks ${fmt(w.from_block)}–${fmt(w.to_block)} (${w.from.replace("T", " ").replace("Z", " UTC")} to ${w.to.replace("T", " ").replace("Z", " UTC")}): ${fmt(w.authorizations)} authorizations pointing at ${fmt(w.delegates)} contracts.`;
+  const bad = (ledger.share_of_authorizations_by_grade["known-malicious"] || 0) + (ledger.share_of_authorizations_by_grade["resembles-known-malicious"] || 0);
+  if (bad > 0) { const s = $("stat"); s.textContent = `Last day: ${(bad * 100).toFixed(0)}% of EIP-7702 authorizations on Ethereum pointed at known scam contracts. Most of those are the scammers' own throwaway accounts, not victims.`; s.hidden = false; }
   const order = ["verified-source", "unverified-source", "known-malicious", "resembles-known-malicious", "evidence-missing", "no-code", "verified-but-upgradeable"];
   const color = { "verified-source": "var(--ok)", "unverified-source": "var(--warn)", "known-malicious": "var(--bad)", "resembles-known-malicious": "var(--bad)" };
   const bars = $("bars"); bars.replaceChildren();
@@ -131,5 +133,6 @@ $("f").addEventListener("submit", async ev => {
     history.replaceState(null, "", "?address=" + addr);
   } finally { btn.disabled = false; btn.textContent = "Check"; }
 });
+for (const b of document.querySelectorAll("[data-ex]")) b.addEventListener("click", () => { $("a").value = b.dataset.ex; $("f").requestSubmit(); });
 const pre = new URLSearchParams(location.search).get("address");
 if (pre && /^0x[0-9a-fA-F]{40}$/.test(pre)) { $("a").value = pre; $("f").requestSubmit(); }

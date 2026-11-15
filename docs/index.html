@@ -24,6 +24,7 @@
 <main class="wrap">
   <section class="hero">
     <h1>What is this address delegated to?</h1>
+    <p id="stat" class="stat" hidden></p>
     <p class="lead">Since EIP-7702, an ordinary Ethereum account can hand itself to a contract. Paste an address to see whether it has, and what anyone can verify about the contract it points at.</p>
     <form id="f" autocomplete="off">
       <label for="a" class="sr">Ethereum address</label>
@@ -31,6 +32,7 @@
         <input id="a" name="address" inputmode="text" spellcheck="false" placeholder="0x…  (40 hex characters)" maxlength="42">
         <button type="submit">Check</button>
       </div>
+      <p class="try">Try one: <button type="button" class="link" data-ex="0x0181967ca51f63e11cb009b9b9a68c6ce017555a">an address-poisoning account</button> · <button type="button" class="link" data-ex="0x95961AfA15A452E81AbDa78E0c8aaF5ec9402bd2">a plain account (mine)</button></p>
       <p class="safe"><span class="lock" aria-hidden="true"></span>Read-only. This page has no wallet code: it cannot ask you to connect, sign or pay. If a page that looks like this one does, close it.</p>
     </form>
     <div id="out" aria-live="polite"></div>

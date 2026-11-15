@@ -25,7 +25,9 @@ jobs:
         run: |
           D=$(date -u +%F)
           mkdir -p data/daily
+          cp data/latest.json /tmp/previous.json
           python3 scripts/build.py /tmp/auths.json /tmp/evidence.json data/daily/$D.json LATEST.md
+          python3 scripts/carry.py /tmp/previous.json data/daily/$D.json
           cp data/daily/$D.json data/latest.json
       - name: commit
         run: |

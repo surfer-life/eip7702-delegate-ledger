@@ -24,10 +24,9 @@
   "evidence-missing": "an evidence source did not answer during this run, so no grade is given"
  },
  "share_of_authorizations_by_grade": {
-  "verified-source": 0.311,
-  "unverified-source": 0.293,
-  "known-malicious": 0.234,
-  "evidence-missing": 0.145,
+  "verified-source": 0.387,
+  "unverified-source": 0.306,
+  "known-malicious": 0.29,
   "resembles-known-malicious": 0.01,
   "no-code": 0.007,
   "verified-but-upgradeable": 0.0
@@ -85,12 +84,15 @@
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
-   "grade": "evidence-missing",
+   "grade": "verified-source",
    "authorizations": 2348,
    "txs": 2323,
    "distinct_senders": 14,
    "nonce0_share": 0.7,
-   "notes": []
+   "notes": [
+    "An evidence source did not answer in this run; the grade is carried from the run ending 2026-11-15T01:23:11Z."
+   ],
+   "grade_carried_from": "2026-11-15T01:23:11Z"
   },
   {
    "delegate": "0x34fff33dc9c0ead473a1878923b3858d8ed04dfb",
@@ -141,7 +143,7 @@
   {
    "delegate": "0x84d05511614272694d3a9cebe896514dbde51f40",
    "code_bytes": 1042,
-   "name": null,
+   "name": "CrimeEnjoyor",
    "source_verified": false,
    "explorer_answered": false,
    "sourcify": {
@@ -154,12 +156,17 @@
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
-   "grade": "evidence-missing",
+   "grade": "known-malicious",
    "authorizations": 1729,
    "txs": 1729,
    "distinct_senders": 1,
    "nonce0_share": 0.0,
-   "notes": []
+   "notes": [
+    "Verified source on Blockscout carries a comment saying this is a scam contract recreated and exposed by Wintermute.",
+    "Verified on Blockscout but not found on Sourcify.",
+    "An evidence source did not answer in this run; the grade is carried from the run ending 2026-11-15T01:23:11Z."
+   ],
+   "grade_carried_from": "2026-11-15T01:23:11Z"
   },
   {
    "delegate": "0x0000fb7702036ff9f76044a501ac1aa74cbab16b",
@@ -529,12 +536,15 @@
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
-   "grade": "evidence-missing",
+   "grade": "unverified-source",
    "authorizations": 273,
    "txs": 11,
    "distinct_senders": 1,
    "nonce0_share": 0.0,
-   "notes": []
+   "notes": [
+    "An evidence source did not answer in this run; the grade is carried from the run ending 2026-11-15T01:23:11Z."
+   ],
+   "grade_carried_from": "2026-11-15T01:23:11Z"
   },
   {
    "delegate": "0xd6cedde84be40893d153be9d467cd6ad37875b28",
@@ -876,14 +886,16 @@
    "verified_at": null,
    "source_chars": 0,
    "source_mentions": [],
-   "grade": "evidence-missing",
+   "grade": "unverified-source",
    "authorizations": 129,
    "txs": 129,
    "distinct_senders": 1,
    "nonce0_share": 1.0,
    "notes": [
-    "Farm pattern: every authorization in the window was submitted by one sender, mostly for fresh (nonce 0) accounts."
-   ]
+    "Farm pattern: every authorization in the window was submitted by one sender, mostly for fresh (nonce 0) accounts.",
+    "An evidence source did not answer in this run; the grade is carried from the run ending 2026-11-15T01:23:11Z."
+   ],
+   "grade_carried_from": "2026-11-15T01:23:11Z"
   },
   {
    "delegate": "0x03a8a3ae0b496f6988f467798beb60bd3c81f4ac",

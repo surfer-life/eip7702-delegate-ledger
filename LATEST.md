@@ -2,15 +2,15 @@
 
 Blocks 26410290–26417489 (2026-11-14T02:39:47Z to 2026-11-15T02:44:35Z): 22379 type-4 transactions, 30956 authorizations, 176 targets.
 
-Share of authorizations by grade: **verified-source** 31.1%, **unverified-source** 29.3%, **known-malicious** 23.4%, **evidence-missing** 14.5%, **resembles-known-malicious** 1.0%, **no-code** 0.7%, **verified-but-upgradeable** 0.0%
+Share of authorizations by grade: **verified-source** 38.7%, **unverified-source** 30.6%, **known-malicious** 29.0%, **resembles-known-malicious** 1.0%, **no-code** 0.7%, **verified-but-upgradeable** 0.0%
 
 | grade | delegate | name | authorizations | senders | nonce 0 | notes |
 |---|---|---|---:|---:|---:|---|
 | known-malicious | `0xe6b97aa1490c93c28a14d86c13c9dc9c950643ed` | Poisoner | 6188 | 1 | 54% | Verified source on Blockscout carries a comment saying this is a scam contract recreated and exposed by Wintermute. |
-| evidence-missing | `0xd2e28229f6f2c235e57de2ebc727025a1d0530fb` | Biz | 2348 | 14 | 70% |  |
+| verified-source | `0xd2e28229f6f2c235e57de2ebc727025a1d0530fb` | Biz | 2348 | 14 | 70% | An evidence source did not answer in this run; the grade is carried from the run ending 2026-11-15T01:23:11Z. |
 | unverified-source | `0x34fff33dc9c0ead473a1878923b3858d8ed04dfb` |  | 1855 | 1 | 11% |  |
 | unverified-source | `0x8a67b5020ee254ef48e3b6a04927f39baf7e408a` |  | 1740 | 6 | 0% |  |
-| evidence-missing | `0x84d05511614272694d3a9cebe896514dbde51f40` |  | 1729 | 1 | 0% |  |
+| known-malicious | `0x84d05511614272694d3a9cebe896514dbde51f40` | CrimeEnjoyor | 1729 | 1 | 0% | Verified source on Blockscout carries a comment saying this is a scam contract recreated and exposed by Wintermute. Verified on Blockscout but not found on Sourcify. An evidence source did not answer in this run; the grade is carried from the run ending 2026-11-15T01:23:11Z. |
 | verified-source | `0x0000fb7702036ff9f76044a501ac1aa74cbab16b` | UniversalGaslessDelegate | 1469 | 59 | 85% |  |
 | verified-source | `0xb94b392b61c16ddb7118849d4970570c07f75dd1` | Tangem7702GaslessExecutorL1 | 1409 | 1 | 12% |  |
 | unverified-source | `0x67b743f3642f7cc863c823c6708708d039f65be2` |  | 1276 | 1 | 98% | Farm pattern: every authorization in the window was submitted by one sender, mostly for fresh (nonce 0) accounts. |
@@ -26,7 +26,7 @@ Share of authorizations by grade: **verified-source** 31.1%, **unverified-source
 | unverified-source | `0x2e623468c560072e91d7a94a1dcb2eefbdbe69cb` |  | 375 | 1 | 1% |  |
 | verified-source | `0x77021100bd87b7008e5e1989d0eb38555d0d0000` | SemiModularAccount7702 | 295 | 12 | 60% |  |
 | unverified-source | `0x2d36fa3b1279eecaa198bacbd578bb4dbe139953` |  | 283 | 1 | 98% | Farm pattern: every authorization in the window was submitted by one sender, mostly for fresh (nonce 0) accounts. |
-| evidence-missing | `0x6d42377d3559a1555ba8d680132041e43a731fce` |  | 273 | 1 | 0% |  |
+| unverified-source | `0x6d42377d3559a1555ba8d680132041e43a731fce` |  | 273 | 1 | 0% | An evidence source did not answer in this run; the grade is carried from the run ending 2026-11-15T01:23:11Z. |
 | verified-source | `0xd6cedde84be40893d153be9d467cd6ad37875b28` | Kernel | 260 | 25 | 98% | Verified on Sourcify; Blockscout did not report it as verified in this run. |
 | unverified-source | `0xa93f476e66f7b456fcca575cdb261d887c7ab463` |  | 250 | 1 | 0% |  |
 | no-code | `0x0000000000000000000000000000000000000000` |  | 215 | 107 | 8% | Delegating to the zero address clears a delegation (revocation). |
@@ -40,7 +40,7 @@ Share of authorizations by grade: **verified-source** 31.1%, **unverified-source
 | verified-source | `0x5ac4c3f3d60d9186baf971aa1bda7c3924adec4c` | Utila7702Delegate | 141 | 13 | 49% |  |
 | verified-source | `0x7785a22facd31db653ba4928f1d5b81d093f0b2f` | BasicSmartAccount | 138 | 4 | 5% |  |
 | unverified-source | `0x2ef5ad5497cca91fb9dbd8bb414393a55229049f` |  | 138 | 1 | 99% | Farm pattern: every authorization in the window was submitted by one sender, mostly for fresh (nonce 0) accounts. |
-| evidence-missing | `0x0f9fd457c12999245c2be5645ab61e10f787c72a` |  | 129 | 1 | 100% | Farm pattern: every authorization in the window was submitted by one sender, mostly for fresh (nonce 0) accounts. |
+| unverified-source | `0x0f9fd457c12999245c2be5645ab61e10f787c72a` |  | 129 | 1 | 100% | Farm pattern: every authorization in the window was submitted by one sender, mostly for fresh (nonce 0) accounts. An evidence source did not answer in this run; the grade is carried from the run ending 2026-11-15T01:23:11Z. |
 | resembles-known-malicious | `0x03a8a3ae0b496f6988f467798beb60bd3c81f4ac` |  | 115 | 1 | 0% | Unverified, but its bytecode is 92% similar to CrimeEnjoyor (0x84d05511614272694d3a9cebe896514dbde51f40) and exposes the same function selectors. |
 | unverified-source | `0x9a6bc2f56b9bbcb5a354d336dbda10ef8febd0ec` |  | 96 | 2 | 1% |  |
 | unverified-source | `0x86485b8eed03bd710bf243982392dc61f3257785` |  | 89 | 1 | 2% |  |
