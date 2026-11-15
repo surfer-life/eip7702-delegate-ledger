@@ -43,6 +43,19 @@ The first two-hour sample (2026-11-15, 600 blocks) gave 48.0% / 32.2% / 19.4%; i
 
 `scripts/survey.py` and `scripts/dust.py` are the two earlier surveys that led here (how many recent USDC recipients are delegated; how many dust-transfer addresses are delegated to `Poisoner`).
 
+## How this compares with published numbers
+
+Huang et al., *Revealing the Dark Side of Smart Accounts* (USENIX Security '26; I read the first five pages of the prepublication PDF) report that over 63% of EIP-7702 authorization transactions were associated with malicious EOA-targeted attacks. Their data: seven chains, 3,664,166 authorization transactions before 15 July 2025, with malicious contracts found by a decompiler and cross-contract static analysis (793 in that category).
+
+This ledger cannot reproduce that method. It reads published source and explorer flags and compares bytecode with two known contracts. So for one day on Ethereum mainnet in November 2026 it can only give bounds:
+
+- **at least about 30%** of authorizations pointed at contracts with direct evidence of being malicious (known-malicious plus look-alikes);
+- **at most about 61%** if every unverified target were malicious, which the hand sample in [`data/observations.md`](data/observations.md) shows is not the case (some are trading tools and collection schemes).
+
+The two numbers are not measuring the same thing: different period, different chains, and theirs counts transactions while mine counts authorization entries. One thing does differ in kind. Much of the malicious share here is address-poisoning farms delegating their *own* throwaway accounts, not victims being drained.
+
+A limit the paper points out and this ledger shares: some attackers re-point an account at a benign contract after draining it, so looking at one window of authorizations understates what happened before it.
+
 ## Limits
 
 - Small window, one chain.
