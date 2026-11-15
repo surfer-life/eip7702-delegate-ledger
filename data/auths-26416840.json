@@ -1,0 +1,479 @@
+{
+ "head": 26416840,
+ "N": 600,
+ "from_ts": 1794695663,
+ "to_ts": 1794702863,
+ "total_txs": 181550,
+ "type4_txs": 1481,
+ "delegates": [
+  {
+   "delegate": "0xe6b97aa1490c93c28a14d86c13c9dc9c950643ed",
+   "authorizations": 411,
+   "txs": 182,
+   "distinct_senders": 1,
+   "nonce0": 275
+  },
+  {
+   "delegate": "0x67b743f3642f7cc863c823c6708708d039f65be2",
+   "authorizations": 297,
+   "txs": 12,
+   "distinct_senders": 1,
+   "nonce0": 289
+  },
+  {
+   "delegate": "0xd2e28229f6f2c235e57de2ebc727025a1d0530fb",
+   "authorizations": 181,
+   "txs": 180,
+   "distinct_senders": 12,
+   "nonce0": 132
+  },
+  {
+   "delegate": "0xb94b392b61c16ddb7118849d4970570c07f75dd1",
+   "authorizations": 149,
+   "txs": 149,
+   "distinct_senders": 1,
+   "nonce0": 23
+  },
+  {
+   "delegate": "0x000000009b1d0af20d8c6d0a44e162d11f9b8f00",
+   "authorizations": 121,
+   "txs": 121,
+   "distinct_senders": 11,
+   "nonce0": 105
+  },
+  {
+   "delegate": "0x63c0c19a282a1b52b07dd5a65b58948a07dae32b",
+   "authorizations": 104,
+   "txs": 104,
+   "distinct_senders": 65,
+   "nonce0": 18
+  },
+  {
+   "delegate": "0x0000fb7702036ff9f76044a501ac1aa74cbab16b",
+   "authorizations": 92,
+   "txs": 92,
+   "distinct_senders": 26,
+   "nonce0": 81
+  },
+  {
+   "delegate": "0xe6cae83bde06e4c305530e199d7217f42808555b",
+   "authorizations": 77,
+   "txs": 76,
+   "distinct_senders": 16,
+   "nonce0": 76
+  },
+  {
+   "delegate": "0x69007702764179f14f51cdce752f4f775d74e139",
+   "authorizations": 70,
+   "txs": 70,
+   "distinct_senders": 7,
+   "nonce0": 33
+  },
+  {
+   "delegate": "0x7702cb554e6bfb442cb743a7df23154544a7176c",
+   "authorizations": 62,
+   "txs": 62,
+   "distinct_senders": 45,
+   "nonce0": 13
+  },
+  {
+   "delegate": "0x34fff33dc9c0ead473a1878923b3858d8ed04dfb",
+   "authorizations": 62,
+   "txs": 8,
+   "distinct_senders": 1,
+   "nonce0": 11
+  },
+  {
+   "delegate": "0x4eff4d390d89b2195fe3cb63b06731ae584a1375",
+   "authorizations": 60,
+   "txs": 60,
+   "distinct_senders": 9,
+   "nonce0": 60
+  },
+  {
+   "delegate": "0x2d36fa3b1279eecaa198bacbd578bb4dbe139953",
+   "authorizations": 45,
+   "txs": 11,
+   "distinct_senders": 1,
+   "nonce0": 43
+  },
+  {
+   "delegate": "0x490aac77c960b0569c8e446ac7e12490bd44ca1d",
+   "authorizations": 44,
+   "txs": 44,
+   "distinct_senders": 18,
+   "nonce0": 35
+  },
+  {
+   "delegate": "0x2ef5ad5497cca91fb9dbd8bb414393a55229049f",
+   "authorizations": 34,
+   "txs": 34,
+   "distinct_senders": 1,
+   "nonce0": 34
+  },
+  {
+   "delegate": "0x69e6bd1c4082403fc7917a61f6216552fc1a541d",
+   "authorizations": 30,
+   "txs": 30,
+   "distinct_senders": 15,
+   "nonce0": 25
+  },
+  {
+   "delegate": "0x77021100bd87b7008e5e1989d0eb38555d0d0000",
+   "authorizations": 25,
+   "txs": 25,
+   "distinct_senders": 6,
+   "nonce0": 16
+  },
+  {
+   "delegate": "0x0f9fd457c12999245c2be5645ab61e10f787c72a",
+   "authorizations": 20,
+   "txs": 20,
+   "distinct_senders": 1,
+   "nonce0": 20
+  },
+  {
+   "delegate": "0x274aa911b97474274dbef9ed4aa3e1b0039eefab",
+   "authorizations": 20,
+   "txs": 5,
+   "distinct_senders": 1,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0x7785a22facd31db653ba4928f1d5b81d093f0b2f",
+   "authorizations": 19,
+   "txs": 19,
+   "distinct_senders": 3,
+   "nonce0": 1
+  },
+  {
+   "delegate": "0x000000005c84f8fd50b21cac312528a64437030e",
+   "authorizations": 17,
+   "txs": 17,
+   "distinct_senders": 14,
+   "nonce0": 7
+  },
+  {
+   "delegate": "0x027f5eed8c0f8b9d8e68f60dc437175af7b52ff9",
+   "authorizations": 14,
+   "txs": 14,
+   "distinct_senders": 2,
+   "nonce0": 12
+  },
+  {
+   "delegate": "0x1f74b4339990db761bc0168f20d294a3a141497e",
+   "authorizations": 13,
+   "txs": 13,
+   "distinct_senders": 6,
+   "nonce0": 12
+  },
+  {
+   "delegate": "0xcda3577ca7ef65f6b7201e9bd80375f5628d15f7",
+   "authorizations": 13,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0": 11
+  },
+  {
+   "delegate": "0x9a6bc2f56b9bbcb5a354d336dbda10ef8febd0ec",
+   "authorizations": 12,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0xd6cedde84be40893d153be9d467cd6ad37875b28",
+   "authorizations": 11,
+   "txs": 11,
+   "distinct_senders": 5,
+   "nonce0": 11
+  },
+  {
+   "delegate": "0x79cd70284ed78fc78e459bdff06a06177f7375d9",
+   "authorizations": 10,
+   "txs": 10,
+   "distinct_senders": 1,
+   "nonce0": 10
+  },
+  {
+   "delegate": "0xff26b51fb5a6420453f362e26dc5e3d5adbfa208",
+   "authorizations": 10,
+   "txs": 10,
+   "distinct_senders": 1,
+   "nonce0": 10
+  },
+  {
+   "delegate": "0x05ae73c5925d843864ae6f261f3175de2ebcd963",
+   "authorizations": 9,
+   "txs": 9,
+   "distinct_senders": 2,
+   "nonce0": 8
+  },
+  {
+   "delegate": "0x0000000000000000000000000000000000000000",
+   "authorizations": 8,
+   "txs": 8,
+   "distinct_senders": 7,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0x8a67b5020ee254ef48e3b6a04927f39baf7e408a",
+   "authorizations": 7,
+   "txs": 6,
+   "distinct_senders": 3,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0x10239e127468913e463235ec4c2d55e3cab312f2",
+   "authorizations": 7,
+   "txs": 7,
+   "distinct_senders": 7,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0x2e13de8763a53a6af340930fadcad966ee79c845",
+   "authorizations": 6,
+   "txs": 6,
+   "distinct_senders": 6,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0x6c35fbcf24e57e5aa2e3aa2ca82e052499d02cf8",
+   "authorizations": 5,
+   "txs": 5,
+   "distinct_senders": 3,
+   "nonce0": 3
+  },
+  {
+   "delegate": "0x03a8a3ae0b496f6988f467798beb60bd3c81f4ac",
+   "authorizations": 5,
+   "txs": 5,
+   "distinct_senders": 1,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0x2e623468c560072e91d7a94a1dcb2eefbdbe69cb",
+   "authorizations": 5,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0x80d95b9131883cbf4ec56ab7f2d96e23ae9a8b5c",
+   "authorizations": 4,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0": 4
+  },
+  {
+   "delegate": "0x4049d89f5c83a76aff4a1ddffc504da5e0597bff",
+   "authorizations": 4,
+   "txs": 4,
+   "distinct_senders": 1,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0x68556d641d419817b3a8ddc9418a84352c93fb95",
+   "authorizations": 3,
+   "txs": 3,
+   "distinct_senders": 1,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0x612373d7003d694220f7800eeaf8e3924c0951d3",
+   "authorizations": 3,
+   "txs": 3,
+   "distinct_senders": 3,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0x955d84139e7621bc571b117d8eb5d28a4a222c6f",
+   "authorizations": 3,
+   "txs": 3,
+   "distinct_senders": 3,
+   "nonce0": 3
+  },
+  {
+   "delegate": "0xa34e1e389097409aa65ff374af50b402e4a8f5c3",
+   "authorizations": 3,
+   "txs": 3,
+   "distinct_senders": 1,
+   "nonce0": 1
+  },
+  {
+   "delegate": "0xcc0c946eecf01a4bc76bc333ea74ceb04756f17b",
+   "authorizations": 3,
+   "txs": 3,
+   "distinct_senders": 3,
+   "nonce0": 2
+  },
+  {
+   "delegate": "0x5328cb0accfb156354710d3d04452963a17af63e",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "nonce0": 2
+  },
+  {
+   "delegate": "0x535023ed14a1862444ec29d0fe07cf3092c73bc2",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 2,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0xe40ccb2d94975c51bff0c004efdfd9b3a5796fa4",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 2,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0x843469f223bad7ca390a8b6137c4f87955b97568",
+   "authorizations": 2,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0": 2
+  },
+  {
+   "delegate": "0xa46cc63ebf4bd77888aa327837d20b23a63a56b5",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0x31c934f4db134d3110e963044836d7a89609b783",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "nonce0": 2
+  },
+  {
+   "delegate": "0x3516d8db77e41319011f4265cd61e743e9b9822c",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0x079596b325d8d3b776ab304eb4b3ffe993a3abe9",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0x24b576bc271823bf9c24be627b4363b9b00191e9",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "nonce0": 1
+  },
+  {
+   "delegate": "0x84d05511614272694d3a9cebe896514dbde51f40",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0x1bcc6b722dd35072823ea7f80b50442aaf57aac5",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0": 1
+  },
+  {
+   "delegate": "0xe3014e9ab2739adef234b3829c79128746160178",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0": 1
+  },
+  {
+   "delegate": "0x08bf3aa11cf3063ae49c9383e74eb72b3329aa24",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0xb197b363d5329b31fd0aeeac74c7b12602b71a69",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0": 1
+  },
+  {
+   "delegate": "0xb24043ebdc72ddc1923ec749cfbdfbeff3fc82f6",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0": 1
+  },
+  {
+   "delegate": "0x1f49381c59a867491e97b7e94923a32da1de8634",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0xef93688b67019e4b48f19d924f9f8c1f01fb4b3f",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0xdc86dea6ee5a9d4df5b6f4ea8f469be4c1aebc3d",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0xb9dab0bcbeedb5a37e3fd865b510dc3f6bee5822",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0x4986579bcdd269b3f3c51eb0954114b2694afcf4",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0": 1
+  },
+  {
+   "delegate": "0xa93f476e66f7b456fcca575cdb261d887c7ab463",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0": 0
+  },
+  {
+   "delegate": "0x575456fa1004eb5c6331cdbbf9f0e5acce5d87be",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0": 1
+  },
+  {
+   "delegate": "0xe2aad4ae4eda149d9eb8bc885529ef2ee04f62d7",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0": 1
+  },
+  {
+   "delegate": "0xdc78583d3bb386b055174a485aacfed52ce3d37a",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "nonce0": 0
+  }
+ ]
+}
