@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# 방금 USDC를 받은 주소들의 EIP-7702 위임 여부를 센다. 2026-11-15
+# Count how many addresses that just received USDC are EIP-7702 delegated. 2026-11-15
 import json,subprocess,sys,collections,time
 chain=sys.argv[1]; nblocks=int(sys.argv[2])
 RPC={'eth':'https://ethereum-rpc.publicnode.com','base':'https://mainnet.base.org'}[chain]

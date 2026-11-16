@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-# 위임 대상 계약마다 증거를 모아 등급을 붙인다. 입력: 대상 주소 목록(JSON 배열 파일). 2026-11-15
-# 등급은 내가 직접 읽은 증거로만 정한다. 증거가 없으면 'unknown'이다.
+# Collect evidence for each delegate contract and assign a grade. Input: JSON array file of target addresses. 2026-11-15
+# Grades come only from evidence I read directly. No evidence means 'unknown'.
 import json,subprocess,sys,time
 RPC='https://ethereum-rpc.publicnode.com'
 def curl(u,data=None):
@@ -61,7 +61,7 @@ def grade(d):
        'verified_at':sc.get('verified_at'),'source_chars':len(src),
        'source_mentions':[w for w in ['address poisoning','scam','thief','Wintermute','sweep','drain'] if w.lower() in src.lower()],
        'evidence_from':'eth_getCode at publicnode; eth.blockscout.com address + smart-contract API'}
-    if e['code_bytes']==0: g='no-code'      # 코드 없는 주소에 위임 = 위임 해제이거나 실수
+    if e['code_bytes']==0: g='no-code'      # delegating to a code-less address = revocation or a mistake
     elif e['explorer_scam_flag'] or 'address poisoning' in e['source_mentions']: g='known-malicious'
     elif not e['source_verified'] and not sf.get('match'):
         g='unverified-source' if (explorer_ok and not sf.get('error')) else 'evidence-missing'

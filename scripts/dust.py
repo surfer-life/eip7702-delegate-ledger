@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# 최근 N블록의 진짜 USDC 먼지 이체에 얽힌 주소 가운데 Poisoner에 위임된 주소를 모은다. 2026-11-15
+# Among addresses involved in real USDC dust transfers in the last N blocks, collect those delegated to Poisoner. 2026-11-15
 import json,subprocess,sys,time
 N=int(sys.argv[1]); RPC='https://ethereum-rpc.publicnode.com'
 USDC='0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'; T='0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'

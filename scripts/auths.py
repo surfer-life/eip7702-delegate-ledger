@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# 최근 N블록의 type 4 거래에서 위임(authorization) 대상을 센다. 2026-11-15
+# Count EIP-7702 authorization targets in type-4 txs over the last N blocks. 2026-11-15
 import json,subprocess,sys,time,collections,os,concurrent.futures as cf
 sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
 from authority import authority
