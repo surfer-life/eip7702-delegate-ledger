@@ -34,6 +34,7 @@ for u in a['delegates']:
         e['probe']=pr
         if pr.get('forwarded'):
             notes.append('Dry run: 1 wei sent to %d of %d sampled accounts delegated here was passed straight on to %s.'%(pr['forwarded'],pr['accounts_probed'],', '.join(sorted(pr['destinations']))))
+            if pr.get('dest_in_slot0'): notes.append('In %d of those, the receiving address is written in the delegated account\'s own storage slot 0, so each account can carry its own payout address.'%pr['dest_in_slot0'])
             if e['grade'] in('unverified-source','verified-source','verified-but-upgradeable','verified-forwarder','evidence-missing','resembles-known-malicious'): e['grade']='forwards-incoming-eth'
     pf=PAPER.get(u['delegate'])
     if pf:

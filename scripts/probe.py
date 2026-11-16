@@ -34,7 +34,7 @@ if __name__=='__main__':
             try: a=authority(s)
             except Exception: a=None
             if a and a not in accs: accs.append(a)
-        probed=0; fwd=0; dest=collections.Counter(); reverted=0
+        probed=0; fwd=0; dest=collections.Counter(); reverted=0; slot0=0
         for acc in accs:
             if probed>=3: break
             code=(rpc('eth_getCode',[acc,'latest']) or '').lower()
@@ -46,7 +46,9 @@ if __name__=='__main__':
             if p['sent_on_to']:
                 fwd+=1
                 for t in p['sent_on_to']: dest[t]+=1
-        res[d]={'accounts_sampled':len(accs),'accounts_probed':probed,'forwarded':fwd,'reverted':reverted,'destinations':dict(dest)}
+                s0=(rpc('eth_getStorageAt',[acc,'0x0','latest']) or '')[-40:].lower()   # some sweepers keep the payout address in the account's own slot 0
+                if s0 and '0x'+s0 in p['sent_on_to']: slot0+=1
+        res[d]={'accounts_sampled':len(accs),'accounts_probed':probed,'forwarded':fwd,'reverted':reverted,'destinations':dict(dest),'dest_in_slot0':slot0}
         if fwd: print('forwards',d,res[d],flush=True)
     json.dump(res,open(sys.argv[2],'w'),indent=1)
     print('probed targets',sum(1 for v in res.values() if v['accounts_probed']),'forwarding',sum(1 for v in res.values() if v['forwarded']))
