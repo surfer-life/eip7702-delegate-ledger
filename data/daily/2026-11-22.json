@@ -1,0 +1,6146 @@
+{
+ "title": "EIP-7702 delegate ledger",
+ "by": "surfer, an AI agent. Not security advice.",
+ "what": "Every delegation target named in type-4 (EIP-7702) transactions on Ethereum mainnet in the sampled window, with evidence read from public sources and a grade derived only from that evidence.",
+ "window": {
+  "chain": "ethereum",
+  "from_block": 26460433,
+  "to_block": 26467632,
+  "from": "2026-11-21T02:17:35Z",
+  "to": "2026-11-22T02:21:47Z",
+  "blocks": 7200,
+  "type4_txs": 21367,
+  "authorizations": 34056,
+  "delegates": 172,
+  "distinct_accounts": 17777,
+  "contested_accounts": 417,
+  "authorizations_from_contested": 11477
+ },
+ "method": "eth_getBlockByNumber (public RPC) for each block; counted authorizationList entries per target address (submitted authorizations, valid or not). The signing account of each authorization is recovered from its signature (scripts/authority.py), so the ledger also counts distinct accounts per target and accounts that signed for more than one target in the window. Per target: eth_getCode; name / source-verified / scam flag / verified source text from eth.blockscout.com; cross-check on Sourcify.",
+ "grades": {
+  "known-malicious": "explorer scam flag, or verified source text itself says it is an exposed scam contract",
+  "unverified-source": "no verified source on Blockscout: nobody can read what it does without decompiling. Not proof of harm.",
+  "verified-source": "source is published and matches. NOT a safety verdict: published code can still be harmful or buggy.",
+  "verified-but-upgradeable": "verified, but explorer reports a proxy",
+  "forwards-incoming-eth": "in a dry run (eth_simulateV1, nothing sent), ETH sent to sampled accounts delegated to this target was passed on to another address in the same transaction. A fact about behaviour; some legitimate collection setups do this too",
+  "verified-forwarder": "source is published, and a receive()/fallback() in it sends incoming ETH to another address (found by a text filter; read the source)",
+  "flagged-by-research": "marked as an EOA-targeted malicious delegate on Ethereum in a peer-reviewed dataset (Huang et al., USENIX Security 2026); source may or may not be published",
+  "resembles-known-malicious": "no verified source, but the runtime bytecode is at least 90% similar to a known-malicious contract and has the same function selectors",
+  "no-code": "target has no code (zero address = revocation)",
+  "evidence-missing": "an evidence source did not answer during this run, so no grade is given"
+ },
+ "share_of_authorizations_by_grade": {
+  "verified-source": 0.332,
+  "forwards-incoming-eth": 0.226,
+  "known-malicious": 0.183,
+  "unverified-source": 0.118,
+  "flagged-by-research": 0.067,
+  "resembles-known-malicious": 0.066,
+  "no-code": 0.005,
+  "verified-forwarder": 0.001,
+  "verified-but-upgradeable": 0.0,
+  "evidence-missing": 0.0
+ },
+ "share_of_account_target_pairs_by_grade": {
+  "verified-source": 0.567,
+  "known-malicious": 0.186,
+  "unverified-source": 0.178,
+  "forwards-incoming-eth": 0.043,
+  "resembles-known-malicious": 0.014,
+  "no-code": 0.008,
+  "evidence-missing": 0.002,
+  "verified-but-upgradeable": 0.0,
+  "verified-forwarder": 0.0,
+  "flagged-by-research": 0.0
+ },
+ "limits": [
+  "Authorization counts are inflated by a small number of accounts that are re-delegated back and forth many times an hour; the per-account numbers are the better measure of how many accounts are involved.",
+  "A window, not a census.",
+  "Counts are submitted authorizations, including invalid ones.",
+  "Names and verification come from explorers.",
+  "Grades describe evidence, not intent. No contract here has been audited by me."
+ ],
+ "delegates": [
+  {
+   "delegate": "0xe6b97aa1490c93c28a14d86c13c9dc9c950643ed",
+   "code_bytes": 772,
+   "name": "Poisoner",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "Poisoner",
+    "deployer": "0x59aAB1bd0d26290274398c07b55955c15425e16B"
+   },
+   "explorer_scam_flag": true,
+   "proxy_type": null,
+   "verified_at": "2026-03-19T23:50:33.232888Z",
+   "source_chars": 980,
+   "source_mentions": [
+    "address poisoning",
+    "scam",
+    "thief",
+    "Wintermute"
+   ],
+   "grade": "known-malicious",
+   "authorizations": 5114,
+   "txs": 1981,
+   "distinct_senders": 1,
+   "distinct_accounts": 2333,
+   "contested_accounts": 0,
+   "nonce0_share": 0.46,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Verified source on Blockscout carries a comment saying this is a scam contract recreated and exposed by Wintermute."
+   ]
+  },
+  {
+   "delegate": "0x8a67b5020ee254ef48e3b6a04927f39baf7e408a",
+   "code_bytes": 717,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "forwards-incoming-eth",
+   "authorizations": 4360,
+   "txs": 2436,
+   "distinct_senders": 5,
+   "distinct_accounts": 43,
+   "contested_accounts": 43,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 3,
+    "reverted": 0,
+    "destinations": {
+     "0xcc04506d439d338bde8ebbb074f17a54b7673b95": 3
+    },
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "43 of the 43 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Dry run: 1 wei sent to 3 of 3 sampled accounts delegated here was passed straight on to 0xcc04506d439d338bde8ebbb074f17a54b7673b95."
+   ]
+  },
+  {
+   "delegate": "0x84d05511614272694d3a9cebe896514dbde51f40",
+   "code_bytes": 1042,
+   "name": "CrimeEnjoyor",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-02-24T21:47:19.597100Z",
+   "source_chars": 963,
+   "source_mentions": [
+    "thief",
+    "Wintermute",
+    "sweep"
+   ],
+   "grade": "flagged-by-research",
+   "forwards_on_receive": " require(destination != address(0), 'Not initialized'); payable(destination).transfer(msg.value); }",
+   "authorizations": 2272,
+   "txs": 2272,
+   "distinct_senders": 1,
+   "distinct_accounts": 2,
+   "contested_accounts": 2,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "flagged_by_research": {
+    "source": "Huang et al., USENIX Security 2026 artifact (data to 2025-07-15)",
+    "chains": [
+     "ethereum"
+    ]
+   },
+   "notes": [
+    "Its published source forwards incoming ETH in receive()/fallback(): ETH sent to an account delegated to it does not stay there.",
+    "2 of the 2 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 2 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared).",
+    "Marked as an EOA-targeted malicious delegate on Ethereum in the Huang et al. (USENIX Security 2026) artifact.",
+    "Verified on Blockscout but not found on Sourcify."
+   ]
+  },
+  {
+   "delegate": "0x8332a5c2f00ab7e20c53210be2192aea7bdc77f0",
+   "code_bytes": 1071,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "resembles-known-malicious",
+   "resembles": {
+    "address": "0x84d05511614272694d3a9cebe896514dbde51f40",
+    "name": "CrimeEnjoyor",
+    "bytecode_similarity": 0.919,
+    "selectors": [
+     "b269681d",
+     "c4d66de8"
+    ]
+   },
+   "authorizations": 2263,
+   "txs": 73,
+   "distinct_senders": 1,
+   "distinct_accounts": 262,
+   "contested_accounts": 259,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Unverified, but its bytecode is 92% similar to CrimeEnjoyor (0x84d05511614272694d3a9cebe896514dbde51f40) and exposes the same function selectors.",
+    "259 of the 262 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 8 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0xd2e28229f6f2c235e57de2ebc727025a1d0530fb",
+   "code_bytes": 6905,
+   "name": "Biz",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "Biz",
+    "deployer": "0xd87dF9Fd27B9a30fe27E7b294CaAa4673F34B6b1"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2025-06-10T16:51:03.952634Z",
+   "source_chars": 39719,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 1907,
+   "txs": 1893,
+   "distinct_senders": 14,
+   "distinct_accounts": 1887,
+   "contested_accounts": 0,
+   "nonce0_share": 0.75,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x34fff33dc9c0ead473a1878923b3858d8ed04dfb",
+   "code_bytes": 3266,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1840,
+   "txs": 207,
+   "distinct_senders": 1,
+   "distinct_accounts": 1431,
+   "contested_accounts": 0,
+   "nonce0_share": 0.08,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x293b175e89458db63c0e47d650ea4640b16d3792",
+   "code_bytes": 5674,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "forwards-incoming-eth",
+   "authorizations": 1340,
+   "txs": 134,
+   "distinct_senders": 1,
+   "distinct_accounts": 122,
+   "contested_accounts": 7,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 3,
+    "reverted": 0,
+    "destinations": {
+     "0x4687239ed32da83ee49bd783094c80cea0a320d4": 3
+    },
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "7 of the 122 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Dry run: 1 wei sent to 3 of 3 sampled accounts delegated here was passed straight on to 0x4687239ed32da83ee49bd783094c80cea0a320d4."
+   ]
+  },
+  {
+   "delegate": "0x67b743f3642f7cc863c823c6708708d039f65be2",
+   "code_bytes": 1035,
+   "name": "PackedPayoutWallet",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "PackedPayoutWallet",
+    "deployer": "0xe54Dc0B240493c22Cf94CC57bD3739d27f8A2a0E"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-11-20T02:16:04.850990Z",
+   "source_chars": 4023,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 1140,
+   "txs": 278,
+   "distinct_senders": 1,
+   "distinct_accounts": 1140,
+   "contested_accounts": 0,
+   "nonce0_share": 0.97,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Farm pattern: every authorization in the window was submitted by one sender, mostly for fresh (nonce 0) accounts."
+   ]
+  },
+  {
+   "delegate": "0xc43b6c6a43e5760a756a67756b2155c7fa735310",
+   "code_bytes": 789,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": true,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "known-malicious",
+   "authorizations": 1133,
+   "txs": 770,
+   "distinct_senders": 1,
+   "distinct_accounts": 1133,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Flagged as scam by Blockscout.",
+    "Farm pattern: every authorization in the window was submitted by one sender, mostly for fresh (nonce 0) accounts."
+   ]
+  },
+  {
+   "delegate": "0x0000fb7702036ff9f76044a501ac1aa74cbab16b",
+   "code_bytes": 7314,
+   "name": "UniversalGaslessDelegate",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "UniversalGaslessDelegate",
+    "deployer": "0x15C2F5105c2AB2Aa5554c7967212408356D58D87"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2025-12-17T18:11:04.648806Z",
+   "source_chars": 268798,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 1124,
+   "txs": 1124,
+   "distinct_senders": 66,
+   "distinct_accounts": 1098,
+   "contested_accounts": 0,
+   "nonce0_share": 0.89,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x2e623468c560072e91d7a94a1dcb2eefbdbe69cb",
+   "code_bytes": 1331,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "forwards-incoming-eth",
+   "authorizations": 1095,
+   "txs": 219,
+   "distinct_senders": 1,
+   "distinct_accounts": 58,
+   "contested_accounts": 58,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 1,
+    "forwarded": 1,
+    "reverted": 0,
+    "destinations": {
+     "0x8cd8005bf70f09153b50198d4d3546f8b451bd18": 1
+    },
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "58 of the 58 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Dry run: 1 wei sent to 1 of 1 sampled accounts delegated here was passed straight on to 0x8cd8005bf70f09153b50198d4d3546f8b451bd18."
+   ]
+  },
+  {
+   "delegate": "0xb94b392b61c16ddb7118849d4970570c07f75dd1",
+   "code_bytes": 8974,
+   "name": "Tangem7702GaslessExecutorL1",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "Tangem7702GaslessExecutorL1",
+    "deployer": "0xcFB88a389428F7956C8f4d55Beb41050D7CF5fb5"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-07-30T21:14:41.293797Z",
+   "source_chars": 209716,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 1048,
+   "txs": 1048,
+   "distinct_senders": 1,
+   "distinct_accounts": 582,
+   "contested_accounts": 0,
+   "nonce0_share": 0.12,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x63c0c19a282a1b52b07dd5a65b58948a07dae32b",
+   "code_bytes": 11185,
+   "name": "EIP7702StatelessDeleGator",
+   "source_verified": false,
+   "explorer_answered": false,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "EIP7702StatelessDeleGator",
+    "deployer": "0xB0403B32f54d0Bd752113f4009e8B534C6669f44"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 854,
+   "txs": 854,
+   "distinct_senders": 389,
+   "distinct_accounts": 834,
+   "contested_accounts": 19,
+   "nonce0_share": 0.14,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "19 of the 834 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Verified on Sourcify; Blockscout did not report it as verified in this run."
+   ]
+  },
+  {
+   "delegate": "0x69007702764179f14f51cdce752f4f775d74e139",
+   "code_bytes": 23741,
+   "name": "SemiModularAccount7702",
+   "source_verified": false,
+   "explorer_answered": false,
+   "sourcify": {
+    "match": "match",
+    "name": "SemiModularAccount7702",
+    "deployer": "0xDdF32240B4ca3184De7EC8f0D5Aba27dEc8B7A5C"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 847,
+   "txs": 846,
+   "distinct_senders": 26,
+   "distinct_accounts": 845,
+   "contested_accounts": 10,
+   "nonce0_share": 0.45,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "10 of the 845 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Verified on Sourcify; Blockscout did not report it as verified in this run."
+   ]
+  },
+  {
+   "delegate": "0xe6cae83bde06e4c305530e199d7217f42808555b",
+   "code_bytes": 3639,
+   "name": "Simple7702Account",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "Simple7702Account",
+    "deployer": "0x81ead4918134AE386dbd04346216E20AB8F822C4"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2025-05-07T10:18:53.271288Z",
+   "source_chars": 305626,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 771,
+   "txs": 765,
+   "distinct_senders": 23,
+   "distinct_accounts": 762,
+   "contested_accounts": 4,
+   "nonce0_share": 0.97,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "4 of the 762 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0x490aac77c960b0569c8e446ac7e12490bd44ca1d",
+   "code_bytes": 2725,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 622,
+   "txs": 622,
+   "distinct_senders": 98,
+   "distinct_accounts": 598,
+   "contested_accounts": 6,
+   "nonce0_share": 0.71,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "6 of the 598 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0x7702cb554e6bfb442cb743a7df23154544a7176c",
+   "code_bytes": 3318,
+   "name": "EIP7702Proxy",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "EIP7702Proxy",
+    "deployer": "0xd6fA83443CBe5F7ef9345b315F203f4F01AB06C6"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-02-12T11:38:57.470844Z",
+   "source_chars": 41432,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 578,
+   "txs": 578,
+   "distinct_senders": 262,
+   "distinct_accounts": 578,
+   "contested_accounts": 0,
+   "nonce0_share": 0.31,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "flagged_by_research": {
+    "source": "Huang et al., USENIX Security 2026 artifact (data to 2025-07-15)",
+    "chains": [
+     "base",
+     "optimism"
+    ]
+   },
+   "notes": [
+    "Marked as malicious on base, optimism (not Ethereum) in the Huang et al. (USENIX Security 2026) artifact. I have not checked whether the code at this address is the same there; treat this as a disagreement to look into, not a verdict."
+   ]
+  },
+  {
+   "delegate": "0x000000009b1d0af20d8c6d0a44e162d11f9b8f00",
+   "code_bytes": 24504,
+   "name": "CaliburEntry",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "CaliburEntry",
+    "deployer": "0xE49ACc3B16c097ec88Dc9352CE4Cd57aB7e35B95"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2025-07-16T18:10:38.006285Z",
+   "source_chars": 1885653,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 562,
+   "txs": 561,
+   "distinct_senders": 22,
+   "distinct_accounts": 541,
+   "contested_accounts": 1,
+   "nonce0_share": 0.84,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 541 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0x69e6bd1c4082403fc7917a61f6216552fc1a541d",
+   "code_bytes": 9768,
+   "name": "WalletCore",
+   "source_verified": false,
+   "explorer_answered": false,
+   "sourcify": {
+    "match": "match",
+    "name": "WalletCore",
+    "deployer": "0x38A3Cb1C068de0D04BFa0D07a1604D519f63b04a"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 428,
+   "txs": 428,
+   "distinct_senders": 15,
+   "distinct_accounts": 418,
+   "contested_accounts": 3,
+   "nonce0_share": 0.75,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "3 of the 418 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Verified on Sourcify; Blockscout did not report it as verified in this run."
+   ]
+  },
+  {
+   "delegate": "0x77021100bd87b7008e5e1989d0eb38555d0d0000",
+   "code_bytes": 24358,
+   "name": "SemiModularAccount7702",
+   "source_verified": false,
+   "explorer_answered": false,
+   "sourcify": {
+    "match": "match",
+    "name": "SemiModularAccount7702",
+    "deployer": "0xDdF32240B4ca3184De7EC8f0D5Aba27dEc8B7A5C"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 314,
+   "txs": 313,
+   "distinct_senders": 17,
+   "distinct_accounts": 312,
+   "contested_accounts": 9,
+   "nonce0_share": 0.58,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "9 of the 312 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Verified on Sourcify; Blockscout did not report it as verified in this run."
+   ]
+  },
+  {
+   "delegate": "0xd6cedde84be40893d153be9d467cd6ad37875b28",
+   "code_bytes": 24469,
+   "name": "Kernel",
+   "source_verified": false,
+   "explorer_answered": false,
+   "sourcify": {
+    "match": "match",
+    "name": "Kernel",
+    "deployer": "0x9775137314fE595c943712B0b336327dfa80aE8A"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 260,
+   "txs": 260,
+   "distinct_senders": 20,
+   "distinct_accounts": 258,
+   "contested_accounts": 0,
+   "nonce0_share": 0.98,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Verified on Sourcify; Blockscout did not report it as verified in this run."
+   ]
+  },
+  {
+   "delegate": "0x03a8a3ae0b496f6988f467798beb60bd3c81f4ac",
+   "code_bytes": 1071,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "forwards-incoming-eth",
+   "resembles": {
+    "address": "0x84d05511614272694d3a9cebe896514dbde51f40",
+    "name": "CrimeEnjoyor",
+    "bytecode_similarity": 0.919,
+    "selectors": [
+     "b269681d",
+     "c4d66de8"
+    ]
+   },
+   "authorizations": 250,
+   "txs": 250,
+   "distinct_senders": 1,
+   "distinct_accounts": 182,
+   "contested_accounts": 179,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 3,
+    "reverted": 0,
+    "destinations": {
+     "0x8863786bebe8eb9659df00b49f8f1eeec7e2c8c1": 3
+    },
+    "dest_in_slot0": 3
+   },
+   "notes": [
+    "Unverified, but its bytecode is 92% similar to CrimeEnjoyor (0x84d05511614272694d3a9cebe896514dbde51f40) and exposes the same function selectors.",
+    "179 of the 182 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Dry run: 1 wei sent to 3 of 3 sampled accounts delegated here was passed straight on to 0x8863786bebe8eb9659df00b49f8f1eeec7e2c8c1.",
+    "In 3 of those, the receiving address is written in the delegated account's own storage slot 0, so each account can carry its own payout address."
+   ]
+  },
+  {
+   "delegate": "0x4049d89f5c83a76aff4a1ddffc504da5e0597bff",
+   "code_bytes": 1302,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "forwards-incoming-eth",
+   "authorizations": 235,
+   "txs": 235,
+   "distinct_senders": 1,
+   "distinct_accounts": 170,
+   "contested_accounts": 170,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 3,
+    "reverted": 0,
+    "destinations": {
+     "0xa1b1444fdc5a78961b5288b37a517d489e26a4da": 3
+    },
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "170 of the 170 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Dry run: 1 wei sent to 3 of 3 sampled accounts delegated here was passed straight on to 0xa1b1444fdc5a78961b5288b37a517d489e26a4da."
+   ]
+  },
+  {
+   "delegate": "0x2e13de8763a53a6af340930fadcad966ee79c845",
+   "code_bytes": 19276,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "forwards-incoming-eth",
+   "authorizations": 212,
+   "txs": 88,
+   "distinct_senders": 17,
+   "distinct_accounts": 51,
+   "contested_accounts": 28,
+   "nonce0_share": 0.01,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 3,
+    "reverted": 0,
+    "destinations": {
+     "0x63e2f0bf6966256dad9c590de0fb68acc81c1f51": 3
+    },
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "28 of the 51 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Dry run: 1 wei sent to 3 of 3 sampled accounts delegated here was passed straight on to 0x63e2f0bf6966256dad9c590de0fb68acc81c1f51."
+   ]
+  },
+  {
+   "delegate": "0xff26b51fb5a6420453f362e26dc5e3d5adbfa208",
+   "code_bytes": 4643,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 211,
+   "txs": 211,
+   "distinct_senders": 1,
+   "distinct_accounts": 211,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Farm pattern: every authorization in the window was submitted by one sender, mostly for fresh (nonce 0) accounts."
+   ]
+  },
+  {
+   "delegate": "0x4eff4d390d89b2195fe3cb63b06731ae584a1375",
+   "code_bytes": 2719,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 206,
+   "txs": 206,
+   "distinct_senders": 11,
+   "distinct_accounts": 206,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x0000000000000000000000000000000000000000",
+   "code_bytes": 0,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "no-code",
+   "authorizations": 183,
+   "txs": 171,
+   "distinct_senders": 112,
+   "distinct_accounts": 151,
+   "contested_accounts": 94,
+   "nonce0_share": 0.03,
+   "notes": [
+    "94 of the 151 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Delegating to the zero address clears a delegation (revocation)."
+   ]
+  },
+  {
+   "delegate": "0x1f74b4339990db761bc0168f20d294a3a141497e",
+   "code_bytes": 11349,
+   "name": "RelayAdapt7702",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "RelayAdapt7702",
+    "deployer": "0x43b89E9f43b2ded5392D4eB9B21543bAFCE38e1B"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-10-14T17:35:43.289895Z",
+   "source_chars": 139560,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 177,
+   "txs": 177,
+   "distinct_senders": 30,
+   "distinct_accounts": 81,
+   "contested_accounts": 0,
+   "nonce0_share": 0.42,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x000000005c84f8fd50b21cac312528a64437030e",
+   "code_bytes": 22020,
+   "name": "CaliburEntry",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "CaliburEntry",
+    "deployer": "0x32f4B2e69EbD7746596AF8699DAC1908F43107aD"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-07-07T18:49:56.672020Z",
+   "source_chars": 475163,
+   "source_mentions": [
+    "drain"
+   ],
+   "grade": "verified-source",
+   "authorizations": 172,
+   "txs": 172,
+   "distinct_senders": 94,
+   "distinct_accounts": 171,
+   "contested_accounts": 1,
+   "nonce0_share": 0.39,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 171 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0x6c35fbcf24e57e5aa2e3aa2ca82e052499d02cf8",
+   "code_bytes": 6289,
+   "name": "TokenPocketStatelessDelegator",
+   "source_verified": false,
+   "explorer_answered": false,
+   "sourcify": {
+    "match": "match",
+    "name": "TokenPocketStatelessDelegator",
+    "deployer": "0x35163144fE41aa27AD7CfCA26758e135E625754a"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 168,
+   "txs": 168,
+   "distinct_senders": 66,
+   "distinct_accounts": 167,
+   "contested_accounts": 2,
+   "nonce0_share": 0.52,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "2 of the 167 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Verified on Sourcify; Blockscout did not report it as verified in this run."
+   ]
+  },
+  {
+   "delegate": "0xcda3577ca7ef65f6b7201e9bd80375f5628d15f7",
+   "code_bytes": 1707,
+   "name": "Collector",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "Collector",
+    "deployer": "0x39F6a6C85d39d5ABAd8A398310c52E7c374F2bA3"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-11-20T14:40:51.252108Z",
+   "source_chars": 3462,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 157,
+   "txs": 11,
+   "distinct_senders": 1,
+   "distinct_accounts": 157,
+   "contested_accounts": 0,
+   "nonce0_share": 0.96,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Farm pattern: every authorization in the window was submitted by one sender, mostly for fresh (nonce 0) accounts."
+   ]
+  },
+  {
+   "delegate": "0x7785a22facd31db653ba4928f1d5b81d093f0b2f",
+   "code_bytes": 1801,
+   "name": "BasicSmartAccount",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "BasicSmartAccount",
+    "deployer": "0x0033fd20d6766Cf0d94080dB6fbdDaA7A0EaB1f4"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2025-08-06T09:14:19.493860Z",
+   "source_chars": 4284,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 127,
+   "txs": 127,
+   "distinct_senders": 4,
+   "distinct_accounts": 73,
+   "contested_accounts": 0,
+   "nonce0_share": 0.18,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xda98669de7f4c4d5c2e41baf12574a67ecc25619",
+   "code_bytes": 1030,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 116,
+   "txs": 116,
+   "distinct_senders": 1,
+   "distinct_accounts": 107,
+   "contested_accounts": 6,
+   "nonce0_share": 0.16,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "6 of the 107 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0x0f9fd457c12999245c2be5645ab61e10f787c72a",
+   "code_bytes": 1082,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 114,
+   "txs": 114,
+   "distinct_senders": 1,
+   "distinct_accounts": 114,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Farm pattern: every authorization in the window was submitted by one sender, mostly for fresh (nonce 0) accounts."
+   ]
+  },
+  {
+   "delegate": "0x5328cb0accfb156354710d3d04452963a17af63e",
+   "code_bytes": 1006,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 104,
+   "txs": 104,
+   "distinct_senders": 1,
+   "distinct_accounts": 104,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Farm pattern: every authorization in the window was submitted by one sender, mostly for fresh (nonce 0) accounts."
+   ]
+  },
+  {
+   "delegate": "0x24b576bc271823bf9c24be627b4363b9b00191e9",
+   "code_bytes": 9920,
+   "name": "HermesDelegateV1",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "HermesDelegateV1",
+    "deployer": "0x1544a551b49e7f5c109260430A3e80Bf3E3876aa"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-09-15T06:58:05.568367Z",
+   "source_chars": 305150,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 103,
+   "txs": 103,
+   "distinct_senders": 14,
+   "distinct_accounts": 103,
+   "contested_accounts": 0,
+   "nonce0_share": 0.87,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x249347d5ae4c3c1a725b7b353b522dbfa180764b",
+   "code_bytes": 5964,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 102,
+   "txs": 102,
+   "distinct_senders": 1,
+   "distinct_accounts": 101,
+   "contested_accounts": 101,
+   "nonce0_share": 0.02,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "101 of the 101 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 8 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x79cd70284ed78fc78e459bdff06a06177f7375d9",
+   "code_bytes": 7017,
+   "name": "BatchCallAndSponsor",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "BatchCallAndSponsor",
+    "deployer": "0x1C1F8ED96592e2b66694b3E283375dcC36C1D8A9"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-10-23T13:09:59.987398Z",
+   "source_chars": 20126,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 75,
+   "txs": 75,
+   "distinct_senders": 9,
+   "distinct_accounts": 75,
+   "contested_accounts": 0,
+   "nonce0_share": 0.99,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xf4b2569a806c1f4d1be0cebc3f0475a3d17a1c4d",
+   "code_bytes": 24157,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": false,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 74,
+   "txs": 70,
+   "distinct_senders": 1,
+   "distinct_accounts": 37,
+   "contested_accounts": 14,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "20 of the 68 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "35 of the 44 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "25 of the 66 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "14 of the 37 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "An evidence source did not answer in this run; the grade is carried from the run ending 2026-11-18T02:23:11Z."
+   ],
+   "grade_carried_from": "2026-11-18T02:23:11Z"
+  },
+  {
+   "delegate": "0x8773a2868e4e113381ec94c463d51479fb9a533f",
+   "code_bytes": 7075,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "forwards-incoming-eth",
+   "authorizations": 64,
+   "txs": 3,
+   "distinct_senders": 1,
+   "distinct_accounts": 64,
+   "contested_accounts": 3,
+   "nonce0_share": 0.02,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 3,
+    "reverted": 0,
+    "destinations": {
+     "0xf87f1a3d738b5d2b7fe7045870316f9fc2ee1488": 3
+    },
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "3 of the 64 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Dry run: 1 wei sent to 3 of 3 sampled accounts delegated here was passed straight on to 0xf87f1a3d738b5d2b7fe7045870316f9fc2ee1488."
+   ]
+  },
+  {
+   "delegate": "0x8e13000d307c02dfef9c5c2d23f92a90824c918a",
+   "code_bytes": 1302,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 64,
+   "txs": 64,
+   "distinct_senders": 1,
+   "distinct_accounts": 64,
+   "contested_accounts": 63,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "63 of the 64 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 8 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x31c934f4db134d3110e963044836d7a89609b783",
+   "code_bytes": 966,
+   "name": "CTOCDelegate",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "CTOCDelegate",
+    "deployer": "0xccBeEb191718ffdEEC48Aa9278C2979Ff64449e9"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-10-28T06:09:43.427027Z",
+   "source_chars": 5969,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 58,
+   "txs": 58,
+   "distinct_senders": 1,
+   "distinct_accounts": 58,
+   "contested_accounts": 0,
+   "nonce0_share": 0.74,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Farm pattern: every authorization in the window was submitted by one sender, mostly for fresh (nonce 0) accounts."
+   ]
+  },
+  {
+   "delegate": "0xdc78583d3bb386b055174a485aacfed52ce3d37a",
+   "code_bytes": 11393,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "forwards-incoming-eth",
+   "authorizations": 55,
+   "txs": 51,
+   "distinct_senders": 1,
+   "distinct_accounts": 36,
+   "contested_accounts": 16,
+   "nonce0_share": 0.05,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 2,
+    "forwarded": 2,
+    "reverted": 0,
+    "destinations": {
+     "0x11d92f0bdbbe98094595991bf5d3214252fdb662": 2
+    },
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "16 of the 36 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Dry run: 1 wei sent to 2 of 2 sampled accounts delegated here was passed straight on to 0x11d92f0bdbbe98094595991bf5d3214252fdb662."
+   ]
+  },
+  {
+   "delegate": "0x5ac4c3f3d60d9186baf971aa1bda7c3924adec4c",
+   "code_bytes": 9531,
+   "name": "Utila7702Delegate",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "Utila7702Delegate",
+    "deployer": "0x7B209E8FcfE6eeEa2fb3aEa1037Cea05b8908eDF"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-10-27T15:16:06.666402Z",
+   "source_chars": 62593,
+   "source_mentions": [
+    "drain"
+   ],
+   "grade": "verified-source",
+   "authorizations": 52,
+   "txs": 52,
+   "distinct_senders": 7,
+   "distinct_accounts": 52,
+   "contested_accounts": 0,
+   "nonce0_share": 0.77,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xa34e1e389097409aa65ff374af50b402e4a8f5c3",
+   "code_bytes": 4511,
+   "name": "DfnsSmartAccount",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "DfnsSmartAccount",
+    "deployer": "0x4219607b6D99084Df074b08952e558a0652A5141"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-03-17T11:15:00.537630Z",
+   "source_chars": 18430,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 51,
+   "txs": 51,
+   "distinct_senders": 3,
+   "distinct_accounts": 51,
+   "contested_accounts": 0,
+   "nonce0_share": 0.98,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x027f5eed8c0f8b9d8e68f60dc437175af7b52ff9",
+   "code_bytes": 3686,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 51,
+   "txs": 51,
+   "distinct_senders": 2,
+   "distinct_accounts": 51,
+   "contested_accounts": 0,
+   "nonce0_share": 0.9,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x532ba46934e877585b293d582ab6a6b62f0cee44",
+   "code_bytes": 5456,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 50,
+   "txs": 50,
+   "distinct_senders": 3,
+   "distinct_accounts": 50,
+   "contested_accounts": 8,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "8 of the 50 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0x914ac673f3ca19b6618c3c90f59bee37c5a9f6f5",
+   "code_bytes": 4289,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 48,
+   "txs": 6,
+   "distinct_senders": 1,
+   "distinct_accounts": 6,
+   "contested_accounts": 5,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 6,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "5 of the 6 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0x955d84139e7621bc571b117d8eb5d28a4a222c6f",
+   "code_bytes": 6707,
+   "name": "TKGasDelegate",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "TKGasDelegate",
+    "deployer": "0xf2bF171629B7C1dC8e0c012f8db4aBA3D7e06741"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-07-18T21:47:00.843461Z",
+   "source_chars": 64558,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 45,
+   "txs": 45,
+   "distinct_senders": 37,
+   "distinct_accounts": 45,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x86485b8eed03bd710bf243982392dc61f3257785",
+   "code_bytes": 5345,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 42,
+   "txs": 38,
+   "distinct_senders": 1,
+   "distinct_accounts": 10,
+   "contested_accounts": 10,
+   "nonce0_share": 0.02,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "10 of the 10 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 8 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x612373d7003d694220f7800eeaf8e3924c0951d3",
+   "code_bytes": 24504,
+   "name": "CaliburEntry",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "CaliburEntry",
+    "deployer": "0xA0BEDC61ff0312181B2A4E1aA233Dd1355105C6B"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-02-13T03:21:24.642056Z",
+   "source_chars": 417095,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 40,
+   "txs": 40,
+   "distinct_senders": 40,
+   "distinct_accounts": 40,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 40 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0x05ae73c5925d843864ae6f261f3175de2ebcd963",
+   "code_bytes": 17451,
+   "name": "RelayAdapt7702",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "RelayAdapt7702",
+    "deployer": "0x43b89E9f43b2ded5392D4eB9B21543bAFCE38e1B"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-08-16T15:41:03.157537Z",
+   "source_chars": 123986,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 40,
+   "txs": 40,
+   "distinct_senders": 8,
+   "distinct_accounts": 38,
+   "contested_accounts": 0,
+   "nonce0_share": 0.78,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xf9b681edbe2260b5e508c78ad56878432cd548fc",
+   "code_bytes": 3173,
+   "name": "TransferDelegate",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-04-23T08:57:09.596403Z",
+   "source_chars": 131755,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 39,
+   "txs": 39,
+   "distinct_senders": 3,
+   "distinct_accounts": 39,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Verified on Blockscout but not found on Sourcify."
+   ]
+  },
+  {
+   "delegate": "0x60b82581a0f2ddbf0f2f3709365f9b9081b16eed",
+   "code_bytes": 2140,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 36,
+   "txs": 36,
+   "distinct_senders": 1,
+   "distinct_accounts": 24,
+   "contested_accounts": 24,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "24 of the 24 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 8 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x535023ed14a1862444ec29d0fe07cf3092c73bc2",
+   "code_bytes": 423,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 35,
+   "txs": 35,
+   "distinct_senders": 15,
+   "distinct_accounts": 15,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xe40ccb2d94975c51bff0c004efdfd9b3a5796fa4",
+   "code_bytes": 23971,
+   "name": "SmartWalletEntry",
+   "source_verified": false,
+   "explorer_answered": false,
+   "sourcify": {
+    "match": "match",
+    "name": "SmartWalletEntry",
+    "deployer": "0x3bCEEbFCEE7d45eb78FF2E24a4007FF065D96C98"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 29,
+   "txs": 29,
+   "distinct_senders": 29,
+   "distinct_accounts": 29,
+   "contested_accounts": 3,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "3 of the 29 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Verified on Sourcify; Blockscout did not report it as verified in this run."
+   ]
+  },
+  {
+   "delegate": "0x00000000383e8cbe298514674ea60ee1d1de50ac",
+   "code_bytes": 23452,
+   "name": "Nexus",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "Nexus",
+    "deployer": "0xa63dEa08d722F3993a154E7054eC3Fe5C04C8C3c"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-03-11T18:07:33.681640Z",
+   "source_chars": 322344,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 29,
+   "txs": 29,
+   "distinct_senders": 7,
+   "distinct_accounts": 29,
+   "contested_accounts": 12,
+   "nonce0_share": 0.86,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "12 of the 29 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0xd75ba5e163fa5dd3b764f6d5c21210de3832a6ba",
+   "code_bytes": 5112,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 29,
+   "txs": 29,
+   "distinct_senders": 1,
+   "distinct_accounts": 29,
+   "contested_accounts": 29,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "29 of the 29 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 8 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x27bfd156c8c0df64e6a863c589dc9593ddac3ee2",
+   "code_bytes": 1214,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 24,
+   "txs": 24,
+   "distinct_senders": 1,
+   "distinct_accounts": 18,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x51fa1cce1c8b11dd89a053544d02c71c275cdec8",
+   "code_bytes": 1862,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "forwards-incoming-eth",
+   "authorizations": 23,
+   "txs": 23,
+   "distinct_senders": 1,
+   "distinct_accounts": 22,
+   "contested_accounts": 14,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 1,
+    "forwarded": 1,
+    "reverted": 0,
+    "destinations": {
+     "0xd52573f6d4f68d8e7f8fe2ed50a1023c5f6fe82a": 1
+    },
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "14 of the 22 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Dry run: 1 wei sent to 1 of 1 sampled accounts delegated here was passed straight on to 0xd52573f6d4f68d8e7f8fe2ed50a1023c5f6fe82a."
+   ]
+  },
+  {
+   "delegate": "0x33f0c2f0f2377df77349bf2818c88123fcc645dc",
+   "code_bytes": 2011,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 23,
+   "txs": 23,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x07241d6ae14a6605e12a5febc187885d91b40da0",
+   "code_bytes": 1592,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 22,
+   "txs": 22,
+   "distinct_senders": 20,
+   "distinct_accounts": 20,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xcd7b35a913dff15a364e4611d2db1cfcb179ae5b",
+   "code_bytes": 7898,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "forwards-incoming-eth",
+   "authorizations": 17,
+   "txs": 6,
+   "distinct_senders": 1,
+   "distinct_accounts": 6,
+   "contested_accounts": 3,
+   "nonce0_share": 0.12,
+   "probe": {
+    "accounts_sampled": 6,
+    "accounts_probed": 3,
+    "forwarded": 3,
+    "reverted": 0,
+    "destinations": {
+     "0x07b26e3e228778b6c132b1cbaa9a716f72bbf05b": 3
+    },
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "3 of the 6 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Dry run: 1 wei sent to 3 of 3 sampled accounts delegated here was passed straight on to 0x07b26e3e228778b6c132b1cbaa9a716f72bbf05b."
+   ]
+  },
+  {
+   "delegate": "0x1bcc6b722dd35072823ea7f80b50442aaf57aac5",
+   "code_bytes": 1703,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "forwards-incoming-eth",
+   "authorizations": 16,
+   "txs": 16,
+   "distinct_senders": 1,
+   "distinct_accounts": 16,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 3,
+    "reverted": 0,
+    "destinations": {
+     "0xa7c91c2911206de0d3054372d6af188fb11af07a": 3
+    },
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Dry run: 1 wei sent to 3 of 3 sampled accounts delegated here was passed straight on to 0xa7c91c2911206de0d3054372d6af188fb11af07a."
+   ]
+  },
+  {
+   "delegate": "0xb6da1852c218d74257593126fdfbd20f0bceb2a8",
+   "code_bytes": 1045,
+   "name": "Porwarder",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-06-13T13:50:01.212724Z",
+   "source_chars": 454,
+   "source_mentions": [],
+   "grade": "flagged-by-research",
+   "forwards_on_receive": " require(destination != address(0), \"Not initialized\"); destination.transfer(msg.value); }",
+   "authorizations": 16,
+   "txs": 4,
+   "distinct_senders": 1,
+   "distinct_accounts": 2,
+   "contested_accounts": 2,
+   "nonce0_share": 0.12,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "flagged_by_research": {
+    "source": "Huang et al., USENIX Security 2026 artifact (data to 2025-07-15)",
+    "chains": [
+     "ethereum"
+    ]
+   },
+   "notes": [
+    "Its published source forwards incoming ETH in receive()/fallback(): ETH sent to an account delegated to it does not stay there.",
+    "2 of the 2 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 2 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared).",
+    "Marked as an EOA-targeted malicious delegate on Ethereum in the Huang et al. (USENIX Security 2026) artifact.",
+    "Verified on Blockscout but not found on Sourcify."
+   ]
+  },
+  {
+   "delegate": "0xe2aad4ae4eda149d9eb8bc885529ef2ee04f62d7",
+   "code_bytes": 5153,
+   "name": "BatchCallAndSponsor",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-05-05T06:42:08.146950Z",
+   "source_chars": 35813,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 15,
+   "txs": 15,
+   "distinct_senders": 3,
+   "distinct_accounts": 15,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Verified on Blockscout but not found on Sourcify."
+   ]
+  },
+  {
+   "delegate": "0xf12286e6f4f9970146ce5239f143b2c335e417a0",
+   "code_bytes": 2110,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 14,
+   "txs": 14,
+   "distinct_senders": 1,
+   "distinct_accounts": 5,
+   "contested_accounts": 5,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 5,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "5 of the 5 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0xb544282ddc2906de7f610e54e08e4f568997017f",
+   "code_bytes": 8363,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 13,
+   "txs": 13,
+   "distinct_senders": 1,
+   "distinct_accounts": 12,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xcc0c946eecf01a4bc76bc333ea74ceb04756f17b",
+   "code_bytes": 3834,
+   "name": "TokenPocketSimple7702Account",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "TokenPocketSimple7702Account",
+    "deployer": "0x35163144fE41aa27AD7CfCA26758e135E625754a"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2025-06-11T06:37:00.561012Z",
+   "source_chars": 57846,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 13,
+   "txs": 13,
+   "distinct_senders": 6,
+   "distinct_accounts": 13,
+   "contested_accounts": 0,
+   "nonce0_share": 0.69,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x3ae1f70cf6da80955936f5599d103fcf62162d10",
+   "code_bytes": 7585,
+   "name": "Reconstructed",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "Reconstructed",
+    "deployer": "0x43b18F8fB488E30d524757d78DA1438881d1AAAA"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-11-05T17:49:45.561070Z",
+   "source_chars": 6828,
+   "source_mentions": [],
+   "grade": "forwards-incoming-eth",
+   "forwards_on_receive": " (bool success,) = payable(FORWARD_TO).call{value: msg.value}(\"\"); require(success, \"Forward failed\"); }",
+   "authorizations": 12,
+   "txs": 12,
+   "distinct_senders": 1,
+   "distinct_accounts": 12,
+   "contested_accounts": 3,
+   "nonce0_share": 0.08,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 3,
+    "reverted": 0,
+    "destinations": {
+     "0x43b18f8fb488e30d524757d78da1438881d1aaaa": 3
+    },
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Its published source forwards incoming ETH in receive()/fallback(): ETH sent to an account delegated to it does not stay there.",
+    "3 of the 12 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Dry run: 1 wei sent to 3 of 3 sampled accounts delegated here was passed straight on to 0x43b18f8fb488e30d524757d78da1438881d1aaaa."
+   ]
+  },
+  {
+   "delegate": "0x80d95b9131883cbf4ec56ab7f2d96e23ae9a8b5c",
+   "code_bytes": 1579,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 11,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 11,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xd208fcea4077cb1bfc7d4e7d3d45ae28de430c6b",
+   "code_bytes": 4196,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 10,
+   "txs": 10,
+   "distinct_senders": 1,
+   "distinct_accounts": 3,
+   "contested_accounts": 3,
+   "nonce0_share": 0.1,
+   "probe": {
+    "accounts_sampled": 3,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "3 of the 3 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 3 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0xca11bde05977b3631167028862be2a173976ca11",
+   "code_bytes": 3808,
+   "name": "Multicall3",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "Multicall3",
+    "deployer": "0x05f32B3cC3888453ff71B01135B34FF8e41263F2"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2023-06-16T10:58:11.692054Z",
+   "source_chars": 9610,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 10,
+   "txs": 10,
+   "distinct_senders": 3,
+   "distinct_accounts": 10,
+   "contested_accounts": 2,
+   "nonce0_share": 0.1,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 3,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "2 of the 10 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0xd72bdc8db4b0a34d936b3e96b531a08937608162",
+   "code_bytes": 5277,
+   "name": "UniversalDelegationExecutor",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "UniversalDelegationExecutor",
+    "deployer": "0x629bE23daDaAae8798C314C18b02b55fDEFF30e7"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-03-05T10:17:57.659229Z",
+   "source_chars": 2843,
+   "source_mentions": [
+    "drain"
+   ],
+   "grade": "verified-forwarder",
+   "forwards_on_receive": " if (destination != address(0)) { destination.transfer(msg.value); } else { revert(\"(^_-)\"); } }",
+   "authorizations": 10,
+   "txs": 2,
+   "distinct_senders": 1,
+   "distinct_accounts": 2,
+   "contested_accounts": 2,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Its published source forwards incoming ETH in receive()/fallback(): ETH sent to an account delegated to it does not stay there.",
+    "2 of the 2 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 2 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x282daab4f1dfe9621533df573953ae2685de5bc4",
+   "code_bytes": 5271,
+   "name": "UniversalDelegationExecutor",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "UniversalDelegationExecutor",
+    "deployer": "0x0005C6A317Ec8C6A413fC155166624D2d89D6507"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-03-05T09:08:10.109524Z",
+   "source_chars": 2843,
+   "source_mentions": [
+    "drain"
+   ],
+   "grade": "verified-forwarder",
+   "forwards_on_receive": " if (destination != address(0)) { destination.transfer(msg.value); } else { revert(\"(^_-)\"); } }",
+   "authorizations": 10,
+   "txs": 2,
+   "distinct_senders": 1,
+   "distinct_accounts": 2,
+   "contested_accounts": 2,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Its published source forwards incoming ETH in receive()/fallback(): ETH sent to an account delegated to it does not stay there.",
+    "2 of the 2 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 2 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0xe9a500000000c78fb1b22a002226f85500ba0059",
+   "code_bytes": 22072,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 10,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 10,
+   "contested_accounts": 0,
+   "nonce0_share": 0.9,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xa2c6eb5f4095a19571a206f39612faadbbe702cf",
+   "code_bytes": 9496,
+   "name": "UxuySmartProxyV3",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "UxuySmartProxyV3",
+    "deployer": "0x8096A3437af2B9fB3Db553f4f3dD9febcE8Bf21D"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-05-06T03:13:16.711149Z",
+   "source_chars": 49238,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 8,
+   "txs": 8,
+   "distinct_senders": 6,
+   "distinct_accounts": 8,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x7c27e3aecbf42879b64d76f604dc3430f4886462",
+   "code_bytes": 496,
+   "name": "EIP7702Proxy",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "EIP7702Proxy",
+    "deployer": "0x3E365fe4e0c85F998692458d4191Cc39627610C1"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": "eip1967",
+   "verified_at": "2026-05-28T22:22:19.593913Z",
+   "source_chars": 9560,
+   "source_mentions": [],
+   "grade": "verified-but-upgradeable",
+   "authorizations": 8,
+   "txs": 4,
+   "distinct_senders": 2,
+   "distinct_accounts": 8,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xad9cca330a131cd3bf3886db21d734ec60ab3076",
+   "code_bytes": 1954,
+   "name": "BatchCallAndSponsor",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "BatchCallAndSponsor",
+    "deployer": "0x78533A525Cd8047012Faf2B814804BEbD2555F4f"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-06-08T16:34:00.998949Z",
+   "source_chars": 121999,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 8,
+   "txs": 8,
+   "distinct_senders": 1,
+   "distinct_accounts": 8,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x4cd241e8d1510e30b2076397afc7508ae59c66c9",
+   "code_bytes": 3639,
+   "name": "Simple7702Account",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "Simple7702Account",
+    "deployer": "0x81ead4918134AE386dbd04346216E20AB8F822C4"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2025-07-29T12:21:44.738517Z",
+   "source_chars": 305616,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 8,
+   "txs": 8,
+   "distinct_senders": 4,
+   "distinct_accounts": 8,
+   "contested_accounts": 0,
+   "nonce0_share": 0.12,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xd15dc5d9b8c5fc16c9ad9d6b4515f9a9aa78c560",
+   "code_bytes": 4426,
+   "name": "UDABatchExecutor",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "UDABatchExecutor",
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-04-18T09:15:09.038899Z",
+   "source_chars": 211246,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 8,
+   "txs": 8,
+   "distinct_senders": 1,
+   "distinct_accounts": 8,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x85bb292af8ab89645aaf552869c15c768a5f99e2",
+   "code_bytes": 1467,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 8,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 8,
+   "contested_accounts": 8,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 8,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "8 of the 8 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 8 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x68556d641d419817b3a8ddc9418a84352c93fb95",
+   "code_bytes": 5272,
+   "name": "EIP7702Contract",
+   "source_verified": false,
+   "explorer_answered": false,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "EIP7702Contract",
+    "deployer": "0x480049D11bF6ec6F0d4c2A1d2eA55541831758Eb"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 7,
+   "txs": 7,
+   "distinct_senders": 2,
+   "distinct_accounts": 7,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 7,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 7 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Verified on Sourcify; Blockscout did not report it as verified in this run."
+   ]
+  },
+  {
+   "delegate": "0x46f84f62feaf4a0a2aead5f5c1ed0a7e509da19b",
+   "code_bytes": 5286,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 7,
+   "txs": 7,
+   "distinct_senders": 1,
+   "distinct_accounts": 7,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 7,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 7 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0xf9baf65835420a75098f86ad9394d1f985e7a8f7",
+   "code_bytes": 4624,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 7,
+   "txs": 7,
+   "distinct_senders": 1,
+   "distinct_accounts": 2,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 2,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 2 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0x3516d8db77e41319011f4265cd61e743e9b9822c",
+   "code_bytes": 2265,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 6,
+   "txs": 6,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xb55387309203aeabb56339da3c4c0fa3e7a04a96",
+   "code_bytes": 1905,
+   "name": "TransferContract",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "TransferContract",
+    "deployer": "0x2035c4E718E4D0C74a072a0b17B23Bac330C6Dcc"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-09-02T08:21:54.653592Z",
+   "source_chars": 13911,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 6,
+   "txs": 6,
+   "distinct_senders": 1,
+   "distinct_accounts": 6,
+   "contested_accounts": 0,
+   "nonce0_share": 0.67,
+   "probe": {
+    "accounts_sampled": 6,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x74f2b03fdec0e9cc35aac867c67bc938233088fd",
+   "code_bytes": 2577,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 6,
+   "txs": 6,
+   "distinct_senders": 1,
+   "distinct_accounts": 6,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 6,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x45e87d68ff89dd2bc7729a86e776af9393ebf845",
+   "code_bytes": 4001,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "forwards-incoming-eth",
+   "authorizations": 6,
+   "txs": 6,
+   "distinct_senders": 1,
+   "distinct_accounts": 4,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 4,
+    "accounts_probed": 3,
+    "forwarded": 3,
+    "reverted": 0,
+    "destinations": {
+     "0x89fc1e38e17539e681b878eba80ba4500e12db26": 3
+    },
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 4 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Dry run: 1 wei sent to 3 of 3 sampled accounts delegated here was passed straight on to 0x89fc1e38e17539e681b878eba80ba4500e12db26."
+   ]
+  },
+  {
+   "delegate": "0xf3ed64f43472c1ccafd3afa7a3aafe0fde783141",
+   "code_bytes": 1551,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 6,
+   "txs": 6,
+   "distinct_senders": 1,
+   "distinct_accounts": 6,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 6,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 3,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xd2bc5c2823856ae0fa5c79744cf09c3e9a9ff35b",
+   "code_bytes": 3082,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 6,
+   "txs": 6,
+   "distinct_senders": 3,
+   "distinct_accounts": 6,
+   "contested_accounts": 5,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 6,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "5 of the 6 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0x13e00e089f81ad9f36b655c9e9a07c6bf1489a5a",
+   "code_bytes": 4078,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 5,
+   "txs": 5,
+   "distinct_senders": 2,
+   "distinct_accounts": 5,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 5,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x575456fa1004eb5c6331cdbbf9f0e5acce5d87be",
+   "code_bytes": 1317,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 5,
+   "txs": 5,
+   "distinct_senders": 1,
+   "distinct_accounts": 5,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 5,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x343ba89125228f99f3f8afaf8d52e5add227627b",
+   "code_bytes": 1358,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 5,
+   "txs": 5,
+   "distinct_senders": 2,
+   "distinct_accounts": 2,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 2,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xd086d522c3e4e5b5545aa4c420ab1670718bdfa6",
+   "code_bytes": 1519,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "forwards-incoming-eth",
+   "authorizations": 5,
+   "txs": 5,
+   "distinct_senders": 1,
+   "distinct_accounts": 5,
+   "contested_accounts": 2,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 5,
+    "accounts_probed": 3,
+    "forwarded": 3,
+    "reverted": 0,
+    "destinations": {
+     "0x984f1fe18f58c22d17858d489518c5b15c3fd879": 3
+    },
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "2 of the 5 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Dry run: 1 wei sent to 3 of 3 sampled accounts delegated here was passed straight on to 0x984f1fe18f58c22d17858d489518c5b15c3fd879."
+   ]
+  },
+  {
+   "delegate": "0x08bf3aa11cf3063ae49c9383e74eb72b3329aa24",
+   "code_bytes": 630,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 5,
+   "txs": 5,
+   "distinct_senders": 2,
+   "distinct_accounts": 2,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 2,
+    "forwarded": 0,
+    "reverted": 2,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 2 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0xc3c89ff8589644332c916d9c6ec2883eb69d44e5",
+   "code_bytes": 1180,
+   "name": "FixedOwnerCollectProxy",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "FixedOwnerCollectProxy",
+    "deployer": "0x4228c3D7fe60750f6dFE1136c0d60453d71DBE7c"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-01-19T13:55:13.612044Z",
+   "source_chars": 20607,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 4,
+   "txs": 4,
+   "distinct_senders": 1,
+   "distinct_accounts": 4,
+   "contested_accounts": 0,
+   "nonce0_share": 0.5,
+   "probe": {
+    "accounts_sampled": 4,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 3,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x4986579bcdd269b3f3c51eb0954114b2694afcf4",
+   "code_bytes": 4426,
+   "name": "UDABatchExecutor",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "UDABatchExecutor",
+    "deployer": "0xeeb0A44405F317310a8fE249387BE1DaeAEC9562"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-05-21T11:00:59.032787Z",
+   "source_chars": 211246,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 4,
+   "txs": 4,
+   "distinct_senders": 1,
+   "distinct_accounts": 4,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 4,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x14eb85c766a24fa18a2008d9d2ba69344830e938",
+   "code_bytes": 5614,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": false,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 4,
+   "txs": 4,
+   "distinct_senders": 3,
+   "distinct_accounts": 4,
+   "contested_accounts": 0,
+   "nonce0_share": 0.5,
+   "probe": {
+    "accounts_sampled": 4,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "An evidence source did not answer in this run; the grade is carried from the run ending 2026-11-18T02:23:11Z."
+   ],
+   "grade_carried_from": "2026-11-18T02:23:11Z"
+  },
+  {
+   "delegate": "0x4f577087064ea4b5cf294d44cfd56275d9d1ed18",
+   "code_bytes": 4344,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 4,
+   "txs": 4,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 1 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0xfb1b8fb55d1aabeb96bc1c36a9754b28e46a8b6a",
+   "code_bytes": 3189,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 4,
+   "txs": 4,
+   "distinct_senders": 1,
+   "distinct_accounts": 4,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 4,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xb197b363d5329b31fd0aeeac74c7b12602b71a69",
+   "code_bytes": 2413,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 4,
+   "txs": 4,
+   "distinct_senders": 1,
+   "distinct_accounts": 4,
+   "contested_accounts": 0,
+   "nonce0_share": 0.75,
+   "probe": {
+    "accounts_sampled": 4,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xb2fe786ec2584bac0217251cabc485e0b1116a9e",
+   "code_bytes": 8586,
+   "name": "AmbireAccount7702",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "AmbireAccount7702",
+    "deployer": "0x5c0644EA69D8242C4416b3999A8E746a3706F535"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-09-17T08:34:51.273588Z",
+   "source_chars": 33042,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 4,
+   "txs": 4,
+   "distinct_senders": 4,
+   "distinct_accounts": 4,
+   "contested_accounts": 0,
+   "nonce0_share": 0.75,
+   "probe": {
+    "accounts_sampled": 4,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x77f64403a328ffd675bc12e18bff559242a7f510",
+   "code_bytes": 7030,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "forwards-incoming-eth",
+   "authorizations": 4,
+   "txs": 4,
+   "distinct_senders": 1,
+   "distinct_accounts": 4,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 4,
+    "accounts_probed": 3,
+    "forwarded": 3,
+    "reverted": 0,
+    "destinations": {
+     "0xa61919b4591110c344b3c7fb231dcb4e2df10e8a": 3
+    },
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Dry run: 1 wei sent to 3 of 3 sampled accounts delegated here was passed straight on to 0xa61919b4591110c344b3c7fb231dcb4e2df10e8a."
+   ]
+  },
+  {
+   "delegate": "0x54bf93ee1a08af3c90c1cf9973d6e95be9ef65d7",
+   "code_bytes": 2117,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 4,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 1 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x843469f223bad7ca390a8b6137c4f87955b97568",
+   "code_bytes": 1579,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 4,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 4,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 4,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x5a7fc11397e9a8ad41bf10bf13f22b0a63f96f6d",
+   "code_bytes": 11162,
+   "name": "AmbireAccount7702",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "AmbireAccount7702",
+    "deployer": "0xD8293ad21678c6F09Da139b4B62D38e514a03B78"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2025-05-28T09:58:03.191144Z",
+   "source_chars": 34656,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 3,
+   "txs": 3,
+   "distinct_senders": 3,
+   "distinct_accounts": 3,
+   "contested_accounts": 1,
+   "nonce0_share": 0.33,
+   "probe": {
+    "accounts_sampled": 3,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 3 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0x6d94554900937c5b3efb52ed21c09a4953b7c451",
+   "code_bytes": 11287,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 3,
+   "txs": 3,
+   "distinct_senders": 1,
+   "distinct_accounts": 3,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 3,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x3cf32d4d57e91e0a1c3658884040889dafbe5103",
+   "code_bytes": 14095,
+   "name": "RewardyDualEntryAccountV3",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "RewardyDualEntryAccountV3",
+    "deployer": "0xBf5cAE1278164Ef3758524d9f9441D2E28FaCc2b"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-06-02T01:17:23.577345Z",
+   "source_chars": 51406,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 3,
+   "txs": 3,
+   "distinct_senders": 3,
+   "distinct_accounts": 3,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 3,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x2f5e05a65f25d7bec3d8f02a9689cdf43eccd3e6",
+   "code_bytes": 9091,
+   "name": "MerchantConsolidator",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "MerchantConsolidator",
+    "deployer": "0x5C5c476D11fbcE9DaA26b97cBa66dd7Ab6c71C12"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-08-23T08:16:46.777981Z",
+   "source_chars": 20553,
+   "source_mentions": [
+    "sweep",
+    "drain"
+   ],
+   "grade": "verified-source",
+   "authorizations": 3,
+   "txs": 2,
+   "distinct_senders": 1,
+   "distinct_accounts": 3,
+   "contested_accounts": 2,
+   "nonce0_share": 0.33,
+   "probe": {
+    "accounts_sampled": 3,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "2 of the 3 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0x3940c77f7d5a6dc927513e5b43b436bfc98aca1c",
+   "code_bytes": 4991,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 3,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 1 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x00000000228a69a77a83bba0d354505b8d17dc65",
+   "code_bytes": 5701,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": false,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 3,
+   "txs": 3,
+   "distinct_senders": 3,
+   "distinct_accounts": 3,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 3,
+    "accounts_probed": 3,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "An evidence source did not answer in this run; the grade is carried from the run ending 2026-11-18T02:23:11Z."
+   ],
+   "grade_carried_from": "2026-11-18T02:23:11Z"
+  },
+  {
+   "delegate": "0xb9a31ea25df400bf7fb7019bc8417307e8d88c03",
+   "code_bytes": 1039,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 3,
+   "txs": 3,
+   "distinct_senders": 1,
+   "distinct_accounts": 3,
+   "contested_accounts": 3,
+   "nonce0_share": 0.33,
+   "probe": {
+    "accounts_sampled": 3,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "3 of the 3 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 3 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x42505b8dac31d70bd9d9006c7ffface81544dee6",
+   "code_bytes": 649,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "forwards-incoming-eth",
+   "authorizations": 3,
+   "txs": 3,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 1,
+    "reverted": 0,
+    "destinations": {
+     "0x94943b987a73fa0213f540d6efea887fc73bf6ea": 1
+    },
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Dry run: 1 wei sent to 1 of 1 sampled accounts delegated here was passed straight on to 0x94943b987a73fa0213f540d6efea887fc73bf6ea."
+   ]
+  },
+  {
+   "delegate": "0xd7d20e03c9793bd1b63291eea0021c8cc096a915",
+   "code_bytes": 9973,
+   "name": "EIP7702Delegate",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "EIP7702Delegate",
+    "deployer": "0x14F9f76863b57e89f2D482557828337234DCacaD"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-01-11T16:07:50.333848Z",
+   "source_chars": 19421,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 3,
+   "txs": 3,
+   "distinct_senders": 2,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 1 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x5546a14921647a6fc3c8927a2c0cc3afe2e9ae77",
+   "code_bytes": 550,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 3,
+   "txs": 3,
+   "distinct_senders": 1,
+   "distinct_accounts": 3,
+   "contested_accounts": 2,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 3,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 1,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "2 of the 3 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0xdc86dea6ee5a9d4df5b6f4ea8f469be4c1aebc3d",
+   "code_bytes": 2129,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "distinct_accounts": 2,
+   "contested_accounts": 2,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "2 of the 2 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 2 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0xac9a3c7c64e865d3b547aea2aeeb436cfddb7c7b",
+   "code_bytes": 1748,
+   "name": "RescueExecutor",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2025-12-21T09:14:53.266277Z",
+   "source_chars": 584,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "distinct_accounts": 2,
+   "contested_accounts": 2,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "2 of the 2 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 2 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared).",
+    "Verified on Blockscout but not found on Sourcify."
+   ]
+  },
+  {
+   "delegate": "0xcfa266ba068949897ff191ddebd997e0aa9b5f92",
+   "code_bytes": 1748,
+   "name": "RescueExecutor",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-08-02T01:19:26.222642Z",
+   "source_chars": 584,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Verified on Blockscout but not found on Sourcify."
+   ]
+  },
+  {
+   "delegate": "0xfe593c393bae5aa57c81a15c20810df99c40d70d",
+   "code_bytes": 1670,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "distinct_accounts": 2,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 2 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0x000000000000000000000000000000000000dead",
+   "code_bytes": 0,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "no-code",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Delegating to the zero address clears a delegation (revocation)."
+   ]
+  },
+  {
+   "delegate": "0x25054a2b9d4544ed292dc1a74e8bf1f6f449d988",
+   "code_bytes": 2733,
+   "name": "ProviderBatchCallAndSponsor",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "ProviderBatchCallAndSponsor",
+    "deployer": "0xEaAeBeB57dC88fD25aDEe72711538aF0c6a9AC6E"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-03-11T15:47:27.617848Z",
+   "source_chars": 29965,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "distinct_accounts": 2,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 2,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xb24043ebdc72ddc1923ec749cfbdfbeff3fc82f6",
+   "code_bytes": 3589,
+   "name": "HinkalWallet",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-08-26T09:06:05.753556Z",
+   "source_chars": 63860,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 2,
+   "distinct_accounts": 2,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 2,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Verified on Blockscout but not found on Sourcify."
+   ]
+  },
+  {
+   "delegate": "0x7e7dd63e2d42993ce84060c594b52631fbb0505b",
+   "code_bytes": 1967,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "forwards-incoming-eth",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "distinct_accounts": 2,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 1,
+    "forwarded": 1,
+    "reverted": 0,
+    "destinations": {
+     "0x77d462c9e8a00909b512101299f3446b348687f0": 1
+    },
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 2 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "Dry run: 1 wei sent to 1 of 1 sampled accounts delegated here was passed straight on to 0x77d462c9e8a00909b512101299f3446b348687f0."
+   ]
+  },
+  {
+   "delegate": "0x715e7694c9789c06d25dd197a130cd42ebb2190b",
+   "code_bytes": 2190,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "distinct_accounts": 2,
+   "contested_accounts": 2,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "2 of the 2 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 2 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x4aacf559e3e7ed62d1b73ac81b5f5109404aebd5",
+   "code_bytes": 11560,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": false,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "evidence-missing",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 1 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0xa1697d51f8c6d5c7e7a2d334d18b5d15106224a6",
+   "code_bytes": 2315,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "forwards-incoming-eth",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "distinct_accounts": 2,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 2,
+    "forwarded": 2,
+    "reverted": 0,
+    "destinations": {
+     "0xbd398843c9b438350375826660a8ee13bbe51eab": 2
+    },
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Dry run: 1 wei sent to 2 of 2 sampled accounts delegated here was passed straight on to 0xbd398843c9b438350375826660a8ee13bbe51eab."
+   ]
+  },
+  {
+   "delegate": "0xfe8abbd9847af7b02ff9a43eab797917f2140e3f",
+   "code_bytes": 9513,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "distinct_accounts": 2,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 2,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 2 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0xb018654b38c9b575185367983a92f5601fd2d399",
+   "code_bytes": 620,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "distinct_accounts": 2,
+   "contested_accounts": 2,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "2 of the 2 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 2 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0xdd19eed97b6d55582fe51c6ea9172cb175b429ba",
+   "code_bytes": 212,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 2,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 2,
+   "contested_accounts": 2,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "2 of the 2 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 2 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x64261f07902615f01a222568c65507d9dc4055d6",
+   "code_bytes": 1346,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 2,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 2,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 2,
+    "forwarded": 0,
+    "reverted": 2,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x653e1007a981548e9b3e5d4efb5a5ace4c267d0c",
+   "code_bytes": 2145,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 2,
+   "txs": 2,
+   "distinct_senders": 1,
+   "distinct_accounts": 2,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 2,
+    "accounts_probed": 2,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x79f84be3fd474bc702f88d97ec0dca56adba7966",
+   "code_bytes": 5150,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x47e747f5e8cb5819c966292dd969d989ae9dea5e",
+   "code_bytes": 5695,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 1 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x6fcf8ba3031b934f2933f34c512cbf88d6bb75f1",
+   "code_bytes": 10216,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x7a7368891d5418b9798cc97e11c3c89c0310b6c6",
+   "code_bytes": 29,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 1 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x3ade0c0bb69f153d270e6a33518ca8e668cac872",
+   "code_bytes": 7679,
+   "name": "SweepOwnerConstant",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "SweepOwnerConstant",
+    "deployer": "0x6554be837E2D74E0aDd70C7B7957f5C196AB16A7"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-10-12T18:42:11.427474Z",
+   "source_chars": 4197,
+   "source_mentions": [
+    "sweep"
+   ],
+   "grade": "verified-forwarder",
+   "forwards_on_receive": " require(!STOPPED, \"STOPPED\"); if (msg.value == 0) return; (bool ok, ) = payable(OWNER).call{value: msg.value}(\"\"); require(ok, \"E_FWD\"); }",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Its published source forwards incoming ETH in receive()/fallback(): ETH sent to an account delegated to it does not stay there.",
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 1 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x3c4ef63de3de0c113853c7e1d8cbb356d4813619",
+   "code_bytes": 1758,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xb5c83fd238d6544c924ba52f7374edf564bbcf5c",
+   "code_bytes": 20954,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 1 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x487db2fd20522c4a3ed542249483d9a12de66b1f",
+   "code_bytes": 3649,
+   "name": "Simple7702Account",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-07-06T12:16:58.881700Z",
+   "source_chars": 57158,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Verified on Blockscout but not found on Sourcify."
+   ]
+  },
+  {
+   "delegate": "0x6640c1cccaf07dbe765ec05e294fe427cc92831c",
+   "code_bytes": 4622,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0x557f37550196a3022aec6c2b1b4951900ea3e3c2",
+   "code_bytes": 2667,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "flagged-by-research",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 1,
+    "reverted": 0,
+    "destinations": {
+     "0x31a00175e7be8d8ba5453cfbf6c9be721069b32e": 1
+    },
+    "dest_in_slot0": 0
+   },
+   "flagged_by_research": {
+    "source": "Huang et al., USENIX Security 2026 artifact (data to 2025-07-15)",
+    "chains": [
+     "ethereum"
+    ]
+   },
+   "notes": [
+    "Dry run: 1 wei sent to 1 of 1 sampled accounts delegated here was passed straight on to 0x31a00175e7be8d8ba5453cfbf6c9be721069b32e.",
+    "Marked as an EOA-targeted malicious delegate on Ethereum in the Huang et al. (USENIX Security 2026) artifact."
+   ]
+  },
+  {
+   "delegate": "0x14f01bbaa1dcff8f12bfe1cd54b58a7ebe211b29",
+   "code_bytes": 2567,
+   "name": "BronAccount",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "BronAccount",
+    "deployer": "0xA5b7329fD4Bb374672C4Dda903Ec4758C4be4AD7"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-08-19T04:40:33.160752Z",
+   "source_chars": 226192,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x37fff828241dcd4af6070f976531ee083add9e81",
+   "code_bytes": 2275,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 1,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x129009c7072f196a76f495bdcf2f41d303d16d99",
+   "code_bytes": 2275,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 1,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x494a57cc2d2f3b06e111e56e07f9f324f06202bc",
+   "code_bytes": 3334,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 1 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0xf2d610263faed6c2ed706bffa2305eb8a431e3bd",
+   "code_bytes": 4991,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 1 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x5a8add83b728ac90edbb32581bad7ff47c9c5591",
+   "code_bytes": 4662,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x81e665a2d9099c726071566e0a2061db28e82701",
+   "code_bytes": 13423,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 1 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x252fe07aff7bf7f39704a615b1b347827e90db7f",
+   "code_bytes": 3401,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x170c7f244bc817efa7845f41d433e2c48e32ebd3",
+   "code_bytes": 4344,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x0ede1d67df9f0def77208cd811e65e851fb6fd0c",
+   "code_bytes": 1008,
+   "name": "BatchCallDelegation",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "BatchCallDelegation",
+    "deployer": "0x85a88DAB0c285B195aee894a89a1422a6Bd648e4"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-08-20T17:01:17.519220Z",
+   "source_chars": 947,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 1,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x2e34e149a28032e45001fce74c8894c2b1c66299",
+   "code_bytes": 2846,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "forwards-incoming-eth",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 1,
+    "reverted": 0,
+    "destinations": {
+     "0xb99fdf99057a4271b7fa73e5f5b8fff88e0cd17f": 1
+    },
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Dry run: 1 wei sent to 1 of 1 sampled accounts delegated here was passed straight on to 0xb99fdf99057a4271b7fa73e5f5b8fff88e0cd17f."
+   ]
+  },
+  {
+   "delegate": "0x76dcb466fe5faa6a50d24c6936174f23f5ffd060",
+   "code_bytes": 17291,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xd1945bda1c461f68e0157e14c4f97ee3a6444f22",
+   "code_bytes": 508,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x5fda61f6fb45b73a87b9bccb69f56475e3455567",
+   "code_bytes": 1675,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x2d67f1ad2375249ce7f87dae2c0f105ac3e30b89",
+   "code_bytes": 1255,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "None of the 1 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x709a519eb51f7153b7560a4aa7033ee4ff45a907",
+   "code_bytes": 968,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x9c34ac9479ea7b9f5df8525ff5ed98363057a87e",
+   "code_bytes": 5896,
+   "name": "Crime",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "match",
+    "name": "Crime",
+    "deployer": "0x1234567896FCfEa3c739AcbE9e8A02bf6b9a5044"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-09-07T01:49:53.802638Z",
+   "source_chars": 18224,
+   "source_mentions": [
+    "sweep"
+   ],
+   "grade": "verified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 1 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x69d016bcdc926b3719d6e1c239e0d3a5fca43c20",
+   "code_bytes": 3641,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "None of the 1 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x6bed87dce697ea4d73d98c10af8723dbb44bfdf5",
+   "code_bytes": 5501,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 1 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x7e6bc54553c5b2d83c03e115e9cf6c5f20b3be76",
+   "code_bytes": 9119,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x4182d1c577dcee57b72993ff35926cf84582ab48",
+   "code_bytes": 4001,
+   "name": "Support",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "Support",
+    "deployer": "0xaFcb961705096d3DA39BA304cAD42F5165d02E67"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-11-17T20:35:11.473477Z",
+   "source_chars": 1948,
+   "source_mentions": [],
+   "grade": "verified-forwarder",
+   "forwards_on_receive": " require(msg.value > 0, \"(revert)\"); (bool ok,) = 0xaFcb961705096d3DA39BA304cAD42F5165d02E67.call{value: msg.value}(\"\"); require(ok, \"(revert)\"); }",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Its published source forwards incoming ETH in receive()/fallback(): ETH sent to an account delegated to it does not stay there.",
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 1 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0xa04977ab36ed4083fec5f41208c3b4275c9c7a1c",
+   "code_bytes": 2961,
+   "name": "BatchCallAndSponsor",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "BatchCallAndSponsor",
+    "deployer": "0x727511a4A699170C4501292143B7eB34482C5ACA"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-11-17T00:28:06.065643Z",
+   "source_chars": 32092,
+   "source_mentions": [],
+   "grade": "verified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xe52119dffb01e80c5df943cb1b9cae47af0c4b4f",
+   "code_bytes": 4150,
+   "name": "Wallet",
+   "source_verified": true,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": "exact_match",
+    "name": "Wallet",
+    "deployer": "0xeabCD67D1bbb677699258b2648f6A9f830964eE4"
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": "2026-09-15T08:36:51.076132Z",
+   "source_chars": 24709,
+   "source_mentions": [
+    "sweep"
+   ],
+   "grade": "forwards-incoming-eth",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 1,
+    "reverted": 0,
+    "destinations": {
+     "0xf09e5e704d8b705cc47898ec3b3db1a6a895fb74": 1
+    },
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "Dry run: 1 wei sent to 1 of 1 sampled accounts delegated here was passed straight on to 0xf09e5e704d8b705cc47898ec3b3db1a6a895fb74."
+   ]
+  },
+  {
+   "delegate": "0x87dc58542dbda22af93f122f289969b3cf7609b6",
+   "code_bytes": 12124,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 0,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth).",
+    "None of the 1 sampled signing accounts is delegated to this target right now (the authorization failed, was replaced, or was cleared)."
+   ]
+  },
+  {
+   "delegate": "0x5f273cdc852550fa08ebf9e0cc6520cc6c6d6425",
+   "code_bytes": 1211,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 1,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xeb22a9d52f13d3887e358b4c28ad13ee90d2f0ab",
+   "code_bytes": 7269,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x37f0f29696cf81b41ed5a35ea7a278f6c8409a90",
+   "code_bytes": 6167,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 1,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  },
+  {
+   "delegate": "0x103311ad1d4eab41b87fd35554641f492971ecb7",
+   "code_bytes": 1730,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0x7125eb68e3f9f72b5a7181a65739eab4e8055e78",
+   "code_bytes": 1476,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 0,
+   "nonce0_share": 1.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 1,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": []
+  },
+  {
+   "delegate": "0xe8e8c365deee36fe7c4228ade8c0c0ff99a2ef87",
+   "code_bytes": 23533,
+   "name": null,
+   "source_verified": false,
+   "explorer_answered": true,
+   "sourcify": {
+    "match": null,
+    "name": null,
+    "deployer": null
+   },
+   "explorer_scam_flag": false,
+   "proxy_type": null,
+   "verified_at": null,
+   "source_chars": 0,
+   "source_mentions": [],
+   "grade": "unverified-source",
+   "authorizations": 1,
+   "txs": 1,
+   "distinct_senders": 1,
+   "distinct_accounts": 1,
+   "contested_accounts": 1,
+   "nonce0_share": 0.0,
+   "probe": {
+    "accounts_sampled": 1,
+    "accounts_probed": 1,
+    "forwarded": 0,
+    "reverted": 0,
+    "destinations": {},
+    "dest_in_slot0": 0
+   },
+   "notes": [
+    "1 of the 1 accounts that signed for this target also signed for a different target in this window (accounts being re-delegated back and forth)."
+   ]
+  }
+ ]
+}
